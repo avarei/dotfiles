@@ -8,12 +8,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = { url = "github:zhaofengli-wip/nix-homebrew"; };
-    nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.11";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # nixvim = {
+    #   url = "github:nix-community/nixvim/nixos-24.11";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
   };
-  outputs = { self, darwin, nix-homebrew, home-manager, nixpkgs, nixvim, ... }@inputs:
+  outputs = { self, darwin, nix-homebrew, home-manager, nixpkgs, ... }@inputs:
     let
       username = "tim";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -32,21 +32,8 @@
               ];
             };
         };
-      homeConfiguration = system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            nixvim.homeManagerModules.nixvim
-	    ./home.nix
-          ];
-
-          extraSpecialArgs = { inherit inputs username; };
-        };
     in {
-      devShells = forAllSystems devShell;
-      homeConfigurations = forAllSystems homeConfiguration;
+      # devShells = forAllSystems devShell;
 
       darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
         darwin.lib.darwinSystem {
@@ -69,10 +56,13 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                users."${username}" = import ./home.nix;
+                extraSpecialArgs = { inherit username; };
               };
             }
             ./hosts/nixos
           ];
         });
+      
     };
 }
