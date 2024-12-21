@@ -1,6 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, nixvim, ... }:
+
 
 {
+  imports = [
+    nixvim.homeManagerModules.nixvim
+  ];
   home.packages = with pkgs; [
     # git # Required for lazy.nvim
   ];

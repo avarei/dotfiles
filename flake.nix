@@ -8,12 +8,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-homebrew = { url = "github:zhaofengli-wip/nix-homebrew"; };
-    # nixvim = {
-    #   url = "github:nix-community/nixvim/nixos-24.11";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    nixvim = {
+      url = "github:nix-community/nixvim/nixos-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs = { self, darwin, nix-homebrew, home-manager, nixpkgs, ... }@inputs:
+  outputs = { self, darwin, nix-homebrew, home-manager, nixpkgs, nixvim, ... }@inputs:
     let
       username = "tim";
       linuxSystems = [ "x86_64-linux" "aarch64-linux" ];
@@ -58,7 +58,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users."${username}" = import ./home.nix;
-                extraSpecialArgs = { inherit username; };
+                extraSpecialArgs = { inherit username nixvim; };
               };
             }
             ./hosts/nixos
