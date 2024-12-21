@@ -2,7 +2,9 @@
 
 {
   imports = [
-    ./modules/neovim.nix
+    ./modules/neovim
+    ./modules/git
+    ./modules/zsh
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -69,8 +71,9 @@
   #
   #  /etc/profiles/per-user/tim/etc/profile.d/hm-session-vars.sh
   #
-  home.sessionVariables = { EDITOR = "vim"; };
+  # home.sessionVariables = { EDITOR = "vim"; };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }
