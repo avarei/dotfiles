@@ -5,8 +5,8 @@
     # git # Required for lazy.nvim
   ];
 
-  users.defaultUserShell = pkgs.zsh;
-  environment.shells = [ pkgs.zsh ];
+  # users.defaultUserShell = pkgs.zsh;
+  # environment.shells = [ pkgs.zsh ];
 
   programs.zsh = {
     enable = true;
