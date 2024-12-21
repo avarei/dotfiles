@@ -35,16 +35,16 @@
     in {
       # devShells = forAllSystems devShell;
 
-      darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
-        darwin.lib.darwinSystem {
-          inherit system;
-          specialArgs = inputs;
-          modules = [
-            home-manager.darwinModules.home-manager
-            # nix-homebrew.darwinModules.nix-homebrew
-            ./hosts/darwin
-          ];
-        });
+      # darwinConfigurations = nixpkgs.lib.genAttrs darwinSystems (system:
+      #   darwin.lib.darwinSystem {
+      #     inherit system;
+      #     specialArgs = inputs;
+      #     modules = [
+      #       home-manager.darwinModules.home-manager
+      #       # nix-homebrew.darwinModules.nix-homebrew
+      #       ./hosts/darwin
+      #     ];
+      #   });
 
       nixosConfigurations = nixpkgs.lib.genAttrs linuxSystems (system:
         nixpkgs.lib.nixosSystem {
@@ -54,6 +54,7 @@
             home-manager.nixosModules.home-manager
             {
               home-manager = {
+	        # pkgs = nixpkgs.legacyPackages.${system};
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users."${username}" = import ./home.nix;
