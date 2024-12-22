@@ -22,11 +22,19 @@
       size = 10000;
     };
 
-    # zplug = {
-    #   enable = true;
-    #   plugins = [
-    #   ];
-    # };
+    zplug = {
+      enable = true;
+      plugins = [
+        { name = "zsh-users/zsh-history-substring-search"; tags = [ "as:plugin" ]; }
+        { name = "zsh-users/zsh-syntax-highlighting"; tags = [ "defer:2" ]; }
+        { name = "plugins/git"; tags = [ "from:oh-my-zsh" ]; }
+        { name = "plugins/kubectl"; tags = [ "from:oh-my-zsh" ]; }
+        { name = "plugins/helm"; tags = [ "from:oh-my-zsh" ]; }
+        { name = "plugins/docker"; tags = [ "from:oh-my-zsh" ]; }
+        { name = "plugins/cp"; tags = [ "from:oh-my-zsh" ]; }
+        { name = "plugins/man"; tags = [ "from:oh-my-zsh" ]; }
+      ];
+    };
   };
 }
 
