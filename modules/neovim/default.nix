@@ -59,6 +59,7 @@
     ];
 
     plugins = {
+      web-devicons.enable = true;
       lualine.enable = true;
       treesitter = {
         enable = true;
