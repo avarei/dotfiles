@@ -13,8 +13,7 @@
 
     extraConfig = {
       credential = {
-        helper = "manager";
-	credentialStore = "cache";
+        helper = "cache --timeout=36000";
       };
 
       push = { autoSetupRemote = true; };
