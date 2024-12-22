@@ -14,9 +14,9 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    shellAliases = {
+    #shellAliases = {
       # vim = "nvim";
-    };
+    #};
 
     history = {
       size = 10000;
