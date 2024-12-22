@@ -8,6 +8,10 @@
   home = {
     packages = with pkgs; [
       # git # Required for lazy.nvim
+      helm-ls
+      yaml-language-server
+      yamllint
+      vale # linter for text and markdown
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -58,31 +62,49 @@
       lualine.enable = true;
       treesitter = {
         enable = true;
-	settings = {
+	      settings = {
           highlight.enable = true;
-	  indent.enable = true;
-	};
-	grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+	        indent.enable = true;
+	      };
+	      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           bash
-	  json
-	  make
-	  markdown
-	  nix
-	  regex
-	  vim
-	  vimdoc
-	  xml
-	  yaml
-	  go
-	  python
-	];
+          json
+          make
+          markdown
+          nix
+          regex
+          vim
+          vimdoc
+          xml
+          yaml
+          go
+          python
+        ];
       };
       treesitter-context = {
         enable = true;
-	settings = {
+        settings = {
           max_lines = 0;
-	  line_numbers = true;
-	};
+          line_numbers = true;
+        };
+      };
+      lsp = {
+        enable = true;
+        servers = {
+          gopls.enable = true;
+          bashls.enable = true;
+          helm_ls.enable = true;
+          pylsp.enable = true;
+          yamlls.enable = true;
+        };
+      };
+      lint = {
+        enable = true;
+        lintersByFt = {
+          text = ["vale"];
+          markdown = ["vale"];
+          yaml = ["yamllint"];
+        };
       };
     };
 
