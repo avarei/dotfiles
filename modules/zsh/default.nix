@@ -22,6 +22,13 @@
       size = 10000;
     };
 
+    initExtra = ''
+    bindkey "\e[1;3D" beginning-of-line
+    bindkey "\e[1;3C" end-of-line
+    bindkey "\e[3~" delete-char
+    '';
+    defaultKeymap = "emacs";
+
     zplug = {
       enable = true;
       plugins = [
