@@ -23,8 +23,8 @@
     };
 
     initExtra = ''
-    bindkey "\e[1;3D" beginning-of-line
-    bindkey "\e[1;3C" end-of-line
+    bindkey "\e[1;3D" backward-word
+    bindkey "\e[1;3C" forward-word
     bindkey "\e[3~" delete-char
     '';
     defaultKeymap = "emacs";
