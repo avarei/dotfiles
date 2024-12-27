@@ -3,13 +3,14 @@
 let
   user = "tim";
   keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPmedNgb+XdlWr8jGgmjVm4Pt8yamx2HOT/WfYXN2Xz2 openpgp:0xE69D8AEF"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0pJdZaqZ5hLS+PQExRJlOZpHij8LJH3BcL5a3Zd9Rc openpgp:0x45379177"
   ];
 in {
   imports = [
     # ../../modules/nixos/disk-config.nix
     # ../../modules/shared
     ./hardware-configuration.nix
+    ../../modules/nixos/gpg/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -50,7 +51,10 @@ in {
 
   services = {
     # Let's be able to SSH into this machine
-    openssh.enable = true;
+    openssh = {
+      enable = true;
+      extraConfig = "StreamLocalBindUnlink yes";
+    };
   };
 
   users.users = {

@@ -15,6 +15,9 @@
       credential = {
         helper = "cache --timeout=36000";
       };
+      commit.gpgSign = true;
+      user.signingkey = "A420487145379177";
+
 
       push = { autoSetupRemote = true; };
     };
