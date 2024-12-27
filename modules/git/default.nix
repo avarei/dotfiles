@@ -8,7 +8,7 @@
   };
   programs.git = {
     enable = true;
-    userName = "Tim Geimer";
+    userName = "Avarei";
     userEmail = "32556895+Avarei@users.noreply.github.com";
 
     extraConfig = {
@@ -16,7 +16,7 @@
         helper = "cache --timeout=36000";
       };
       commit.gpgSign = true;
-      user.signingkey = "A420487145379177";
+      user.signingkey = "587E5A78B226A58F";
 
 
       push = { autoSetupRemote = true; };
