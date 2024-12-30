@@ -16,7 +16,7 @@
         helper = "cache --timeout=36000";
       };
       commit.gpgSign = true;
-      user.signingkey = "A420487145379177";
+      user.signingkey = "5772654A0D090E3D";
 
 
       push = { autoSetupRemote = true; };

@@ -3,7 +3,7 @@
 let
   user = "tim";
   keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJ0pJdZaqZ5hLS+PQExRJlOZpHij8LJH3BcL5a3Zd9Rc openpgp:0x45379177"
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF+5SPqVaw3+0T/BKmlimufxLgW+tHnPyhCyxYz9aZf openpgp:0x0D090E3D"
   ];
 in {
   imports = [
