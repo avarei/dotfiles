@@ -49,6 +49,7 @@
                 extraSpecialArgs = { inherit username nixvim; };
               };
             }
+            ./hosts/common
             ./hosts/darwin
           ];
         });
@@ -67,6 +68,7 @@
                 extraSpecialArgs = { inherit username nixvim; };
               };
             }
+            ./hosts/common
             ./hosts/nixos
           ];
         });

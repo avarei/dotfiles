@@ -24,9 +24,6 @@ in {
     };
   };
 
-  # Set your time zone.
-  time.timeZone = "Europe/Berlin";
-
   # Turn on flag for proprietary software
   nix = {
     nixPath =
@@ -41,12 +38,6 @@ in {
       experimental-features = [ "nix-command" "flakes" ];
     };
     package = pkgs.nix;
-  };
-
-  # Manages keys and such
-  programs = {
-    # My shell
-    zsh.enable = true;
   };
 
   services = {
