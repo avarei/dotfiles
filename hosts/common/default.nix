@@ -4,6 +4,10 @@ let
   user = "tim";
 in {
   imports = [  ];
+  
+  environment.systemPackages = with pkgs; [
+    direnv
+  ];
 
   # Manages keys and such
   programs = {

@@ -11,7 +11,7 @@ in {
     # ../../modules/shared
     ./hardware-configuration.nix
     ../../modules/nixos/gpg/default.nix
-    ../../modules/nixos/kubernetes/default.nix
+    # ../../modules/nixos/kubernetes/default.nix
   ];
 
   # Use the systemd-boot EFI boot loader.

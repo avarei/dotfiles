@@ -2,7 +2,9 @@
 
 let
   foo = "bar";
-  masterAddress = "127.0.0.1";
+  kubeMasterIP = "192.168.48.232";
+  kubeMasterHostname = "server.local";
+  kubeMasterAPIServerPort = 6443;
 in {
   environment.systemPackages = with pkgs; [
     kompose
@@ -12,8 +14,13 @@ in {
 
   services.kubernetes = {
     roles = ["master" "node"];
-    masterAddress = masterAddress;
+    masterAddress = kubeMasterIP;
+    apiserverAddress = "https://${kubeMasterHostname}:${toString kubeMasterAPIServerPort}";
     easyCerts = true;
+    apiserver = {
+      securePort = kubeMasterAPIServerPort;
+      advertiseAddress = kubeMasterIP;
+    };
     addons.dns.enable = true;
 
   };

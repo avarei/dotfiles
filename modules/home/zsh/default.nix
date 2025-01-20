@@ -3,6 +3,7 @@
 {
   home.packages = with pkgs; [
     # git # Required for lazy.nvim
+    direnv
   ];
 
   # users.defaultUserShell = pkgs.zsh;
@@ -57,6 +58,11 @@
         #   error_symbol = "[➜](bold red)";
         # };
     };
+  };
+
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
   };
 }
 
