@@ -42,6 +42,7 @@
           modules = [
             home-manager.darwinModules.home-manager
             {
+              users.users.${username}.home = "/Users/${username}";
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
@@ -61,6 +62,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             {
+              users.users.${username}.home = "/home/${username}";
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
