@@ -16,4 +16,5 @@ in {
   };
 
   time.timeZone = "Europe/Berlin";
+  nixpkgs.config.allowUnfree = true;
 }
