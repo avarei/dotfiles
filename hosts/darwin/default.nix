@@ -7,6 +7,7 @@ let user = "tim"; in
     # ../../modules/darwin/secrets.nix
     # ../../modules/darwin/home-manager.nix
     # ../../modules/shared
+    ../../modules/darwin/gpg
   ];
 
   # Auto upgrade nix package and the daemon service.
