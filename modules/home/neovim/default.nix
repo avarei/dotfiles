@@ -12,6 +12,7 @@
       yaml-language-server
       yamllint
       vale # linter for text and markdown
+      gopls
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -91,6 +92,7 @@
       };
       lsp = {
         enable = true;
+        inlayHints = true;
         servers = {
           gopls.enable = true;
           bashls.enable = true;
@@ -114,6 +116,24 @@
           "<leader>fg" = "live_grep";
           "<leader>fb" = "buffers";
           "<leader>fh" = "help_tags";
+        };
+      };
+      cmp = {
+        enable = true;
+        autoEnableSources = true;
+        settings.sources = [
+          { name = "nvim_lsp"; }
+          { name = "path"; }
+          { name = "buffer"; }
+        ];
+        settings.mapping = {
+          "<C-Space>" = "cmp.mapping.complete()";
+          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
+          "<C-e>" = "cmp.mapping.close()";
+          "<C-f>" = "cmp.mapping.scroll_docs(4)";
+          "<CR>" = "cmp.mapping.confirm({ select = true })";
+          "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
+          "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
       };
     };
