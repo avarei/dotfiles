@@ -7,6 +7,7 @@ in {
   
   environment.systemPackages = with pkgs; [
     direnv
+    talosctl
   ];
 
   # Manages keys and such

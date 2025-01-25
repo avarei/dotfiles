@@ -13,6 +13,8 @@
       yamllint
       vale # linter for text and markdown
       gopls
+
+      helix
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -100,6 +102,24 @@
           pylsp.enable = true;
           yamlls.enable = true;
         };
+        keymaps = {
+          silent = true;
+          diagnostic = {
+            # Navigate in diagnostics
+            "<leader>k" = "goto_prev";
+            "<leader>j" = "goto_next";
+          };
+
+          lspBuf = {
+            gd = "definition";
+            gD = "references";
+            gt = "type_definition";
+            gi = "implementation";
+            K = "hover";
+            "<F2>" = "rename";
+          };
+        };
+
       };
       lint = {
         enable = true;
