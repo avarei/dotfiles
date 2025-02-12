@@ -10,6 +10,7 @@ in {
     kompose
     kubectl
     kubernetes
+    kubernetes-helm
   ];
 
   services.kubernetes = {
