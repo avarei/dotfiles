@@ -16,7 +16,7 @@
   outputs = { self, nix-darwin, nix-homebrew, home-manager, nixpkgs, nixvim, ... }@inputs:
     let
       username = "tim";
-      overlays = [ ];
+      keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF+5SPqVaw3+0T/BKmlimufxLgW+tHnPyhCyxYz9aZf openpgp:0x0D090E3D";
     in {
       # devShells = forAllSystems devShell;
       devShells.x86_64-linux."provider-vault" =
@@ -40,7 +40,7 @@
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 users."${username}" = import ./home.nix;
-                extraSpecialArgs = { inherit username nixvim; };
+                extraSpecialArgs = { inherit username nixvim keys; };
               };
             }
             ./hosts/common
@@ -58,12 +58,13 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users."${username}" = import ./home.nix;
-              extraSpecialArgs = { inherit username nixvim; };
+              extraSpecialArgs = { inherit username nixvim keys; };
             };
           }
           ./hosts/common
           ./hosts/nixos
         ];
+        specialArgs = { inherit username keys; };
       };
     };
 }

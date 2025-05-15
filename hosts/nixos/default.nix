@@ -1,10 +1,7 @@
-{ config, inputs, lib, pkgs, ... }:
+{ config, inputs, lib, pkgs, username, keys, ... }:
 
 let
-  user = "tim";
-  keys = [
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF+5SPqVaw3+0T/BKmlimufxLgW+tHnPyhCyxYz9aZf openpgp:0x0D090E3D"
-  ];
+  foo = "bar";
 in {
   imports = [
     # ../../modules/nixos/disk-config.nix
@@ -28,8 +25,8 @@ in {
   # Turn on flag for proprietary software
   nix = {
     settings = {
-      allowed-users = [ "${user}" ];
-      trusted-users = [ "@admin" "${user}" ];
+      allowed-users = [ "${username}" ];
+      trusted-users = [ "@admin" "${username}" ];
       substituters =
         [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
       trusted-public-keys =
@@ -119,14 +116,14 @@ in {
   
 
   users.users = {
-    ${user} = {
+    ${username} = {
       isNormalUser = true;
       extraGroups = [
         "wheel" # Enable ‘sudo’ for the user.
         "docker" # Allow Docker usage
       ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = keys;
+      openssh.authorizedKeys.keys = [keys];
     };
   };
 

@@ -6,6 +6,7 @@
     ./modules/home/git
     ./modules/home/zsh
     ./modules/home/gpg
+    # ./modules/home/ssh
   ];
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
