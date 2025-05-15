@@ -27,8 +27,6 @@ in {
 
   # Turn on flag for proprietary software
   nix = {
-    nixPath =
-      [ "nixos-config=/home/${user}/.local/share/src/nixos-config:/etc/nixos" ];
     settings = {
       allowed-users = [ "${user}" ];
       trusted-users = [ "@admin" "${user}" ];
@@ -47,13 +45,85 @@ in {
       enable = true;
       extraConfig = "StreamLocalBindUnlink yes";
     };
+    xserver = {
+      enable = true;
+      displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+    };
+    k3s.enable = true;
   };
+
+  environment = {
+    systemPackages = with pkgs; [
+      gnome-terminal
+    ];
+    gnome = {
+      excludePackages = with pkgs; [
+        orca
+        evince
+        # file-roller
+        geary
+        gnome-disk-utility
+        # seahorse
+        # sushi
+        # sysprof
+        #
+        # gnome-shell-extensions
+        #
+        # adwaita-icon-theme
+        # nixos-background-info
+        gnome-backgrounds
+        # gnome-bluetooth
+        # gnome-color-manager
+        # gnome-control-center
+        # gnome-shell-extensions
+        gnome-tour # GNOME Shell detects the .desktop file on first log-in.
+        gnome-user-docs
+        # glib # for gsettings program
+        # gnome-menus
+        # gtk3.out # for gtk-launch program
+        # xdg-user-dirs # Update user dirs as described in https://freedesktop.org/wiki/Software/xdg-user-dirs/
+        # xdg-user-dirs-gtk # Used to create the default bookmarks
+        #
+        baobab
+        epiphany
+        gnome-text-editor
+        gnome-calculator
+        gnome-calendar
+        gnome-characters
+        # gnome-clocks
+        # gnome-console
+        gnome-contacts
+        gnome-font-viewer
+        gnome-logs
+        gnome-maps
+        gnome-music
+        # gnome-system-monitor
+        gnome-weather
+        # loupe
+        # nautilus
+        gnome-connections
+        simple-scan
+        snapshot
+        totem
+        yelp
+        gnome-software
+
+
+        kubectl
+      ];
+    };
+  };
+
+  virtualisation.docker.enable = true;
+  
 
   users.users = {
     ${user} = {
       isNormalUser = true;
       extraGroups = [
         "wheel" # Enable ‘sudo’ for the user.
+        "docker" # Allow Docker usage
       ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keys = keys;
