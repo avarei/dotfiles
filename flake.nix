@@ -19,7 +19,7 @@
       overlays = [ ];
     in {
       # devShells = forAllSystems devShell;
-      devShell."provider-vault" =
+      devShells.x86_64-linux."provider-vault" =
         let
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
         in pkgs.mkShell {
