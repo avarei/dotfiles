@@ -27,6 +27,9 @@
     bindkey "\e[1;3D" backward-word
     bindkey "\e[1;3C" forward-word
     bindkey "\e[3~" delete-char
+
+    umask 022
+
     '';
     defaultKeymap = "emacs";
 
