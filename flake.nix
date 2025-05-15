@@ -16,21 +16,19 @@
   outputs = { self, nix-darwin, nix-homebrew, home-manager, nixpkgs, nixvim, ... }@inputs:
     let
       username = "tim";
-      devShell = system:
-        let pkgs = nixpkgs.legacyPackages.${system};
-        in {
-          default = with pkgs;
-            mkShell {
-              nativeBuildInputs = with pkgs; [
-                bashInteractive
-                git
-                age
-                age-plugin-yubikey
-              ];
-            };
-        };
+      overlays = [ ];
     in {
       # devShells = forAllSystems devShell;
+      devShell."provider-vault" =
+        let
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        in pkgs.mkShell {
+          nativeBuildInputs = with pkgs; [
+            gnumake
+            go
+            kubernetes-helm
+          ];
+        };
 
       darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
