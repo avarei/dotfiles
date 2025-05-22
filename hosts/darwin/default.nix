@@ -10,13 +10,11 @@ let user = "tim"; in
     ../../modules/darwin/gpg
   ];
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
 
   # Setup user, packages, programs
   nix = {
+    enable = true;
     package = pkgs.nix;
-    configureBuildUsers = true;
     settings = {
       experimental-features = ["nix-command" "flakes"];
     };

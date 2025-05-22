@@ -13,6 +13,7 @@
       yamllint
       vale # linter for text and markdown
       gopls
+      ripgrep # for live_grep
 
       helix
     ];
