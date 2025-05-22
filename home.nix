@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./modules/home/neovim
+    ./modules/home/editor/neovim.nix
+    ./modules/home/editor/vscode.nix
     ./modules/home/git
     ./modules/home/zsh
     ./modules/home/gpg
