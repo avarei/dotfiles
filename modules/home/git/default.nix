@@ -19,6 +19,7 @@
       user.signingkey = "5772654A0D090E3D";
 
 
+      init = { defaultBranch = "main"; };
       push = { autoSetupRemote = true; };
     };
 
