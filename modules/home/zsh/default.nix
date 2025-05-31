@@ -6,8 +6,8 @@
     direnv
   ];
 
-  # users.defaultUserShell = pkgs.zsh;
-  # environment.shells = [ pkgs.zsh ];
+  # for zsh completion of system packages
+  environment.pathsToLink = [ "/share/zsh" ];
 
   programs.zsh = {
     enable = true;
