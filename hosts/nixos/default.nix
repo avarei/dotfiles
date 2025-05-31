@@ -105,9 +105,6 @@ in {
         totem
         yelp
         gnome-software
-
-
-        kubectl
       ];
     };
   };
