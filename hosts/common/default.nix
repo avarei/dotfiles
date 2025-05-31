@@ -9,6 +9,10 @@ in {
     direnv
   ];
 
+  # for zsh completion of system packages
+  environment.pathsToLink = [ "/share/zsh" ];
+
+
   time.timeZone = "Europe/Berlin";
   nixpkgs.config.allowUnfree = true;
 }
