@@ -2,7 +2,10 @@
   description = "General Purpose Configuration for macOS and NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-darwin = {
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,7 +67,14 @@
           ./hosts/common
           ./hosts/nixos
         ];
+
         specialArgs = { inherit username keys; };
+      };
+
+      homeConfigurations."dev" = home-manager.lib.homeManagerConfiguration {
+        modules = [ ./home.nix ];
+        extraSpecialArgs = { inherit username nixvim keys; };
       };
     };
 }
+
