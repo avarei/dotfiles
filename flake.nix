@@ -18,8 +18,13 @@
   };
   outputs = { self, nix-darwin, nix-homebrew, home-manager, nixpkgs, nixvim, ... }@inputs:
     let
-      username = "tim";
-      keys = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICF+5SPqVaw3+0T/BKmlimufxLgW+tHnPyhCyxYz9aZf openpgp:0x0D090E3D";
+      lib = nixpkgs.lib // home-manager.lib;
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
+      pkgsFor = lib.genAttrs systems (system: import nixpkgs {
+        inherit system;
+        config.allowUnfree = true;
+      });
     in {
       # devShells = forAllSystems devShell;
       devShells.x86_64-linux."provider-vault" =
@@ -33,47 +38,36 @@
           ];
         };
 
-      darwinConfigurations."macbook" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
+      darwinConfigurations = {
+        macbook = nix-darwin.lib.darwinSystem {
+          pkgs = pkgsFor.aarch64-darwin;
           modules = [
-            home-manager.darwinModules.home-manager
-            {
-              users.users.${username}.home = "/Users/${username}";
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                users."${username}" = import ./home.nix;
-                extraSpecialArgs = { inherit username nixvim keys; };
-              };
-            }
-            ./hosts/common
-            ./hosts/darwin
+            ./hosts/macbook
           ];
         };
-
-      nixosConfigurations."server" = nixpkgs.lib.nixosSystem { 
-        system = "x86_64-linux";
-        modules = [
-          home-manager.nixosModules.home-manager
-          {
-            users.users.${username}.home = "/home/${username}";
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users."${username}" = import ./home.nix;
-              extraSpecialArgs = { inherit username nixvim keys; };
-            };
-          }
-          ./hosts/common
-          ./hosts/nixos
-        ];
-
-        specialArgs = { inherit username keys; };
       };
 
-      homeConfigurations."dev" = home-manager.lib.homeManagerConfiguration {
-        modules = [ ./home.nix ];
-        extraSpecialArgs = { inherit username nixvim keys; };
+      nixosConfigurations = {
+        server = nixpkgs.lib.nixosSystem { 
+          pkgs = pkgsFor.x86_64-linux;
+          modules = [
+            ./hosts/server
+          ];
+        };
+      };
+
+
+      homeConfigurations = {
+        "tim@server" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          modules = [ ./home/tim/server.nix ];
+          extraSpecialArgs = { inherit nixvim; };
+        };
+        "tim@macbook" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.aarch64-darwin;
+          modules = [ ./home/tim/macbook.nix ];
+          extraSpecialArgs = { inherit nixvim; };
+        };
       };
     };
 }

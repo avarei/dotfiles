@@ -4,9 +4,7 @@ let user = "tim"; in
 {
 
   imports = [
-    # ../../modules/darwin/secrets.nix
-    # ../../modules/darwin/home-manager.nix
-    # ../../modules/shared
+    ../common
     ../../modules/darwin/gpg
   ];
 

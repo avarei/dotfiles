@@ -1,10 +1,23 @@
 { config, pkgs, lib, ... }:
 
-{
+let
+  shellAliases = {
+    ll = "ls -lah";
+  };
+  nixvimShellAliases = {
+    vi = "nvim";
+    vim = "nvim";
+  };
+
+in {
   home.packages = with pkgs; [
     # git # Required for lazy.nvim
     direnv
   ];
+  programs.direnv = {
+    enable = true;
+    enableZshIntegration = true;
+  };
 
   programs.zsh = {
     enable = true;
@@ -12,9 +25,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
 
-    #shellAliases = {
-      # vim = "nvim";
-    #};
+    shellAliases = shellAliases // nixvimShellAliases;
 
     history = {
       size = 10000;
@@ -58,11 +69,6 @@
         #   error_symbol = "[➜](bold red)";
         # };
     };
-  };
-
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
   };
 }
 

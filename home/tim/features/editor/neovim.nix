@@ -1,10 +1,13 @@
 { config, pkgs, lib, nixvim, ... }:
 
+let
+  foo = true;
+in {
 
-{
   imports = [
     nixvim.homeManagerModules.nixvim
   ];
+
   home = {
     packages = with pkgs; [
       # git # Required for lazy.nvim
@@ -67,11 +70,11 @@
       lualine.enable = true;
       treesitter = {
         enable = true;
-	      settings = {
+        settings = {
           highlight.enable = true;
-	        indent.enable = true;
-	      };
-	      grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
+          indent.enable = true;
+        };
+        grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
           bash
           json
           make
@@ -157,14 +160,6 @@
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
         };
       };
-    };
-
-  };
-
-  programs.zsh = {
-    shellAliases = {
-      vi = "nvim";
-      vim = "nvim";
     };
   };
 }

@@ -2,16 +2,23 @@
 
 ## Linux
 
-```bash
+```sh
 sudo nixos-rebuild switch --flake .#x86_64-linux
 ```
 
-## MacOS (To be tested)
+## MacOS
+```sh
+darwin-rebuild switch --flake .#macbook
+```
 
+## Home-Manager
+```sh
+home-manager switch --flake .#tim@macbook
+```
 
 ## Testing
 
-```bash
+```sh
 nix flake check
 ```
 

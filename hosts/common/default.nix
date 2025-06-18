@@ -1,8 +1,6 @@
 { config, inputs, lib, pkgs, ... }:
 
-let
-  user = "tim";
-in {
+{
   imports = [  ];
   
   environment.systemPackages = with pkgs; [
@@ -15,4 +13,7 @@ in {
 
   time.timeZone = "Europe/Berlin";
   nixpkgs.config.allowUnfree = true;
+
+  users.users.tim.packages = [ pkgs.home-manager ];
+
 }

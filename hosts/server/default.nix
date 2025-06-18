@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, username, keys, ... }:
+{ config, inputs, lib, pkgs, ... }:
 
 let
   foo = "bar";
@@ -7,7 +7,7 @@ in {
     # ../../modules/nixos/disk-config.nix
     # ../../modules/shared
     ./hardware-configuration.nix
-    ../../modules/nixos/gpg/default.nix
+    ../../modules/nixos/gpg
     # ../../modules/nixos/kubernetes/default.nix
   ];
 
@@ -25,8 +25,8 @@ in {
   # Turn on flag for proprietary software
   nix = {
     settings = {
-      allowed-users = [ "${username}" ];
-      trusted-users = [ "@admin" "${username}" ];
+      allowed-users = [ "tim" ];
+      trusted-users = [ "@admin" "tim" ];
       substituters =
         [ "https://nix-community.cachix.org" "https://cache.nixos.org" ];
       trusted-public-keys =
@@ -115,14 +115,14 @@ in {
   
 
   users.users = {
-    ${username} = {
+    tim = {
       isNormalUser = true;
       extraGroups = [
         "wheel" # Enable ‘sudo’ for the user.
         "docker" # Allow Docker usage
       ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [keys];
+      openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
     };
   };
 
