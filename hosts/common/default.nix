@@ -12,8 +12,16 @@
 
 
   time.timeZone = "Europe/Berlin";
-  nixpkgs.config.allowUnfree = true;
 
   users.users.tim.packages = [ pkgs.home-manager ];
 
+  programs.zsh.enable = true;
+
+  nix = {
+    enable = true;
+    package = pkgs.nix;
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+    };
+  };
 }
