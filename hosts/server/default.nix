@@ -33,6 +33,13 @@ in {
       enable = true;
       extraConfig = "StreamLocalBindUnlink yes";
     };
+    
+    # remote desktop
+    sunshine = {
+      enable = true;
+      autoStart = true;
+      capSysAdmin = true;
+      openFirewall = true;
   };
 
   users.users = {
@@ -46,6 +53,8 @@ in {
       openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
     };
   };
+
+  programs.hyprland.enable = true;
 
   system.stateVersion = "24.11"; # Don't change this
 }
