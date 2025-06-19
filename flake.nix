@@ -10,13 +10,13 @@
       url = "github:LnL7/nix-darwin/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-homebrew = { url = "github:zhaofengli-wip/nix-homebrew"; };
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    hyprland.url = "github:hyprwm/Hyprland";
   };
-  outputs = { self, nix-darwin, home-manager, nixpkgs, nixvim, ... }@inputs:
+  outputs = { self, nix-darwin, nix-homebrew, home-manager, nixpkgs, nixvim, ... }@inputs:
     let
       lib = nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" "aarch64-darwin" ];
@@ -55,6 +55,7 @@
           ];
         };
       };
+
 
       homeConfigurations = {
         "tim@server" = home-manager.lib.homeManagerConfiguration {
