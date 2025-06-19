@@ -40,6 +40,7 @@ in {
       autoStart = true;
       capSysAdmin = true;
       openFirewall = true;
+    };
   };
 
   users.users = {
