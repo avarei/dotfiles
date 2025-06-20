@@ -2,8 +2,8 @@
 {
   imports = [];
   programs.vscode = {
-    enable = true;
-    extensions = with pkgs.vscode-extensions; [
+    enable = false;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       golang.go
       james-yu.latex-workshop
       bierner.markdown-mermaid

@@ -5,7 +5,6 @@ in {
 
   imports = [
     ../common
-    ../../modules/darwin/gpg
   ];
 
   system.stateVersion = 5;

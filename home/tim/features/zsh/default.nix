@@ -31,7 +31,7 @@ in {
       size = 10000;
     };
 
-    initExtra = ''
+    initContent = ''
     bindkey "\e[1;3D" backward-word
     bindkey "\e[1;3C" forward-word
     bindkey "\e[3~" delete-char
@@ -39,6 +39,7 @@ in {
     umask 022
 
     '';
+
     defaultKeymap = "emacs";
 
     zplug = {
