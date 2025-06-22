@@ -48,7 +48,10 @@
       trust = "ultimate";}
     ];
   };
-  services.gpg-agent.enableSshSupport = true;
+  services.gpg-agent = {
+    enableSshSupport = true;
+    enableExtraSocket = true;
+  };
 
   # home.sessionVariables = {
   #   SSH_AUTH_SOCK = "$(${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket)";

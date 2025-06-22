@@ -37,7 +37,6 @@ in {
     bindkey "\e[3~" delete-char
 
     umask 022
-
     '';
 
     defaultKeymap = "emacs";
