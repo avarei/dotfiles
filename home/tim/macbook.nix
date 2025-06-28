@@ -9,6 +9,7 @@
     ./features/zsh
     ./features/gpg
     # ./modules/home/ssh
+    ./features/kubernetes/client.nix
   ];
   home.homeDirectory = "/Users/${config.home.username}";
 }
