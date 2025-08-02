@@ -16,7 +16,7 @@
         helper = "cache --timeout=36000";
       };
       commit.gpgSign = true;
-      user.signingkey = "5772654A0D090E3D";
+      user.signingkey = "E8722A4C7EB2CD4C";
 
 
       init = { defaultBranch = "main"; };
