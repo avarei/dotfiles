@@ -13,12 +13,8 @@ in {
   # Bootloader.
   boot = {
     loader = {
-      grub = {
-        enable = true;
-        device = "/dev/nvme1n1";
-        useOSProber = true;
-        efiSupport = true;
-      };
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
   };
   
