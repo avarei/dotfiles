@@ -7,6 +7,7 @@
     ./features/git
     ./features/zsh
     ./features/gpg
+    ./features/browser/firefox.nix
     # ./modules/home/ssh
   ];
 
