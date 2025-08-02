@@ -1,0 +1,13 @@
+{ config, pkgs, ... }:
+
+{
+  imports = [
+    ./global
+    ./features/editor/neovim.nix
+    ./features/git
+    ./features/zsh
+    ./features/gpg
+    # ./modules/home/ssh
+  ];
+
+}

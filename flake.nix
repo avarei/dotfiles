@@ -56,6 +56,12 @@
             ./hosts/server
           ];
         };
+        desktop = nixpkgs.lib.nixosSystem { 
+          pkgs = pkgsFor.x86_64-linux;
+          modules = [
+            ./hosts/desktop
+          ];
+        };
       };
 
 
@@ -63,6 +69,11 @@
         "tim@server" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [ ./home/tim/server.nix ];
+          extraSpecialArgs = { inherit nixvim; };
+        };
+        "tim@desktop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor.x86_64-linux;
+          modules = [ ./home/tim/desktop.nix ];
           extraSpecialArgs = { inherit nixvim; };
         };
         "tim@macbook" = home-manager.lib.homeManagerConfiguration {
