@@ -11,4 +11,9 @@
     # ./features/gui/hyprland.nix
   ];
 
+  home = {
+    packages = with pkgs; [
+      discord
+    ];
+  };
 }

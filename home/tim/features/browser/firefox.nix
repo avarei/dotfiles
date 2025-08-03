@@ -10,7 +10,39 @@
     profiles.tim = {
       isDefault = true;
       id = 0;
-      search.default = "ddg";
+
+      search = {
+        default = "ddg";
+        force = true;
+        engines = {
+          nix-packages = {
+            name = "Nix Packages";
+            urls = [{
+              template = "https://search.nixos.org/packages";
+              params = [
+                { name = "type"; value = "packages"; }
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+            definedAliases = [ "@np" ];
+          };
+          home-manager-options = {
+            name = "Home-Manager Options";
+            urls = [{
+              template = "https://home-manager-options.extranix.com";
+              params = [
+                { name = "query"; value = "{searchTerms}"; }
+              ];
+            }];
+            icon = "https://home-manager-options.extranix.com/images/favicon.png";
+            definedAliases = [ "@ho" ];
+          };
+
+          bing.metaData.hidden = true;
+          ecosia.metaData.hidden = true;
+        };
+      };
     };
     policies = {
       ExtensionSettings = {
@@ -32,30 +64,6 @@
       OfferToSaveLoginsDefault = false;
       OverrideFirstRunPage = "";
       OverridePostUpdatePage = "";
-      SearchEngines.Add = [
-        {
-          Name = "Nix Packages";
-          URLTemplate = "https://search.nixos.org/packages?query={searchTerms}";
-          Method = "GET";
-          IconURL = "https://search.nixos.org/favicon.png";
-          Alias = "np";
-          Description = "Nix Package Search";
-        } {
-          Name = "Nix Options";
-          URLTemplate = "https://search.nixos.org/options?query={searchTerms}";
-          Method = "GET";
-          IconURL = "https://search.nixos.org/favicon.png";
-          Alias = "no";
-          Description = "Nix Option Search";
-        } {
-          Name = "Home-Manager Options";
-          URLTemplate = "https://home-manager-options.extranix.com/?query={searchTerms}";
-          Method = "GET";
-          IconURL = "https://home-manager-options.extranix.com/images/favicon.png";
-          Alias = "ho";
-          Description = "Home-Manager Option Search";
-        }
-      ];
 
       Bookmarks = [
         {
