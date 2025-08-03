@@ -5,4 +5,6 @@
     remotePlay.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
+
+  hardware.xone.enable = true;
 }
