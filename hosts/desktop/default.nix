@@ -19,7 +19,11 @@ in {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+    kernelParams = ["resume_offset=41463808"];
+    resumeDevice = "/dev/disk/by-label/NIXROOT";
   };
+
+  powerManagement.enable = true;
   
   networking = {
     hostName = "desktop";
