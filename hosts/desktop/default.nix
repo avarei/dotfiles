@@ -6,8 +6,9 @@ in {
   imports = [
     ../common
     ./hardware-configuration.nix
+    ./gpu.nix
     ../../modules/nixos/gpg
-    ../features/xserver
+    ../features/gui/gnome.nix
   ];
 
   # Bootloader.
