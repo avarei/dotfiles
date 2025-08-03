@@ -4,6 +4,7 @@
     kitty
     kdePackages.dolphin
     wofi
+    xwayland-satellite
   ];
 
   wayland.windowManager.hyprland = {
@@ -14,6 +15,13 @@
     ];
 
     settings = {
+
+      exec-once = [
+        "waybar"
+        "firefox"
+        "xwayland-satellite"
+      ];
+
       "$mod" = "SUPER";
       bind = [
         "$mod, F, exec, firefox"
@@ -23,6 +31,13 @@
         "$mod, V, togglefloating,"
         "$mod, M, exit,"
         "$mod, C, killactive,"
+
+        # Move focus with mainMod + arrow keys
+        "$mod, left, movefocus, l"
+        "$mod, right, movefocus, r"
+        "$mod, up, movefocus, u"
+        "$mod, down, movefocus, d"
+
 
         # Switch workspaces with mainMod + [0-9]
         "$mod, 1, workspace, 1"
@@ -83,8 +98,25 @@
         ];
         modules-right = [
           "mpd"
+          "network"
+          "bluetooth"
+          "pulseaudio"
+          "clock"
           "temperature"
         ];
+
+        network = {
+          interface = "wlo1";
+          format = "{ifname}";
+          format-wifi = "{essid} ({signalStrength}%)  ";
+          format-ethernet = "{ifname}";
+          format-disconnected = "x";
+          tooltip-format = "{ifname}";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)  ";
+          tooltip-format-ethernet = "{ifname}  ";
+          tooltip-format-disconnected = "Disconnected";
+          max-length = 50;
+        };
         
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -96,6 +128,9 @@
             active = "";
             default = "";
           };
+        };
+        clock = {
+          format-alt = "{:%a, %d.%m. %H:%M}";
         };
       };
     };
