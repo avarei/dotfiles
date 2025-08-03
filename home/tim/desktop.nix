@@ -8,7 +8,6 @@
     ./features/zsh
     ./features/gpg
     ./features/browser/firefox.nix
-    ./features/gaming/steam.nix
     # ./features/gui/hyprland.nix
   ];
 
