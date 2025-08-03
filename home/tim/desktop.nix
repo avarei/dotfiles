@@ -8,8 +8,7 @@
     ./features/zsh
     ./features/gpg
     ./features/browser/firefox.nix
-    ./features/gui/hyprland.nix
-    # ./modules/home/ssh
+    # ./features/gui/hyprland.nix
   ];
 
 }

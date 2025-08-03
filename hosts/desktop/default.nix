@@ -8,7 +8,8 @@ in {
     ./hardware-configuration.nix
     ./gpu.nix
     ../../modules/nixos/gpg
-    ../features/gui/hyprland.nix
+    #../features/gui/hyprland.nix
+    ../features/gui/gnome.nix
   ];
 
   # Bootloader.
