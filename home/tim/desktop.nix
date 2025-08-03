@@ -8,7 +8,7 @@
     ./features/zsh
     ./features/gpg
     ./features/browser/firefox.nix
-    # ./features/gui/hyprland.nix
+    ./features/gui/hyprland.nix
   ];
 
   home = {
