@@ -14,41 +14,52 @@
         height = 30;
         modules-left = [
           "hyprland/workspaces"
+          "wlr/taskbar"
         ];
         modules-center = [
           "hyprland/window"
-          "wlr/taskbar"
         ];
         modules-right = [
+          "tray"
           "mpd"
           "network"
           "bluetooth"
           "pulseaudio"
           "clock"
-          "temperature"
+          "custom/notification"
         ];
         
         "wlr/taskbar" = {
           tooltip-format = "{title} {app_id}";
+          icon-size = 17;
+          sort-by-app-id = true;
+          on-click = "activate";
+          on-click-middle = "close";
         };
 
         network = {
           interface = "wlo1";
           format = "{ifname}";
-          format-wifi = "{essid} ({signalStrength}%)  ";
-          format-ethernet = "{ifname}";
-          format-disconnected = "x";
+          format-wifi = "󰤨";
+          format-ethernet = " {ifname}";
+          format-disconnected = "";
           tooltip-format = "{ifname}";
-          tooltip-format-wifi = "{essid} ({signalStrength}%)  ";
-          tooltip-format-ethernet = "{ifname}  ";
+          tooltip-format-wifi = "{essid} ({signalStrength}%)";
+          tooltip-format-ethernet = "{ifname}";
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
         };
+        bluetooth = {
+          format-on = "󰂯";
+          format-connected = "󰂱";
+          format-disabled = "󰂲";
+          format-off = "󰂲";
+        };
 
         pulseaudio = {
-	        format = "{volume}% {icon}";
-	        format-bluetooth = "{volume}% {icon}";
-	        format-muted = "";
+	        format = "{icon}";
+	        format-bluetooth = "{icon}";
+	        format-muted = "";
 	        format-icons = {
         		"headphones" = "";
         		"headset" = "󰋎";
@@ -57,7 +68,7 @@
         		"phone-muted" = "";
         		"portable" = "";
         		"car" = "";
-        		"default" = ["" ""];
+        		"default" = ["" "" " "];
           };
       	  scroll-step = 1;
         	on-click = "pavucontrol";
@@ -75,10 +86,49 @@
           };
         };
         clock = {
-          format-alt = "{:%a, %d.%m. %H:%M}";
+          format = "  {:%H:%M}";
+        };
+
+        tray = {
+          icon-size = 21;
+          spacing = 10;
+        };
+
+        "custom/music" = {
+          format = "  {}";
+          escape = true;
+          interval = 5;
+          tooltip = false;
+          exec = "playerctl metadata --format='{{ title }}'";
+          on-click = "playerctl play-pause";
+          max-length = 50;
+        };
+
+
+        "custom/notification" = {
+          tooltip = false;
+          format = "{icon}";
+          format-icons = {
+            notification = "<span foreground='red'><sup></sup></span>";
+            none = "";
+            dnd-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-none = "";
+            inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            inhibited-none = "";
+            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = "";
+          };
+          return-type = "json";
+          exec-if = "which swaync-client";
+          exec = "swaync-client -swb";
+          on-click = "swaync-client -t -sw";
+          on-click-right = "swaync-client -d -sw";
+          escape = true;
         };
       };
     };
-
+    style = ./waybar-style.css;
   };
+
+  services.swaync.enable = true;
 }

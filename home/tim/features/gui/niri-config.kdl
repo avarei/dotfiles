@@ -332,7 +332,7 @@ window-rule {
 window-rule {
     match app-id="steam"
     exclude title="^Steam$"
-    default-column-width { proportion 0.25; }
+    default-column-width { proportion 0.10; }
 }
 
 // Example: block out two password managers from screen capture.
