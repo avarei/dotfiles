@@ -9,6 +9,7 @@
     ./features/gpg
     ./features/browser/firefox.nix
     ./features/gui/hyprland.nix
+    # ./features/gui/niri.nix
   ];
 
   home = {
