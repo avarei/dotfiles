@@ -10,7 +10,7 @@ in {
     ../../modules/nixos/gpg
     ../features/gui/hyprland.nix
     ../features/gui/gnome.nix
-    # ../features/gui/niri.nix
+    ../features/gui/niri.nix
     ../features/gaming/steam.nix
   ];
 

@@ -1,7 +1,7 @@
 { config, pkgs, lib, inputs, ... }: {
 
   home.packages = with pkgs; [
-
+    pavucontrol
   ];
 
 
@@ -17,6 +17,7 @@
         ];
         modules-center = [
           "hyprland/window"
+          "wlr/taskbar"
         ];
         modules-right = [
           "mpd"
@@ -26,6 +27,10 @@
           "clock"
           "temperature"
         ];
+        
+        "wlr/taskbar" = {
+          tooltip-format = "{title} {app_id}";
+        };
 
         network = {
           interface = "wlo1";
@@ -39,7 +44,25 @@
           tooltip-format-disconnected = "Disconnected";
           max-length = 50;
         };
-        
+
+        pulseaudio = {
+	        format = "{volume}% {icon}";
+	        format-bluetooth = "{volume}% {icon}";
+	        format-muted = "";
+	        format-icons = {
+        		"headphones" = "";
+        		"headset" = "󰋎";
+            "headset-muted" = "󰋐";
+        		"phone" = "";
+        		"phone-muted" = "";
+        		"portable" = "";
+        		"car" = "";
+        		"default" = ["" ""];
+          };
+      	  scroll-step = 1;
+        	on-click = "pavucontrol";
+        };
+
         "hyprland/workspaces" = {
           disable-scroll = true;
           all-outputs = true;

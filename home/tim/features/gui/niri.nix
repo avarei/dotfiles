@@ -6,6 +6,7 @@
 
   home.packages = with pkgs; [
     kdePackages.dolphin
+    xwayland
     xwayland-satellite
   ];
   programs.alacritty.enable = true;
