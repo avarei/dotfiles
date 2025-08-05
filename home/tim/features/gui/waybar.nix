@@ -4,7 +4,6 @@
     pavucontrol
   ];
 
-
   programs.waybar = {
     enable = true;
     settings = {
@@ -21,7 +20,7 @@
         ];
         modules-right = [
           "tray"
-          "mpd"
+          "privacy"
           "network"
           "bluetooth"
           "pulseaudio"
@@ -31,10 +30,14 @@
         
         "wlr/taskbar" = {
           tooltip-format = "{title} {app_id}";
-          icon-size = 17;
+          icon-size = 20;
           sort-by-app-id = true;
           on-click = "activate";
           on-click-middle = "close";
+        };
+
+        privacy = {
+          icon-size = 16;
         };
 
         network = {
@@ -52,8 +55,19 @@
         bluetooth = {
           format-on = "󰂯";
           format-connected = "󰂱";
+          format-connected-battery = "󰂱 {device_battery_percentage}%";
           format-disabled = "󰂲";
           format-off = "󰂲";
+
+          tooltip = true;
+          tooltip-format-on = "R-󰳽 Power Off";
+          tooltip-format-connected = ''
+            Connected Devices: {num_connections}
+            R-󰳽 Power Off'';
+          tooltip-format-disabled = "L-󰳽 Power On";
+          tooltip-format-off = "L-󰳽 Power On";
+          on-click = "bluetoothctl power on";
+          on-click-right = "bluetoothctl power off";
         };
 
         pulseaudio = {
@@ -92,6 +106,7 @@
         tray = {
           icon-size = 21;
           spacing = 10;
+          show-passive-items = true;
         };
 
         "custom/music" = {
@@ -130,5 +145,4 @@
     style = ./waybar-style.css;
   };
 
-  services.swaync.enable = true;
 }

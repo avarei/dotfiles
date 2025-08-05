@@ -32,16 +32,14 @@
 
 
 #waybar {
-  background-color: @surface0;
+  background-color: transparent;
   color: @text;
-  margin: 5px 5px;
+  margin: 5px;
 }
 
 #taskbar,
 #workspaces {
   border-radius: 1rem;
-  margin: 5px;
-  background-color: @surface1;
   margin-left: 1rem;
 }
 
@@ -49,22 +47,22 @@
 #workspaces button {
   color: @lavender;
   border-radius: 1rem;
-  padding: 0.4rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
-
-#taskbar button.active,
+#taskbar button:active,
 #workspaces button.active {
   color: @sky;
-  border-radius: 1rem;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
   color: @sapphire;
-  border-radius: 1rem;
 }
 
+
+/* section */
 #custom-music,
 #tray,
 #clock,
@@ -72,30 +70,50 @@
 #pulseaudio,
 #network,
 #bluetooth,
+#privacy,
+#workspaces,
+#taskbar,
 #custom-notification,
 #custom-lock {
-  background-color: @surface1;
-  padding: 0.5rem 1rem;
+  background-color: @surface0;
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin: 5px 0;
+}
+
+/* section start */
+#network {
+  border-radius: 1rem 0px 0px 1rem;
+  margin-left: 0.5rem;
+}
+
+/* section end */
+#clock {
+  border-radius: 0px 1rem 1rem 0px;
+  margin-right: 0.5rem;
+}
+
+
+#network {
+  color: @mauve;
+}
+
+#bluetooth {
+  color: @lavender;
+  border-right: 2px solid @overlay0;
 }
 
 #clock {
   color: @blue;
-  border-radius: 0px 1rem 1rem 0px;
-  margin-right: 1rem;
 }
-
 
 #pulseaudio {
   color: @maroon;
-  border-radius: 1rem 0px 0px 1rem;
-  margin-left: 1rem;
 }
 
 #custom-notification {
   color: @lavender;
   border-radius: 1rem 1rem 1rem 1rem;
-  margin-left: 1rem;
   margin-right: 1rem;
 }
 
@@ -105,25 +123,20 @@
 }
 
 #custom-lock {
-  border-radius: 1rem 0px 0px 1rem;
   color: @lavender;
 }
 
-#bluetooth {
-  border-radius: 0px 1rem 1rem 0px;
-}
-
-#network {
-  border-radius: 1rem 0px 0px 1rem;
-}
-
 #tray {
-  margin-right: 1rem;
+  margin-right: 0.5rem;
+  border-radius: 1rem;
+}
+
+#privacy {
   border-radius: 1rem;
 }
 
 tooltip {
   border-radius: 1rem;
-  margin: 1rem;
   background-color: @overlay0;
 }
+
