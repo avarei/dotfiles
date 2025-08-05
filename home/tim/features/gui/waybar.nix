@@ -2,6 +2,7 @@
 
   home.packages = with pkgs; [
     pavucontrol
+    playerctl
   ];
 
   programs.waybar = {
@@ -16,7 +17,7 @@
           "wlr/taskbar"
         ];
         modules-center = [
-          "hyprland/window"
+          "custom/music"
         ];
         modules-right = [
           "tray"
@@ -34,6 +35,18 @@
           sort-by-app-id = true;
           on-click = "activate";
           on-click-middle = "close";
+        };
+
+        "custom/music" = {
+          format = "󰝚  {}";
+          escape = true;
+          interval = 5;
+          tooltip = false;
+          exec = "playerctl metadata --format='{{ title }}'";
+          on-click = "playerctl play-pause";
+          on-scroll-down = "playerctl next";
+          on-scroll-up = "playerctl previous";
+          max-length = 50;
         };
 
         privacy = {
@@ -108,17 +121,6 @@
           spacing = 10;
           show-passive-items = true;
         };
-
-        "custom/music" = {
-          format = "  {}";
-          escape = true;
-          interval = 5;
-          tooltip = false;
-          exec = "playerctl metadata --format='{{ title }}'";
-          on-click = "playerctl play-pause";
-          max-length = 50;
-        };
-
 
         "custom/notification" = {
           tooltip = false;
