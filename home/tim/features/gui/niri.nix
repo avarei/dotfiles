@@ -9,11 +9,16 @@
     kdePackages.dolphin
     xwayland
     xwayland-satellite
+    xdg-desktop-portal-gnome
   ];
   programs.alacritty.enable = true;
   programs.fuzzel.enable = true;
 
+  xdg = {
+    enable = true;
+    configFile."niri/config.kdl".source = ./niri-config.kdl;
+    portal.enable = true;
+  };
 
-  xdg.configFile."niri/config.kdl".source = ./niri-config.kdl;
 
 }

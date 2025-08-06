@@ -237,7 +237,7 @@ layout {
         // pixels and match the CSS box-shadow properties.
 
         // Softness controls the shadow blur radius.
-        softness 30
+        softness 7
 
         // Spread expands the shadow.
         spread 5
@@ -246,7 +246,7 @@ layout {
         offset x=0 y=5
 
         // You can also change the shadow color and opacity.
-        color "#0007"
+        color "#181825a0"
     }
 
     // Struts shrink the area occupied by windows, similarly to layer-shell panels.
@@ -337,6 +337,22 @@ window-rule {
     match app-id="steam"
     exclude title="^Steam$"
     default-column-width { proportion 0.10; }
+}
+
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+      off
+    }
+    border {
+      on
+      width 4
+      // peach to red
+      active-gradient from="#fab387" to="#f38ba8" angle=45
+      // red to pink
+      inactive-gradient from="#f38ba8" to="#f5c2e7" angle=45
+    }
 }
 
 // Example: block out two password managers from screen capture.
