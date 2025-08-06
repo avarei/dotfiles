@@ -34,3 +34,15 @@ needs to be run before it can be used.
 nix flake check
 ```
 
+
+# TODOs
+
+- [ ] screenshare has black flickers 
+  - graphics driver related?
+  - only seems to occur on niri
+- [ ] keyboard layout wrong in niri and hyprland
+- [ ] terminal shortcuts are not working in niri
+- [ ] add variables to my flake that can be used in multiple sections
+- [ ] swayidle is not working (and not configured
+- [ ] swaylock is not configured
+
