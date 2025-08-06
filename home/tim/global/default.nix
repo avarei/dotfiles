@@ -27,16 +27,19 @@
   home = {
     username = lib.mkDefault "tim";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
+
+    keyboard.layout ="us(intl)";
+
+    packages = with pkgs; [
+      jq
+      yq
+      nerd-fonts.ubuntu-mono
+      nerd-fonts.ubuntu
+      tree
+    ];
   };
 
   home.stateVersion = "24.11"; # Please read the comment before changing.
 
-  home.packages = with pkgs; [
-    jq
-    yq
-    nerd-fonts.ubuntu-mono
-    nerd-fonts.ubuntu
-    tree
-  ];
   fonts.fontconfig.enable = true;
 }
