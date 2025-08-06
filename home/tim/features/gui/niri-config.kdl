@@ -182,7 +182,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-        active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        active-gradient from="#cba6f7" to="#94e2d5" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -257,9 +257,13 @@ layout {
     struts {
         // left 64
         // right 64
-        // top 64
+        top -10
         // bottom 64
     }
+}
+
+cursor {
+  xcursor-size 12
 }
 
 // Add lines like this to spawn processes at startup.
