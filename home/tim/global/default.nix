@@ -35,6 +35,7 @@
     jq
     yq
     nerd-fonts.ubuntu-mono
+    nerd-fonts.ubuntu
     tree
   ];
   fonts.fontconfig.enable = true;
