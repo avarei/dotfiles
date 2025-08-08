@@ -23,5 +23,9 @@
       push = { autoSetupRemote = true; };
     };
 
+    delta = {
+      enable = true;
+    };
+
   };
 }
