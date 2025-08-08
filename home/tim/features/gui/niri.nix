@@ -9,15 +9,22 @@
     kdePackages.dolphin
     xwayland
     xwayland-satellite
-    xdg-desktop-portal-gnome
   ];
-  programs.alacritty.enable = true;
-  programs.fuzzel.enable = true;
+  programs.alacritty.enable = true; # terminal
+  programs.fuzzel.enable = true; # app launcher
 
   xdg = {
     enable = true;
     configFile."niri/config.kdl".source = ./niri-config.kdl;
     portal.enable = true;
+    portal.config = {
+      common = {
+        default = ["gnome"];
+      };
+    };
+    portal.extraPortals = with pkgs; [
+      xdg-desktop-portal-gnome
+    ];
   };
 
 
