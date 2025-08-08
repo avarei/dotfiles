@@ -5,6 +5,7 @@
     pavucontrol
     libnotify
     kdePackages.dolphin
+    wl-clipboard-rs
   ];
 
   programs.swayimg = {

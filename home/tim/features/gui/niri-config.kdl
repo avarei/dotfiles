@@ -11,6 +11,7 @@ input {
         xkb {
             // You can set rules, model, layout, variant and options.
             // For more information, see xkeyboard-config(7).
+            layout "us(intl)"
 
             // For example:
             // layout "us,ru"
@@ -417,9 +418,13 @@ binds {
     Mod+Q repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
+    Mod+A     { focus-column-left; }
     Mod+Down  { focus-window-down; }
+    Mod+S     { focus-window-down; }
     Mod+Up    { focus-window-up; }
+    Mod+W     { focus-window-up; }
     Mod+Right { focus-column-right; }
+    Mod+D     { focus-column-right; }
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
     Mod+K     { focus-window-up; }
@@ -603,7 +608,8 @@ binds {
     // Toggle tabbed column display mode.
     // Windows in this column will appear as vertical tabs,
     // rather than stacked on top of each other.
-    Mod+W { toggle-column-tabbed-display; }
+    Mod+X { toggle-column-tabbed-display; }
+
 
     // Actions to switch layouts.
     // Note: if you uncomment these, make sure you do NOT have
