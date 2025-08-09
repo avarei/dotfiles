@@ -315,6 +315,13 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
+
+window-rule {
+    match app-id="Alacritty"
+    match app-id="com.mitchellh.ghostty"
+    default-column-width { proportion 0.20; }
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -391,7 +398,7 @@ binds {
 
     Mod+Space hotkey-overlay-title="App Launcher" { spawn "fuzzel"; }
     // Suggested binds for running programs: terminal, app launcher, screen locker.
-    Mod+T hotkey-overlay-title="Open a Terminal: alacritty" { spawn "alacritty"; }
+    Mod+T hotkey-overlay-title="Open a Terminal: ghostty" { spawn "ghostty"; }
     Super+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
@@ -418,12 +425,12 @@ binds {
     Mod+Q repeat=false { close-window; }
 
     Mod+Left  { focus-column-left; }
-    Mod+A     { focus-column-left; }
     Mod+Down  { focus-window-down; }
-    Mod+S     { focus-window-down; }
     Mod+Up    { focus-window-up; }
-    Mod+W     { focus-window-up; }
     Mod+Right { focus-column-right; }
+    Mod+A     { focus-column-left; }
+    Mod+S     { focus-window-down; }
+    Mod+W     { focus-window-up; }
     Mod+D     { focus-column-right; }
     Mod+H     { focus-column-left; }
     Mod+J     { focus-window-down; }
@@ -434,6 +441,10 @@ binds {
     Mod+Ctrl+Down  { move-window-down; }
     Mod+Ctrl+Up    { move-window-up; }
     Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+A     { move-column-left; }
+    Mod+Ctrl+S     { move-window-down; }
+    Mod+Ctrl+W     { move-window-up; }
+    Mod+Ctrl+D     { move-column-right; }
     Mod+Ctrl+H     { move-column-left; }
     Mod+Ctrl+J     { move-window-down; }
     Mod+Ctrl+K     { move-window-up; }
@@ -501,10 +512,10 @@ binds {
     // To avoid scrolling through workspaces really fast, you can use
     // the cooldown-ms property. The bind will be rate-limited to this value.
     // You can set a cooldown on any bind, but it's most useful for the wheel.
-    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
-    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
-    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
-    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
+    Mod+Shift+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+Shift+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+Shift+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+Shift+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
     Mod+WheelScrollRight      { focus-column-right; }
     Mod+WheelScrollLeft       { focus-column-left; }
@@ -513,10 +524,10 @@ binds {
 
     // Usually scrolling up and down with Shift in applications results in
     // horizontal scrolling; these binds replicate that.
-    Mod+Shift+WheelScrollDown      { focus-column-right; }
-    Mod+Shift+WheelScrollUp        { focus-column-left; }
-    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
-    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
+    Mod+WheelScrollDown      { focus-column-right; }
+    Mod+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+WheelScrollUp   { move-column-left; }
 
     // Similarly, you can bind touchpad scroll "ticks".
     // Touchpad scrolling is continuous, so for these binds it is split into

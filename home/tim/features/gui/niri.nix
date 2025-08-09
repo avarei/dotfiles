@@ -9,6 +9,13 @@
     xwayland-satellite
   ];
   programs.alacritty.enable = true; # terminal
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "catppuccin-mocha";
+    };
+  };
   programs.fuzzel.enable = true; # app launcher
 
   xdg = {

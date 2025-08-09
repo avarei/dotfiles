@@ -17,8 +17,6 @@ in {
       vale # linter for text and markdown
       gopls
       ripgrep # for live_grep
-
-      helix
     ];
     sessionVariables = {
       EDITOR = "nvim";
@@ -170,6 +168,25 @@ in {
       undotree = {
         enable = true;
         autoLoad = true;
+      };
+      snacks = {
+        enable = true;
+        settings = {
+          bigfile = {
+            enabled = true;
+            notify = true;
+          };
+          notifier = {
+            enabled = true;
+            timeout = 3000;
+          };
+          quickfile.enabled = true;
+          statuscolumn.enabled = true;
+          words = {
+            enabled = true;
+            debounce = 100;
+          };
+        };
       };
     };
   };
