@@ -14,6 +14,7 @@
     enableZshIntegration = true;
     settings = {
       theme = "catppuccin-mocha";
+      background-opacity = 0.75;
     };
   };
   programs.fuzzel.enable = true; # app launcher

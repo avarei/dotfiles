@@ -74,6 +74,10 @@ in {
       # todo comments
       { key = "<leader>td"; action.__raw = "function() Snacks.picker.todo_comments() end"; options.desc = "Todo"; }
       { key = "<leader>Td"; action.__raw = "function() Snacks.picker.todo_comments({ keywords = {  'TODO', 'FIX', 'FIXME' } }) end"; options.desc = "Todo/Fix/Fixme"; }
+      # terminal
+      { key = "<C-/>"; action.__raw = "function() Snacks.terminal() end"; options.desc = "Toggle Terminal"; }
+      { key = "]]"; action.__raw = "function() Snacks.words.jump(vim.v.count1) end"; mode = ["n" "t"]; options.desc = "Next Reference"; }
+      { key = "[["; action.__raw = "function() Snacks.words.jump(-vim.v.count1) end"; mode = ["n" "t"]; options.desc = "Prev Reference"; }
     ];
 
     plugins = {
@@ -154,9 +158,7 @@ in {
         ];
         settings.mapping = {
           "<C-Space>" = "cmp.mapping.complete()";
-          "<C-d>" = "cmp.mapping.scroll_docs(-4)";
           "<C-e>" = "cmp.mapping.close()";
-          "<C-f>" = "cmp.mapping.scroll_docs(4)";
           "<CR>" = "cmp.mapping.confirm({ select = true })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
           "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
@@ -166,8 +168,10 @@ in {
         enable = true;
         autoLoad = true;
       };
+      gitsigns.enable = true;
 
       lazy.enable = true; # required (at least) by snacks.dashboard
+      which-key.enable = true;
       snacks = {
         enable = true;
         settings = {
@@ -210,6 +214,22 @@ in {
           };
           picker.enabled = true;
           gitbrowse.enabled = true;
+          input.enabled = true;
+          statuscolumn = {
+            enabled = true;
+            left = ["mark" "sign" "git"];
+            right = [ "fold" ];
+            folds = {
+              open = true;
+            };
+          };
+          win = {
+            enabled = true;
+            style = "terminal";
+          };
+          terminal = {
+            enabled = true;
+          };
         };
       };
       todo-comments.enable = true;
