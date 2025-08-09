@@ -52,22 +52,12 @@ in {
       smartcase = true; # make case sensitive if uppercase letter is entered
     };
 
-    keymaps = [
-      {
-        action = "<C-w>h";
-        key = "<C-h>";
-        mode = "n";
-        options = {
-          desc = "window up";
-        };
-      } {
-        key = "<leader>u";
-        action = ":UndotreeToggle<Enter>";
-        mode = "n";
-        options = {
-          desc = "toggle undotree";
-        };
-      }
+    keymaps = config.lib.nixvim.keymaps.mkKeymaps {
+      mode = "n";
+      options.silent = true;
+    }[
+      { key = "<C-h>"; action = "<C-w>h"; options.desc = "window up"; }
+      { key = "<leader>u"; action = ":UndotreeToggle<Enter>"; options.desc = "toggle undotree"; }
     ];
 
     plugins = {
@@ -187,7 +177,30 @@ in {
             enabled = true;
             debounce = 100;
           };
-          dashboard.enabled = true;
+          dashboard = {
+            enabled = true;
+            preset = {
+              header = "NeoVim";
+            };
+            sections = [
+              { section = "header"; }
+              { __raw = ''
+              function()
+                local in_git = Snacks.git.get_root() ~= nil
+                return {
+                  section = "terminal",
+                  enabled = in_git,
+                  icon = " ";
+                  title = "Git Status",
+                  cmd = "git --no-pager diff --stat -B -M -C",
+                  height = 10,
+                  indent = 3,
+                  ttl = 60,
+                }
+              end
+              ''; }
+            ];
+          };
         };
       };
     };
