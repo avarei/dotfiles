@@ -169,6 +169,8 @@ in {
         enable = true;
         autoLoad = true;
       };
+
+      lazy.enable = true; # required (at least) by snacks.dashboard
       snacks = {
         enable = true;
         settings = {
@@ -181,11 +183,11 @@ in {
             timeout = 3000;
           };
           quickfile.enabled = true;
-          statuscolumn.enabled = true;
           words = {
             enabled = true;
             debounce = 100;
           };
+          dashboard.enabled = true;
         };
       };
     };
