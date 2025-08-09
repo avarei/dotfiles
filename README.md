@@ -40,8 +40,10 @@ nix flake check
 - [ ] screenshare has black flickers 
   - graphics driver related?
   - only seems to occur on niri
-- [ ] keyboard layout wrong in niri and hyprland
+- [x] keyboard layout wrong in niri and hyprland
+    - fixed in niri
 - [ ] terminal shortcuts are not working in niri
+  - home and end are still not working
 - [ ] add variables to my flake that can be used in multiple sections
 - [x] swayidle is not working (and not configured
 - [ ] swaylock is not configured
