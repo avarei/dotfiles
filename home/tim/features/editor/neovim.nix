@@ -57,7 +57,23 @@ in {
       options.silent = true;
     }[
       { key = "<C-h>"; action = "<C-w>h"; options.desc = "window up"; }
-      { key = "<leader>u"; action = ":UndotreeToggle<Enter>"; options.desc = "toggle undotree"; }
+      { key = "<leader>u"; action = "<cmd>UndotreeToggle<CR>"; options.desc = "toggle undotree"; }
+      # find
+      { key = "<leader><space>"; action.__raw = "function() Snacks.picker.smart() end"; options.desc = "Smart Find Files"; }
+      { key = "<leader>,"; action.__raw = "function() Snacks.picker.buffers() end"; options.desc = "Buffers"; }
+      { key = "<leader>/"; action.__raw = "function() Snacks.picker.grep() end"; options.desc = "Grep"; }
+      { key = "<leader>ff"; action.__raw = "function() Snacks.picker.files() end"; options.desc = "Find Files"; }
+      { key = "<leader>fr"; action.__raw = "function() Snacks.picker.recent() end"; options.desc = "Recent Files"; }
+      # git
+      { key = "<leader>gb"; action.__raw = "function() Snacks.picker.git_branches() end"; options.desc = "Git Branches"; }
+      { key = "<leader>gl"; action.__raw = "function() Snacks.picker.git_log() end"; options.desc = "Git Log"; }
+      { key = "<leader>gs"; action.__raw = "function() Snacks.picker.git_status() end"; options.desc = "Git Status"; }
+      { key = "<leader>gS"; action.__raw = "function() Snacks.picker.git_stash() end"; options.desc = "Git Stash"; }
+      { key = "<leader>gd"; action.__raw = "function() Snacks.picker.git_diff() end"; options.desc = "Git Diff (Hunks)"; }
+      { key = "<leader>gB"; action.__raw = "function() Snacks.gitbrowse() end"; mode = ["n" "v"]; options.desc = "Git Browse"; }
+      # todo comments
+      { key = "<leader>td"; action.__raw = "function() Snacks.picker.todo_comments() end"; options.desc = "Todo"; }
+      { key = "<leader>Td"; action.__raw = "function() Snacks.picker.todo_comments({ keywords = {  'TODO', 'FIX', 'FIXME' } }) end"; options.desc = "Todo/Fix/Fixme"; }
     ];
 
     plugins = {
@@ -128,15 +144,6 @@ in {
           yaml = ["yamllint"];
         };
       };
-      telescope = {
-        enable = true;
-        keymaps = {
-          "<leader>ff" = "find_files";
-          "<leader>fg" = "live_grep";
-          "<leader>fb" = "buffers";
-          "<leader>fh" = "help_tags";
-        };
-      };
       cmp = {
         enable = true;
         autoEnableSources = true;
@@ -201,8 +208,11 @@ in {
               ''; }
             ];
           };
+          picker.enabled = true;
+          gitbrowse.enabled = true;
         };
       };
+      todo-comments.enable = true;
     };
   };
 }
