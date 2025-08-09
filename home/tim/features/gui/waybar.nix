@@ -71,6 +71,7 @@
           format-connected-battery = "󰂱 {device_battery_percentage}%";
           format-disabled = "󰂲";
           format-off = "󰂲";
+          format-no-controller = "";
 
           tooltip = true;
           tooltip-format-on = "R-󰳽 Power Off";

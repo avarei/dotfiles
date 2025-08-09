@@ -62,7 +62,6 @@
   color: @sapphire;
 }
 
-
 /* section */
 #custom-music,
 #tray,
@@ -101,7 +100,6 @@
 
 #bluetooth {
   color: @lavender;
-  border-right: 2px solid @overlay0;
 }
 
 #clock {
@@ -110,12 +108,14 @@
 
 #pulseaudio {
   color: @maroon;
+  border-left: 2px solid @overlay0;
 }
 
 #custom-notification {
   color: @lavender;
   border-radius: 1rem 1rem 1rem 1rem;
-  margin-right: 1rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
 }
 
 #custom-music {
