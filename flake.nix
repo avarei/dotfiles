@@ -24,8 +24,9 @@
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
+    niri.url = "github:sodiboo/niri-flake";
   };
-  outputs = { self, nix-darwin, home-manager, nixpkgs, nixvim, ... }@inputs:
+  outputs = { self, nix-darwin, home-manager, nixpkgs, nixvim, niri, ... }@inputs:
     let
       lib = nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" "aarch64-darwin" ];
@@ -66,6 +67,9 @@
         desktop = nixpkgs.lib.nixosSystem { 
           pkgs = pkgsFor.x86_64-linux;
           modules = [
+            {
+              nixpkgs.overlays = [ niri.overlays.niri ];
+            }
             ./hosts/desktop
           ];
         };

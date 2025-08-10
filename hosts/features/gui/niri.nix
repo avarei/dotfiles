@@ -3,7 +3,10 @@
 {
   imports = [  ];
   
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgs.niri-unstable;
+  };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
