@@ -275,10 +275,11 @@ cursor {
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
-spawn-at-startup "xwayland-satellite" ":50"
+spawn-at-startup "xwayland-satellite" ":0"
+spawn-at-startup "systemctl" "--user" "start" "polkit-gnome.service"
 
 environment {
-  DISPLAY ":50"
+  DISPLAY ":0"
 }
 
 hotkey-overlay {

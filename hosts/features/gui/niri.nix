@@ -23,6 +23,7 @@
   
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
+    DISPLAY = ":0";
   };
 
   security.pam.services.swaylock = {};
@@ -31,4 +32,6 @@
     enable = true;
     displayManager.gdm.enable = true;
   };
+
+  security.polkit.enable = true;
 }

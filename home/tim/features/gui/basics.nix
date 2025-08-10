@@ -2,10 +2,11 @@
 {
 
   home.packages = with pkgs; [
-    pavucontrol
+    pavucontrol # audio in/out
     libnotify
-    nautilus
+    nautilus # filebrowser
     wl-clipboard-rs
+    gparted # partition management
   ];
 
   home.pointerCursor = {
@@ -110,4 +111,5 @@
 
   services.swww.enable = true;
 
+  services.polkit-gnome.enable = true;
 }
