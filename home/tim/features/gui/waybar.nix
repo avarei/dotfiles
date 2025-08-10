@@ -115,6 +115,7 @@
         };
         clock = {
           format = "  {:%H:%M}";
+          tooltip-format = "󰃭  {:%d.%m.%Y}";
         };
 
         tray = {
