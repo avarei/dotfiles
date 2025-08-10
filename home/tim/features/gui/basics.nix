@@ -4,8 +4,9 @@
   home.packages = with pkgs; [
     pavucontrol
     libnotify
-    kdePackages.dolphin
+    nautilus
     wl-clipboard-rs
+    catppuccin-cursors.mochaDark
   ];
 
   programs.swayimg = {
