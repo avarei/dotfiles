@@ -6,8 +6,15 @@
     libnotify
     nautilus
     wl-clipboard-rs
-    catppuccin-cursors.mochaDark
   ];
+
+  home.pointerCursor = {
+    enable = true;
+    name = "catppuccin-mocha-dark-cursors";
+    package = pkgs.catppuccin-cursors.mochaDark;
+    size = 10;
+    sway.enable = true;
+  };
 
   programs.swayimg = {
     enable = true;
