@@ -23,7 +23,7 @@
   
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
-    DISPLAY = ":0";
+    DISPLAY = ":50";
   };
 
   security.pam.services.swaylock = {};
