@@ -264,8 +264,8 @@ layout {
 }
 
 cursor {
-  xcursor-theme "MochaDark"
-  xcursor-size 3
+  xcursor-theme "catppuccin-mocha-dark-cursors"
+  xcursor-size 20
 }
 
 // Add lines like this to spawn processes at startup.
