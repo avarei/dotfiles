@@ -317,7 +317,6 @@ animations {
 
 
 window-rule {
-    match app-id="Alacritty"
     match app-id="com.mitchellh.ghostty"
     default-column-width { proportion 0.20; }
 }
