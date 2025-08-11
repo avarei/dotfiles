@@ -42,7 +42,7 @@ in {
         "wheel" # Enable ‘sudo’ for the user.
         "docker" # Allow Docker usage
       ];
-      shell = pkgs.zsh;
+      shell = pkgs.nushell;
       openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
     };
   };

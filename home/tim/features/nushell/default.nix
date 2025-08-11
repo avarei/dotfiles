@@ -22,7 +22,7 @@
       buffer_editor = "nvim";
     };
     shellAliases = {
-      ll = "ls -lah";
+      ll = "ls -a";
       vi = "nvim";
       vim = "nvim";
     };
