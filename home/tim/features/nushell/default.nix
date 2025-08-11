@@ -60,7 +60,7 @@
         "[](fg:green bg:sapphire)"
         "$conda"
         "[](fg:sapphire bg:lavender)"
-        "$time"
+        # "$time"
         "[ ](fg:lavender)"
         "$cmd_duration"
         "$line_break"
