@@ -233,6 +233,7 @@ in {
         };
       };
       todo-comments.enable = true;
+      nvim-surround.enable = true;
     };
   };
 }
