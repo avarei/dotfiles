@@ -1,16 +1,25 @@
 (defwindow example
-           :monitor 0
-           :geometry (geometry :x "0%"
-                               :y "20px"
-                               :width "90%"
-                               :height "30px"
-                               :anchor "top center")
-           :stacking "fg"
-           :reserve (struts :distance "40px" :side "top")
-           :windowtype "dock"
-           :wm-ignore false
-  (greeter :text "Say hello!"
-           :name "Tim"))
+  :monitor 0
+  :geometry (
+    geometry
+      :x "0%"
+      :y "0px"
+      :width "30%"
+      :height "30px"
+      :anchor "top center"
+  )
+  :stacking "fg"
+  :exclusive true
+  (box :orientation "horizontal"
+       :halign "center"
+
+    ; (greeter :text "Say hello!"
+    ;          :name "Tim"
+    ; )
+    (time)
+    (audio)
+  )
+)
 
 (defwidget greeter [?text name]
   (box :orientation "horizontal"
@@ -20,3 +29,31 @@
       "Greet")))
 
 
+; = NETWORK =
+
+(defpoll time :interval "10s"
+  `nmcli connection show`
+)
+
+; = AUDIO =
+(deflisten audio-sink :initial "x%"
+  `./scripts/audio.sh subscribe`
+)
+
+(defwidget audio []
+    (eventbox
+      :cursor "wait"
+      :onclick `./scripts/audio.sh mute`
+      
+      "Audio: ${audio-sink}"
+    )
+)
+
+; = TIME =
+(defpoll time :interval "1s"
+  `date '+%H:%M:%S'`
+)
+
+(defwidget time []
+    "Clock: ${time}"
+)
