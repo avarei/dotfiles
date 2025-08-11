@@ -6,6 +6,7 @@
     ./features/editor/neovim.nix
     ./features/git
     ./features/zsh
+    ./features/nushell
     ./features/gpg
     ./features/browser/firefox.nix
     # ./features/gui/hyprland.nix
