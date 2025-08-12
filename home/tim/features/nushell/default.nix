@@ -41,13 +41,14 @@
       format = lib.concatStrings [
         "[](red)"
         "$os"
-        "$username"
         "[](bg:peach fg:red)"
-        "$directory"
+        "$username"
         "[](bg:yellow fg:peach)"
+        "$directory"
+        "[](fg:yellow bg:green)"
         "$git_branch"
         "$git_status"
-        "[](fg:yellow bg:green)"
+        "[](fg:green bg:sapphire)"
         "$c"
         "$rust"
         "$golang"
@@ -57,9 +58,8 @@
         "$kotlin"
         "$haskell"
         "$python"
-        "[](fg:green bg:sapphire)"
-        "$conda"
         "[](fg:sapphire bg:lavender)"
+        "$conda"
         # "$time"
         "[ ](fg:lavender)"
         "$cmd_duration"
@@ -96,13 +96,13 @@
       };
       username = {
         show_always = true;
-        style_user = "bg:red fg:crust";
-        style_root = "bg:red fg:crust";
+        style_user = "bg:peach fg:crust";
+        style_root = "bg:peach fg:crust";
         format = "[ $user]($style)";
       };
 
       directory = {
-        style = "bg:peach fg:crust";
+        style = "bg:yellow fg:crust";
         format = "[ $path ]($style)";
         truncation_length = 3;
         truncation_symbol = "…/";
@@ -113,66 +113,67 @@
           "Music" = "󰝚 ";
           "Pictures" = " ";
           "Developer" = "󰲋 ";
+          "dotfiles" = "󱧼 ";
         };
       };
 
       git_branch = {
         symbol = "";
-        style = "bg:yellow";
-        format = "[[ $symbol $branch ](fg:crust bg:yellow)]($style)";
+        style = "bg:green";
+        format = "[[ $symbol $branch ](fg:crust bg:green)]($style)";
       };
 
       git_status = {
-        style = "bg:yellow";
-        format = "[[($all_status$ahead_behind )](fg:crust bg:yellow)]($style)";
+        style = "bg:green";
+        format = "[[($all_status$ahead_behind )](fg:crust bg:green)]($style)";
       };
 
       c = {
         symbol = " ";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       rust = {
         symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       golang = {
         symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       php = {
         symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       java = {
         symbol = " ";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       kotlin = {
         symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       haskell = {
         symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       python = {
         symbol = "";
-        style = "bg:green";
-        format = "[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:green)]($style)";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:sapphire)]($style)";
       };
 
       docker_context = {
@@ -184,7 +185,7 @@
 
       conda = {
         symbol = "  ";
-        style = "fg:crust bg:sapphire";
+        style = "fg:crust bg:lavender";
         format = "[$symbol$environment ]($style)";
         ignore_base = false;
       };
@@ -211,12 +212,12 @@
       };
 
       cmd_duration = {
-        show_milliseconds = true;
-        format = " in $duration ";
+        show_milliseconds = false;
+        format = " $duration ";
         style = "bg:lavender";
         disabled = false;
-        show_notifications = true;
-        min_time_to_notify = 45000;
+        show_notifications = false;
+        # min_time_to_notify = 45000;
       };
 
       palettes = {
