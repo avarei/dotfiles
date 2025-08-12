@@ -37,7 +37,7 @@ in {
     isNormalUser = true;
     description = "Tim";
     extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.nushell;
+    shell = pkgs.zsh;
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
   };
 
