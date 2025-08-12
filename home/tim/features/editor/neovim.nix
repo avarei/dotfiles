@@ -235,5 +235,8 @@ in {
       todo-comments.enable = true;
       nvim-surround.enable = true;
     };
+    extraPlugins = with pkgs.vimPlugins; [
+      yuck-vim
+    ];
   };
 }

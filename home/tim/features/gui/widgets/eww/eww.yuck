@@ -18,6 +18,7 @@
     ; )
     (time)
     (audio)
+    (label :text "wifi network strength: ${captures(wifi-strength, 'GENERAL\\.STATE:(\\d+) .*')[0][1]}%")
   )
 )
 
@@ -28,11 +29,14 @@
     (button :onclick "notify-send 'Hello' 'Hello, ${name}'"
       "Greet")))
 
-
 ; = NETWORK =
+(defpoll network-status :interval "10s"
+  `nmcli -terse dev status`
+)
 
-(defpoll time :interval "10s"
-  `nmcli connection show`
+(defpoll wifi-strength :interval "10s"
+                       :run-while {network-status =~ '^.+:wifi:connected:.+$'}
+  `nmcli -terse dev status | grep wifi | grep -v p2p | awk -F: '{print $1}' | xargs nmcli -terse dev show`
 )
 
 ; = AUDIO =
