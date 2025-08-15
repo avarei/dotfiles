@@ -19,5 +19,8 @@
     packages = with pkgs; [
       discord
     ];
+    sessionVariables = {
+      SSH_AUTH_SOCK = "$(${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket)";
+    };
   };
 }
