@@ -65,6 +65,7 @@
       hostname = {
         ssh_only = true;
         style = "bg:red fg:crust";
+        format = "[$ssh_symbol$hostname]($style)";
       };
 
       username = {
