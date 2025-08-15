@@ -5,7 +5,7 @@
     ./global
     ./features/editor/neovim.nix
     ./features/git
-    ./features/zsh
+    ./features/zsh.nix
     ./features/gpg
     # ./modules/home/ssh
   ];

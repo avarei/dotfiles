@@ -10,6 +10,11 @@ let
   };
 
 in {
+
+  imports = [
+    ./starship.nix
+  ];
+
   home.packages = with pkgs; [
     # git # Required for lazy.nvim
     direnv
