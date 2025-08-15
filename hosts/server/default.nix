@@ -28,7 +28,7 @@ in {
 
   networking = {
     hostName = "server";
-    networmanager.enable = true;
+    networkmanager.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
