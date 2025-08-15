@@ -6,6 +6,8 @@ in {
   imports = [
     ../common
     ./hardware-configuration.nix
+
+    ../../modules/nixos/container/webserver-test.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,7 +30,7 @@ in {
 
   networking = {
     hostName = "server";
-    networkmanager.enable = true;
+    networkmanager.enable = false;
   };
 
   environment.systemPackages = with pkgs; [

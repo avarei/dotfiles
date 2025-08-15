@@ -1,28 +1,30 @@
-{}:
+{ config, inputs, lib, pkgs, ... }:
 {
   networking = {
     bridges.br0.interfaces = [ "enp2s0" ];
     useDHCP = false;
+
     interfaces."br0".useDHCP = true;
 
     nat = {
       enable = true;
       internalInterfaces = ["ve-+"];
       externalInterface = "enp2s0";
-      enableIPv6 = true;
+      #enableIPv6 = true;
     };
   };
 
-  containers.copyparty = {
+  containers.webserver = {
+    enableTun = true;
     autoStart = true;
     privateNetwork = true;
     hostBridge = "br0";
     extraFlags = [ "-U" ];
-    # localAddress = "1.2.3.4/24";
     config = { config, pkgs, lib, ... }: {
-      services.httpd = {
+      services.static-web-server = {
         enable = true;
-        adminAddr = "admin@example.org";
+        listen = "[::]:8080";
+        root = "/tmp";
       };
       networking = {
         firewall.allowedTCPPorts = [ 8080 ];
