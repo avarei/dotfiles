@@ -6,7 +6,6 @@ in {
   imports = [
     ../common
     ./hardware-configuration.nix
-    ../../modules/nixos/gpg
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -14,17 +13,9 @@ in {
     loader = {
       systemd-boot = {
         enable = true;
-        configurationLimit = 42;
+        configurationLimit = 20;
       };
       efi.canTouchEfiVariables = true;
-    };
-  };
-
-  # Turn on flag for proprietary software
-  nix = {
-    settings = {
-      allowed-users = [ "tim" ];
-      trusted-users = [ "@admin" "tim" ];
     };
   };
 
@@ -35,17 +26,20 @@ in {
     };
   };
 
-  users.users = {
-    tim = {
-      isNormalUser = true;
-      extraGroups = [
-        "wheel" # Enable ‘sudo’ for the user.
-        "docker" # Allow Docker usage
-      ];
-      shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
-    };
+  networking = {
+    hostName = "server";
+    networmanager.enable = true;
   };
 
+  environment.systemPackages = with pkgs; [
+    os-prober
+  ];
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Don't change this
 }
