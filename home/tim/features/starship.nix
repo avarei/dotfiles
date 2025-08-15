@@ -7,6 +7,7 @@
       format = lib.concatStrings [
         "[](red)"
         "$os"
+        "$hostname"
         "[](bg:peach fg:red)"
         "$username"
         "[](bg:yellow fg:peach)"
@@ -60,6 +61,12 @@
           RedHatEnterprise = "󱄛";
         };
       };
+
+      hostname = {
+        ssh_only = true;
+        style = "bg:red fg:crust";
+      };
+
       username = {
         show_always = true;
         style_user = "bg:peach fg:crust";
