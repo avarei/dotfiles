@@ -1,7 +1,9 @@
 { config, inputs, lib, pkgs, ... }:
 
 {
-  imports = [  ];
+  imports = [
+    ../../modules/nixos/gpg
+  ];
   
   environment.systemPackages = with pkgs; [
     direnv
@@ -9,7 +11,6 @@
 
   # for zsh completion of system packages
   environment.pathsToLink = [ "/share/zsh" ];
-
 
   time.timeZone = "Europe/Berlin";
 
@@ -22,6 +23,8 @@
     package = pkgs.nix;
     settings = {
       experimental-features = ["nix-command" "flakes"];
+      allowed-users = [ "tim" ];
+      trusted-users = [ "@wheel" "tim" ];
     };
   };
 
@@ -49,4 +52,14 @@
 
   # Configure console keymap
   console.keyMap = "us";
+
+  # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.users.tim = {
+    isNormalUser = true;
+    description = "Tim";
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    shell = pkgs.zsh;
+    openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
+  };
+
 }

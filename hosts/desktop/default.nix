@@ -7,7 +7,6 @@ in {
     ../common
     ./hardware-configuration.nix
     ./gpu.nix
-    ../../modules/nixos/gpg
     # ../features/gui/hyprland.nix
     # ../features/gui/gnome.nix
     ../features/gui/niri.nix
@@ -17,7 +16,10 @@ in {
   # Bootloader.
   boot = {
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot = {
+        enable = true;
+        configurationLimit = 20;
+      };
       efi.canTouchEfiVariables = true;
     };
     kernelParams = ["resume_offset=41463808"];
@@ -30,15 +32,6 @@ in {
     hostName = "desktop";
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
-  };
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.tim = {
-    isNormalUser = true;
-    description = "Tim";
-    extraGroups = [ "networkmanager" "wheel" ];
-    shell = pkgs.zsh;
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
   };
 
   environment.systemPackages = with pkgs; [
