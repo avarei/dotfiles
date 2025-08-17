@@ -6,9 +6,9 @@ in {
   imports = [
     ../common
     ./hardware-configuration.nix
-
-    ../../modules/nixos/container/webserver-test.nix
   ];
+
+  networking.nat.enable = true;
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -31,6 +31,10 @@ in {
   networking = {
     hostName = "server";
     networkmanager.enable = false;
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 3923 8096 22 ];
+    };
   };
 
   environment.systemPackages = with pkgs; [

@@ -1,19 +1,5 @@
 { config, inputs, lib, pkgs, ... }:
 {
-  networking = {
-    bridges.br0.interfaces = [ "enp2s0" ];
-    useDHCP = false;
-
-    interfaces."br0".useDHCP = true;
-
-    nat = {
-      enable = true;
-      internalInterfaces = ["ve-+"];
-      externalInterface = "enp2s0";
-      #enableIPv6 = true;
-    };
-  };
-
   containers.webserver = {
     enableTun = true;
     autoStart = true;
