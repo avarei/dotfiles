@@ -106,6 +106,10 @@
         rounding = 20;
         rounding_power = 4.0;
       };
+
+      windowrule = [
+        "float, class:firefox$, title:Picture-in-Picture"
+      ];
     };
   };
 }
