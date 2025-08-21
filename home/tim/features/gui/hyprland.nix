@@ -38,6 +38,7 @@
         "$mod, SPACE, exec, $menu"
         "$mod, E, exec, $fileManager"
         "$mod, V, togglefloating,"
+        "$mod CTRL, F, fullscreen, 0"
         "$mod, M, exit,"
         "$mod, Q, killactive,"
 
