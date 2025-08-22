@@ -58,7 +58,7 @@
     isNormalUser = true;
     description = "Tim";
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
   };
 

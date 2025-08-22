@@ -29,6 +29,9 @@
       vi = "nvim";
       vim = "nvim";
     };
+    envFile.text = ''
+      $env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket
+    '';
       
   };
 
