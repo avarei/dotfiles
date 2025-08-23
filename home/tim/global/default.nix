@@ -5,12 +5,6 @@
     ../features/editor/neovim.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {

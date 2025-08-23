@@ -62,6 +62,15 @@
           pkgs = pkgsFor.x86_64-linux;
           modules = [
             ./hosts/server
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit nixvim; };
+                users.tim = ./home/tim/server.nix;
+              };
+            }
           ];
         };
         desktop = nixpkgs.lib.nixosSystem { 
@@ -71,16 +80,18 @@
               nixpkgs.overlays = [ niri.overlays.niri ];
             }
             ./hosts/desktop
-          ];
-        };
-        test = nixpkgs.lib.nixosSystem {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [
-            ./hosts/test.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                extraSpecialArgs = { inherit nixvim; };
+                users.tim = ./home/tim/desktop.nix;
+              };
+            }
           ];
         };
       };
-
 
       homeConfigurations = {
         "tim@server" = home-manager.lib.homeManagerConfiguration {
@@ -91,11 +102,6 @@
         "tim@desktop" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [ ./home/tim/desktop.nix ];
-          extraSpecialArgs = { inherit nixvim; };
-        };
-        "tim@test" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home/tim/test.nix ];
           extraSpecialArgs = { inherit nixvim; };
         };
         "tim@macbook" = home-manager.lib.homeManagerConfiguration {
