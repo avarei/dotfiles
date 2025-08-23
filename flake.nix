@@ -53,6 +53,14 @@
           pkgs = pkgsFor.aarch64-darwin;
           modules = [
             ./hosts/macbook
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.tim = ./home/tim/macbook.nix;
+              };
+            }
           ];
         };
       };
@@ -94,19 +102,14 @@
       };
 
       homeConfigurations = {
-        "tim@server" = home-manager.lib.homeManagerConfiguration {
+        "tim@work" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home/tim/server.nix ];
-          extraSpecialArgs = { inherit nixvim; };
-        };
-        "tim@desktop" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.x86_64-linux;
-          modules = [ ./home/tim/desktop.nix ];
-          extraSpecialArgs = { inherit nixvim; };
-        };
-        "tim@macbook" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor.aarch64-darwin;
-          modules = [ ./home/tim/macbook.nix ];
+          modules = [
+            ./home/tim/global
+            ./home/tim/features/editor/neovim.nix
+            ./home/tim/features/git
+            ./home/tim/features/gpg
+          ];
           extraSpecialArgs = { inherit nixvim; };
         };
       };

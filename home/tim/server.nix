@@ -7,7 +7,6 @@
     ./features/git
     ./features/zsh.nix
     ./features/gpg
-    # ./modules/home/ssh
     ./features/selfhosted/jellyfin.nix
     ./features/selfhosted/copyparty.nix
   ];

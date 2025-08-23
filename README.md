@@ -4,19 +4,21 @@
 
 ```sh
 sudo nixos-rebuild switch --flake .#server
-home-manager switch --flake .#tim@server
 ```
 
 ## Desktop
 
 ```sh
 sudo nixos-rebuild switch --flake .#desktop
-home-manager switch --flake .#tim@desktop
 ```
 
 ## MacOS
 ```sh
 darwin-rebuild switch --flake .#macbook
+```
+## Work
+
+```sh
 home-manager switch --flake .#tim@macbook
 ```
 
@@ -33,10 +35,4 @@ needs to be run before it can be used.
 ```sh
 nix flake check
 ```
-
-
-# TODOs
-- [ ] add variables to my flake that can be used in multiple sections
-- [x] swayidle is not working (and not configured
-- [ ] swaylock is not configured
 
