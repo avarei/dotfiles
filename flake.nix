@@ -58,6 +58,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                extraSpecialArgs = { inherit nixvim; };
                 users.tim = ./home/tim/macbook.nix;
               };
             }

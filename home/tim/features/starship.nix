@@ -45,7 +45,7 @@
           SUSE = "";
           Raspbian = "󰐿";
           Mint = "󰣭";
-          Macos = "󰀵";
+          Macos = "󰀵 ";
           Manjaro = "";
           Linux = "󰌽";
           Gentoo = "󰣨";
@@ -148,6 +148,12 @@
         symbol = "";
         style = "bg:sapphire";
         format = "[[ $symbol( $version)(\(#$virtualenv\)) ](fg:crust bg:sapphire)]($style)";
+      };
+
+      nodejs = {
+        symbol = "";
+        style = "bg:sapphire";
+        format = "[[ $symbol( $version) ](fg:crust bg:sapphire)]($style)";
       };
 
       docker_context = {

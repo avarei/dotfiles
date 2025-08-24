@@ -1,10 +1,6 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports = [
-    ../features/editor/neovim.nix
-  ];
-
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {

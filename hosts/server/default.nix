@@ -4,7 +4,7 @@ let
   foo = "bar";
 in {
   imports = [
-    ../common
+    ../common/linux.nix
     ./hardware-configuration.nix
   ];
 
