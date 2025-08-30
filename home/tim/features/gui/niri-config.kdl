@@ -345,6 +345,7 @@ window-rule {
 window-rule {
     match app-id="steam"
     exclude title="^Steam$"
+    exclude title="^Steam - Browser$"
     default-column-width { proportion 0.10; }
 }
 
