@@ -20,6 +20,10 @@
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
+  fileSystems."/mnt/games" =
+    { device = "/dev/disk/by-label/NIXGAMES";
+      fsType = "ext4";
+    };
 
   swapDevices = [ {
     device = "/var/lib/swapfile";

@@ -8,7 +8,8 @@
     kitty
     kdePackages.dolphin
     wofi
-    xwayland-satellite
+    # xwayland-satellite
+    xdg-desktop-portal-hyprland
   ];
 
   wayland.windowManager.hyprland = {
@@ -17,6 +18,9 @@
     plugins = with pkgs.hyprlandPlugins; [
       # borders-plus-plus
     ];
+
+    portalPackage = pkgs.xdg-desktop-portal-hyprland;
+    xwayland.enable = true;
 
     settings = {
 
@@ -28,7 +32,7 @@
       exec-once = [
         "waybar"
         "firefox"
-        "xwayland-satellite"
+        # "xwayland-satellite"
       ];
 
       "$mod" = "SUPER";

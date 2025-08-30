@@ -10,7 +10,7 @@
     ./features/gpg
     ./features/tmux.nix
     ./features/browser/firefox.nix
-    ./features/gui/hyprland.nix
+    # ./features/gui/hyprland.nix
     ./features/gui/niri.nix
     ./features/gui/widgets/eww.nix
   ];
