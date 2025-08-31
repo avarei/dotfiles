@@ -31,4 +31,14 @@
     openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
   };
 
+  security.pam.services = { # allow FIDO2 login
+    login.u2fAuth = true;
+    sudo.u2fAuth = true;
+  };
+  security.pam.u2f.settings = {
+    pinverification = 1;
+    userpresence = 1;
+  };
+
+
 }
