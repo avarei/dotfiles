@@ -5,7 +5,7 @@
     enableZshIntegration = config.programs.zsh.enable;
     settings = {
       theme = "catppuccin-mocha";
-      background-opacity = 0.75;
+      background-opacity = 0.5;
     };
   };
 }
