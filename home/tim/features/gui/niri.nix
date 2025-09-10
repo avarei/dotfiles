@@ -7,6 +7,7 @@
 
   home.packages = with pkgs; [
     xwayland-satellite
+    hyprshot
   ];
   programs.fuzzel = {
     enable = true; # app launcher

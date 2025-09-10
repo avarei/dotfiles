@@ -323,6 +323,11 @@ window-rule {
     default-column-width { proportion 0.20; }
 }
 
+window-rule {
+    match app-id="PureRef"
+    draw-border-with-background false
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
@@ -403,6 +408,7 @@ binds {
     Mod+T hotkey-overlay-title="Open Terminal: ghostty" { spawn "ghostty"; }
     Mod+E hotkey-overlay-title="Open Explorer: nautilus" { spawn "nautilus"; }
     Mod+F hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
+    Mod+Z hotkey-overlay-title="Make Screenshot Rectangle" { spawn "hyprshot" "--freeze" "-m" "region" "--clipboard-only"; }
     Super+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.

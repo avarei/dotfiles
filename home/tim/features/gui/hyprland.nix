@@ -10,6 +10,7 @@
     wofi
     # xwayland-satellite
     xdg-desktop-portal-hyprland
+    hyprshot
   ];
 
   wayland.windowManager.hyprland = {
