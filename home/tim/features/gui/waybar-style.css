@@ -55,11 +55,24 @@
 #taskbar button:active,
 #workspaces button.active {
   color: @sky;
+  background-image: linear-gradient(135deg, @flamingo, @blue);
+  border: 2px solid @sapphire;
 }
 
 #taskbar button:hover,
 #workspaces button:hover {
   color: @sapphire;
+  background-image: linear-gradient(135deg, @flamingo, @blue);
+  border: 2px solid @teal;
+}
+
+#taskbar button.active {
+  background-image: linear-gradient(@flamingo, @blue);
+  border: 2px solid @flamingo;
+}
+#taskbar button.fullscreen {
+  background-image: linear-gradient(@red, @flamingo);
+  border: 2px solid @red;
 }
 
 /* section */
