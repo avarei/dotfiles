@@ -79,10 +79,10 @@
     {
       enable = true;
       timeouts = [
-        {
-          timeout = (4 * 60); # in seconds
-          command = "${pkgs.libnotify}/bin/notify-send 'Going to Sleep in 1 minute' -t 60000";
-        }
+        # {
+        #   timeout = (4 * 60); # in seconds
+        #   command = "${pkgs.libnotify}/bin/notify-send 'Going to Sleep in 1 minute' -t 60000";
+        # }
         {
           timeout = (5 * 60);
           command = display "off";
