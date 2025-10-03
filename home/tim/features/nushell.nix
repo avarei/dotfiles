@@ -33,7 +33,26 @@
       $env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket
       $env.EDITOR = 'nvim'
     '';
-      
+
+    # workaround for non nixos systems to set the correct envrionemnt variables
+    # https://github.com/nix-darwin/nix-darwin/issues/1028
+    extraLogin = lib.mkIf false ''
+      if "_SOURCED_BASH" not-in $env {
+        load-env (bash -l -i -c "nu -c '$env | to yaml'" | from yaml | reject -i
+          config _ FILE_PWD PWD SHLVL CURRENT_FILE
+          STARSHIP_SESSION_KEY
+          PROMPT_COMMAND
+          PROMPT_COMMAND_RIGHT
+          PROMPT_INDICATOR
+          PROMPT_INDICATOR_VI_INSERT
+          PROMPT_INDICATOR_VI_NORMAL
+          PROMPT_MULTILINE_INDICATOR
+          TRANSIENT_PROMPT_COMMAND_RIGHT
+          TRANSIENT_PROMPT_MULTILINE_INDICATOR
+        )
+        $env._SOURCED_BASH = true
+      }
+    '';
   };
 
   programs.carapace = {
