@@ -13,7 +13,8 @@
     # ./features/gui/hyprland.nix
     ./features/gui/niri.nix
     ./features/gui/ghostty.nix
-    ./features/gui/widgets/eww.nix
+    # ./features/gui/widgets/eww.nix
+    ./features/gaming/minecraft-client.nix
   ];
 
   home = {
