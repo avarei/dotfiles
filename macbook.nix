@@ -1,10 +1,8 @@
 { config, pkgs, ... }:
 
-let foo = "bar";
-in {
-
+{
   imports = [
-    ../common
+    ./hosts/common.nix
   ];
 
   system.stateVersion = 5;
