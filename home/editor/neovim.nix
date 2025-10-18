@@ -195,6 +195,13 @@ in {
             };
             sections = [
               { section = "header"; }
+              {
+                icon = " ";
+                title = "Recent Files";
+                section = "recent_files";
+                indent = 2;
+                padding = 1;
+              }
               { __raw = ''
               function()
                 local in_git = Snacks.git.get_root() ~= nil
@@ -205,7 +212,7 @@ in {
                   title = "Git Status",
                   cmd = "git --no-pager diff --stat -B -M -C",
                   height = 10,
-                  indent = 3,
+                  indent = 2,
                   ttl = 60,
                 }
               end
