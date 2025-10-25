@@ -7,8 +7,8 @@
     ./home/git.nix
     ./home/shell/nushell.nix
     ./home/shell/zsh.nix
-    ./home/gpg.nix
     ./home/shell/tmux.nix
+    ./home/gpg.nix
     ./home/gui/firefox.nix
     ./home/gui/niri.nix
     ./home/gui/ghostty.nix
