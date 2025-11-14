@@ -33,47 +33,113 @@
     };
   };
 
-  # requires security.services.swaylock in hosts
-  programs.swaylock = {
+  programs.hyprlock = {
     enable = true;
-
     settings = {
-      ignore-empty-password = true;
+      "$mauve" = "rgb(cba6f7)";
+      "$mauveAlpha" = "cba6f7";
 
-      color = "1d1f21";
-      indicator-idle-visible = true;
-      indicator-radius = 150;
-      indicator-thickness = 30;
+      "$red" = "rgb(f38ba8)";
+      "$redAlpha" = "f38ba8";
 
-      inside-color = "1d1f21";
-      inside-clear-color = "1d1f21";
-      inside-ver-color = "1d1f21";
-      inside-wrong-color = "1d1f21";
+      "$yellow" = "rgb(f9e2af)";
+      "$yellowAlpha" = "f9e2af";
 
-      key-hl-color = "7aa6daaa";
-      bs-hl-color = "d54e53aa";
+      "$text" = "rgb(cdd6f4)";
+      "$textAlpha" = "cdd6f4";
 
-      separator-color = "55555555";
+      "$surface0" = "rgb(313244)";
+      "$surface0Alpha" = "313244";
 
-      line-color = "1d1f21";
-      line-uses-ring = true;
+      "$accent" = "$mauve";
+      "$accentAlpha" = "$mauveAlpha";
+      "$font" = "Ubuntu Nerd Font";
 
-      text-color = "81a2be";
-      text-clear-color = "b5bd68";
-      text-caps-lock-color = "f0c674";
-      text-ver-color = "81a2be";
-      text-wrong-color = "cc6666";
+      general = {
+        hide_cursor = true;
+      };
 
-      ring-color = "81a2be55";
-      ring-ver-color = "81a2be";
-      ring-clear-color = "b5bd6811";
-      ring-wrong-color = "cc6666";
+      auth = {
+        "pam:module" = "login";
+      };
+
+      background = [
+        {
+          path = "screenshot";
+          blur_passes = 3;
+          blur_size = 8;
+        }
+      ];
+
+      label = [
+        {
+          # TIME
+          monitor = "";
+          text = "$TIME";
+          color = "$text";
+          font_size = 90;
+          font_family = "$font";
+          position = "-30, 0";
+          halign = "right";
+          valign = "top";
+        }
+        {
+          # DATE
+          monitor = "";
+          text = "cmd[update:43200000] date +\"%d.%M.%Y\"";
+          color = "$text";
+          font_size = 25;
+          font_family = "$font";
+          position = "-30, -150";
+          halign = "right";
+          valign = "top";
+        }
+      ];
+
+      # USER AVATAR
+      # image = [
+      #   {
+      #     monitor = "";
+      #     path = "$HOME/.face";
+      #     size = 100;
+      #     border_color = "$accent";
+      #     position = "0, 75";
+      #     halign = "center";
+      #     valign = "center";
+      #   }
+      # ];
+
+      # INPUT FIELD
+      input-field = [
+        {
+          monitor = "";
+          size = "300, 60";
+          outline_thickness = 4;
+          dots_size = 0.2;
+          dots_spacing = 0.2;
+          dots_center = true;
+          outer_color = "$accent";
+          inner_color = "$surface0";
+          font_color = "$text";
+          fade_on_empty = false;
+          placeholder_text = "<span foreground=\"##$textAlpha\"><i>󰌾 Logged in as </i><span foreground=\"##$accentAlpha\">$USER</span></span>";
+          hide_input = false;
+          check_color = "$accent";
+          fail_color = "$red";
+          fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+          capslock_color = "$yellow";
+          position = "0, -47";
+          halign = "center";
+          valign = "center";
+        }
+      ];
     };
   };
 
   services.swayidle =
     let
-      lock = "${pkgs.swaylock}/bin/swaylock --daemonize";
+      # lock = "${pkgs.hyprlock}/bin/hyprlock";
+      lock = "${pkgs.hyprlock}/bin/hyprlock";
       display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
     in
     {

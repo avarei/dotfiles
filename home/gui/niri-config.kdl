@@ -355,6 +355,12 @@ window-rule {
 }
 
 window-rule {
+    match app-id=r#"^steam_app_.+$"#
+
+    open-fullscreen true
+}
+
+window-rule {
     match is-window-cast-target=true
 
     focus-ring {
@@ -409,7 +415,7 @@ binds {
     Mod+E hotkey-overlay-title="Open Explorer: nautilus" { spawn "nautilus"; }
     Mod+F hotkey-overlay-title="Open Browser: firefox" { spawn "firefox"; }
     Mod+Z hotkey-overlay-title="Make Screenshot Rectangle" { spawn "hyprshot" "--freeze" "-m" "region" "--clipboard-only"; }
-    Super+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
+    Super+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "hyprlock" "--immediate"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
