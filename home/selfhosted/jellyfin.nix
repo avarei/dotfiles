@@ -15,6 +15,8 @@
         volumes = [
           "/home/tim/data/jellyfin/config:/config"
           "/home/tim/data/jellyfin/cache:/cache"
+          "/home/tim/data/jellyfin/movies:/data/movies"
+          "/home/tim/data/jellyfin/shows:/data/shows"
         ];
         ports = [
           "8096:8096"

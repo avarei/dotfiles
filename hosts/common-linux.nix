@@ -2,8 +2,8 @@
 
 {
   imports = [
-    ./default.nix
-    ../../modules/nixos/gpg
+    ./common.nix
+    ../modules/nixos/gpg
   ];
   console.keyMap = "us";
 

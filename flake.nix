@@ -52,14 +52,14 @@
         macbook = nix-darwin.lib.darwinSystem {
           pkgs = pkgsFor.aarch64-darwin;
           modules = [
-            ./hosts/macbook
+            ./macbook.nix
             home-manager.darwinModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit nixvim; };
-                users.tim = ./home/tim/macbook.nix;
+                users.tim = ./macbook-tim.nix;
               };
             }
           ];
@@ -70,14 +70,14 @@
         server = nixpkgs.lib.nixosSystem { 
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./hosts/server
+            ./server.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit nixvim; };
-                users.tim = ./home/tim/server.nix;
+                users.tim = ./server-tim.nix;
               };
             }
           ];
@@ -88,14 +88,14 @@
             {
               nixpkgs.overlays = [ niri.overlays.niri ];
             }
-            ./hosts/desktop
+            ./desktop.nix
             home-manager.nixosModules.home-manager
             {
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
                 extraSpecialArgs = { inherit nixvim; };
-                users.tim = ./home/tim/desktop.nix;
+                users.tim = ./desktop-tim.nix;
               };
             }
           ];
@@ -106,10 +106,10 @@
         "tim@work" = home-manager.lib.homeManagerConfiguration {
           pkgs = pkgsFor.x86_64-linux;
           modules = [
-            ./home/tim/global
-            ./home/tim/features/editor/neovim.nix
-            ./home/tim/features/git
-            ./home/tim/features/gpg
+            ./home/global.nix
+            ./home/editor/neovim.nix
+            ./home/git.nix
+            ./home/gpg.nix
           ];
           extraSpecialArgs = { inherit nixvim; };
         };

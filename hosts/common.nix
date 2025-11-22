@@ -28,7 +28,7 @@
   users.users.tim = {
     description = "Tim";
     shell = pkgs.nushell;
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../../home/tim/ssh.pub) ];
+    openssh.authorizedKeys.keys = [ (builtins.readFile ../home/ssh.pub) ];
   };
 
   security.pam.services = { # allow FIDO2 login

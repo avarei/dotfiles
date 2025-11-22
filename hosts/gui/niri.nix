@@ -25,8 +25,6 @@
     NIXOS_OZONE_WL = "1";
   };
 
-  security.pam.services.swaylock = {};
-
   services.xserver = {
     enable = true;
     displayManager.gdm.enable = true;
