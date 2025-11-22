@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./home/global
+    ./home/global.nix
     ./home/editor/neovim.nix
     ./home/git.nix
     ./home/shell/nushell.nix
