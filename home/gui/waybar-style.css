@@ -87,7 +87,10 @@
 #workspaces,
 #taskbar,
 #custom-notification,
-#custom-lock {
+#custom-lock,
+#custom-power,
+#load,
+#memory {
   background-color: @surface0;
   padding-left: 1rem;
   padding-right: 1rem;
@@ -95,13 +98,15 @@
 }
 
 /* section start */
-#network {
+#network,
+#load {
   border-radius: 1rem 0px 0px 1rem;
   margin-left: 0.5rem;
 }
 
 /* section end */
-#clock {
+#custom-power,
+#memory {
   border-radius: 0px 1rem 1rem 0px;
   margin-right: 0.5rem;
 }
@@ -115,8 +120,14 @@
   color: @lavender;
 }
 
-#clock {
+#clock,
+#load,
+#memory{
   color: @blue;
+}
+
+#custom-power {
+  color: @yellow;
 }
 
 #pulseaudio {
@@ -154,9 +165,14 @@ tooltip {
   background-color: @overlay0;
 }
 
-#tray menu {
+menu {
   background-color: @surface1;
   color: @text;
   border-radius: 1rem;
   border-width: 8px;
+}
+
+menuitem:hover {
+  border-radius: 1rem 1rem 1rem 1rem;
+  background-color: @overlay1;
 }

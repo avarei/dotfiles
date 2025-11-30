@@ -1,5 +1,14 @@
 { config, pkgs, lib, ... }:
-{
+let
+  lockscreenPhrases = [
+    "What's up?"
+    "Who's there?"
+    "The Password is \"LOWERCASE all uppercase\""
+    "I am ____ locked"
+    "Upload Password to the Cloud"
+    "Reading the ToS is considered a breach of Contract"
+  ];
+in {
 
   home.packages = with pkgs; [
     pavucontrol # audio in/out
@@ -79,20 +88,31 @@
           color = "$text";
           font_size = 90;
           font_family = "$font";
-          position = "-30, 0";
-          halign = "right";
+          position = "0, -100";
+          halign = "center";
           valign = "top";
         }
         {
           # DATE
           monitor = "";
-          text = "cmd[update:43200000] date +\"%d.%M.%Y\"";
+          text = "cmd[update:43200000] date +\"%d.%m.%Y\"";
           color = "$text";
           font_size = 25;
           font_family = "$font";
-          position = "-30, -150";
-          halign = "right";
+          position = "0, -60";
+          halign = "center";
           valign = "top";
+        }
+        {
+          # Banner
+          monitor = "";
+          text = "cmd[] echo ${lib.strings.escapeShellArg (builtins.toJSON lockscreenPhrases)} | jq -r '.[]' | shuf -n1";
+          color = "$text";
+          font_size = 25;
+          font_family = "$font";
+          position = "0, 20";
+          halign = "center";
+          valign = "center";
         }
       ];
 
@@ -122,11 +142,11 @@
           inner_color = "$surface0";
           font_color = "$text";
           fade_on_empty = false;
-          placeholder_text = "<span foreground=\"##$textAlpha\"><i>󰌾 Logged in as </i><span foreground=\"##$accentAlpha\">$USER</span></span>";
+          placeholder_text = "<span foreground=\"##$textAlpha\">󰌾 Logged in as <span foreground=\"##$accentAlpha\">$USER</span></span>";
           hide_input = false;
           check_color = "$accent";
           fail_color = "$red";
-          fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+          fail_text = "$FAIL <b>($ATTEMPTS)</b>";
           capslock_color = "$yellow";
           position = "0, -47";
           halign = "center";
@@ -154,10 +174,10 @@
           command = display "off";
           resumeCommand = display "on";
         }
-        {
-          timeout = (5 * 60) + 5;
-          command = lock;
-        }
+        # {
+        #   timeout = (5 * 60) + 5;
+        #   command = lock;
+        # }
         # {
         #   timeout = 30;
         #   command = "${pkgs.systemd}/bin/systemctl suspend";
