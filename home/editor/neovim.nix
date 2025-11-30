@@ -241,6 +241,9 @@ in {
       };
       todo-comments.enable = true;
       nvim-surround.enable = true;
+      dap.enable = true;
+      dap-go.enable = true;
+      dap-ui.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
       yuck-vim
