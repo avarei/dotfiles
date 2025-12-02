@@ -22,10 +22,13 @@
         modules-right = [
           "tray"
           "privacy"
+          "load" # cpu load
+          "memory"
           "network"
           "bluetooth"
           "pulseaudio"
           "clock"
+          "custom/power"
           "custom/notification"
         ];
         
@@ -51,6 +54,16 @@
 
         privacy = {
           icon-size = 16;
+        };
+
+        load = {
+          interval = 10;
+          format = " {load1}";
+          max-length = 10;
+        };
+        memory = {
+          interval = 10;
+          format = " {}%";
         };
 
         network = {
@@ -122,6 +135,20 @@
           icon-size = 21;
           spacing = 10;
           show-passive-items = true;
+        };
+
+        "custom/power" = {
+          tooltip = false;
+          format = "󰐥 ";
+          menu = "on-click";
+          menu-file = ./waybar-power-menu.xml;
+          menu-actions = {
+            lock = "hyprlock";
+            logout = "niri msg action quit --skip-confirmation";
+            shutdown = "shutdown -h now";
+            reboot = "reboot";
+          };
+
         };
 
         "custom/notification" = {
