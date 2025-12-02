@@ -78,6 +78,12 @@ in {
       { key = "<C-/>"; action.__raw = "function() Snacks.terminal() end"; options.desc = "Toggle Terminal"; }
       { key = "]]"; action.__raw = "function() Snacks.words.jump(vim.v.count1) end"; mode = ["n" "t"]; options.desc = "Next Reference"; }
       { key = "[["; action.__raw = "function() Snacks.words.jump(-vim.v.count1) end"; mode = ["n" "t"]; options.desc = "Prev Reference"; }
+      # dap
+      { key = "<leader>dc"; action.__raw = "function() require('dap').continue() end"; options.desc = "Debugging: Continue"; }
+      { key = "<leader>ds"; action.__raw = "function() require('dap').step_over() end"; options.desc = "Debugging: Step Over"; }
+      { key = "<leader>dd"; action.__raw = "function() require('dap').step_into() end"; options.desc = "Debugging: Step Into"; }
+      { key = "<leader>du"; action.__raw = "function() require('dap').step_out() end"; options.desc = "Debugging: Step Out"; }
+      { key = "<leader>db"; action.__raw = "function() require('dap').toggle_breakpoint() end"; options.desc = "Debugging: Toggle Breakpoint"; }
     ];
 
     plugins = {
@@ -241,8 +247,40 @@ in {
       };
       todo-comments.enable = true;
       nvim-surround.enable = true;
-      dap.enable = true;
-      dap-go.enable = true;
+      dap = {
+        enable = true;
+        extensionConfigLua = ''  
+          require("dap").listeners.before.attach.dapui_config = function()  
+            require("dapui").open()  
+          end
+          require("dap").listeners.before.launch.dapui_config = function()
+            require("dapui").open()
+          end
+          require("dap").listeners.before.event_terminated.dapui_config = function()
+            require("dapui").close()
+          end
+          require("dap").listeners.before.event_exited.dapui_config = function()
+            require("dapui").close()
+          end
+        '';
+      };
+      dap-go = {
+        enable = true;
+        settings = {  
+          dap_configurations = [
+            {
+              type = "go";
+              request = "launch";
+              name = "Launch my custom config";
+              program = "\${fileDirname}";
+              args = [
+                "--debug"
+                "--insecure"
+              ];
+            }
+          ];
+        };
+      };
       dap-ui.enable = true;
     };
     extraPlugins = with pkgs.vimPlugins; [
