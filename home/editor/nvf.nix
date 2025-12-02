@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   nvf,
@@ -124,12 +123,10 @@
           };
         };
         autopairs.nvim-autopairs.enable = true;
-      };
-      tabline = {
-        nvimBufferline.enable = true;
-      };
-      notify = {
-        nvim-notify.enable = true;
+        tabline = {
+          nvimBufferline.enable = true;
+        };
+        notify.nvim-notify.enable = true;
       };
     };
   };
