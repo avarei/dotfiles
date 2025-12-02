@@ -2,7 +2,14 @@
   pkgs,
   lib,
   ...
-}: {
+}: let
+  completions = pkgs.fetchFromGitHub {
+    owner = "nushell";
+    repo = "nu_scripts";
+    rev = "485a62c9a3522ef13abb1770523a2a566da721bd";
+    sha256 = "sha256-+m4T1xSngA5z0OHQGyzhVg6kOyEzwOOX7VuWsluYP10=";
+  };
+in {
   imports = [
     ./starship.nix
   ];
@@ -54,6 +61,13 @@
         )
         $env._SOURCED_BASH = true
       }
+    '';
+    extraConfig = ''
+      source ${completions}/custom-completions/git/git-completions.nu
+      source ${completions}/custom-completions/nix/nix-completions.nu
+      source ${completions}/custom-completions/ssh/ssh-completions.nu
+      source ${completions}/custom-completions/tar/tar-completions.nu
+      source ${completions}/custom-completions/man/man-completions.nu
     '';
   };
 
