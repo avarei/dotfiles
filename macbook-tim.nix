@@ -1,10 +1,12 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./home/global.nix
-    # ./home/editor/neovim.nix
-    ./home/editor/nvf.nix
+    ./home/editor/neovim.nix
     ./home/git.nix
     ./home/shell/nushell.nix
     ./home/shell/zsh.nix
