@@ -5,8 +5,17 @@
     direnv
   ];
 
-  # for zsh completion of system packages
-  environment.pathsToLink = [ "/share/zsh" ];
+
+  environment = {
+    # for zsh completion of system packages
+    pathsToLink = [ "/share/zsh" ];
+    
+    shells = [
+        pkgs.bashInteractive
+        pkgs.zsh
+        pkgs.nushell
+    ];
+  };
 
   time.timeZone = "Europe/Berlin";
 
