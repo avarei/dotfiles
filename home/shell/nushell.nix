@@ -1,5 +1,8 @@
-{ config, pkgs, lib, ... }:
 {
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ./starship.nix
   ];
@@ -30,7 +33,6 @@
       vim = "nvim";
     };
     envFile.text = ''
-      $env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket
       $env.EDITOR = 'nvim'
     '';
 
@@ -59,6 +61,4 @@
     enable = true;
     enableNushellIntegration = true;
   };
-
 }
-
