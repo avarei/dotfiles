@@ -3,7 +3,8 @@
 {
   imports = [
     ./home/global.nix
-    ./home/editor/neovim.nix
+    # ./home/editor/neovim.nix
+    ./home/editor/nvf.nix
     ./home/git.nix
     ./home/shell/nushell.nix
     ./home/shell/zsh.nix

@@ -17,6 +17,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nvf = {
+      url = "github:NotAShelf/nvf";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-plugins = { # TODO check if this is obsolete
@@ -26,7 +31,7 @@
     niri.url = "github:sodiboo/niri-flake"; # using unstable niri package due to graphical issues with v25.05.1
     # catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
-  outputs = { self, nix-darwin, home-manager, nixpkgs, nixvim, niri, ... }@inputs:
+  outputs = { self, nix-darwin, home-manager, nixpkgs, nixvim, nvf, niri, ... }@inputs:
     let
       lib = nixpkgs.lib // home-manager.lib;
       systems = [ "x86_64-linux" "aarch64-darwin" ];
@@ -58,7 +63,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit nixvim; };
+                extraSpecialArgs = { inherit nixvim nvf; };
                 users.tim = ./macbook-tim.nix;
               };
             }
@@ -76,7 +81,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit nixvim; };
+                extraSpecialArgs = { inherit nixvim nvf; };
                 users.tim = ./server-tim.nix;
               };
             }
@@ -94,7 +99,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
-                extraSpecialArgs = { inherit nixvim; };
+                extraSpecialArgs = { inherit nixvim nvf; };
                 users.tim = ./desktop-tim.nix;
               };
             }
@@ -111,7 +116,7 @@
             ./home/git.nix
             ./home/gpg.nix
           ];
-          extraSpecialArgs = { inherit nixvim; };
+          extraSpecialArgs = { inherit nixvim nvf; };
         };
       };
     };
