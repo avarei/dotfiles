@@ -30,17 +30,15 @@
     # catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
   outputs = {
-    self,
     nix-darwin,
     home-manager,
     nixpkgs,
     nvf,
     niri,
     ...
-  } @ inputs: let
+  }: let
     lib = nixpkgs.lib // home-manager.lib;
     systems = ["x86_64-linux" "aarch64-darwin"];
-    forEachSystem = f: lib.genAttrs systems (system: f pkgsFor.${system});
     pkgsFor = lib.genAttrs systems (system:
       import nixpkgs {
         inherit system;
