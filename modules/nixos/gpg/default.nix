@@ -1,8 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
-
-let
-  foo = "bar";
-in {
+{...}: {
   # Manages keys and such
   programs = {
     gnupg.agent = {
