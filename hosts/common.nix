@@ -1,25 +1,26 @@
-{ config, inputs, lib, pkgs, ... }:
-
 {
+  lib,
+  pkgs,
+  ...
+}: {
   environment.systemPackages = with pkgs; [
     direnv
   ];
 
-
   environment = {
     # for zsh completion of system packages
-    pathsToLink = [ "/share/zsh" ];
-    
+    pathsToLink = ["/share/zsh"];
+
     shells = [
-        pkgs.bashInteractive
-        pkgs.zsh
-        pkgs.nushell
+      pkgs.bashInteractive
+      pkgs.zsh
+      pkgs.nushell
     ];
   };
 
   time.timeZone = "Europe/Berlin";
 
-  users.users.tim.packages = [ pkgs.home-manager ];
+  users.users.tim.packages = [pkgs.home-manager];
 
   programs.zsh.enable = true;
 
@@ -28,8 +29,8 @@
     package = pkgs.nix;
     settings = {
       experimental-features = ["nix-command" "flakes"];
-      allowed-users = [ "tim" ];
-      trusted-users = [ "@wheel" "tim" ];
+      allowed-users = ["tim"];
+      trusted-users = ["@wheel" "tim"];
     };
   };
 
@@ -37,6 +38,6 @@
   users.users.tim = {
     description = "Tim";
     shell = pkgs.nushell;
-    openssh.authorizedKeys.keys = [ (builtins.readFile ../home/ssh.pub) ];
+    openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../home/ssh.pub);
   };
 }
