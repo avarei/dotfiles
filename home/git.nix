@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }:
-
-{
+{pkgs, ...}: {
   home = {
     packages = with pkgs; [
       git
@@ -16,16 +14,14 @@
         helper = "cache --timeout=36000";
       };
       commit.gpgSign = true;
-      user.signingkey = "E8722A4C7EB2CD4C";
+      user.signingkey = "F47E71666F3E317F";
 
-
-      init = { defaultBranch = "main"; };
-      push = { autoSetupRemote = true; };
+      init = {defaultBranch = "main";};
+      push = {autoSetupRemote = true;};
     };
 
     delta = {
       enable = true;
     };
-
   };
 }
