@@ -18,9 +18,9 @@
     sessionVariables = {
       SSH_AUTH_SOCK = "$(${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket)";
     };
-    programs.nushell.envFile.text = lib.mkForce ''
-      $env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket
-      $env.EDITOR = 'nvim'
-    '';
   };
+  programs.nushell.envFile.text = lib.mkForce ''
+    $env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket
+    $env.EDITOR = 'nvim'
+  '';
 }
