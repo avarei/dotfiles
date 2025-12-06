@@ -1,5 +1,4 @@
-{ config, pkgs, lib, inputs, ... }: {
-
+{pkgs, ...}: {
   programs.tmux = {
     enable = true;
     baseIndex = 1;
@@ -7,6 +6,7 @@
     keyMode = "vi";
     mouse = true;
     prefix = "C-Space";
+    shell = "${pkgs.nushell}/bin/nu";
     plugins = with pkgs.tmuxPlugins; [
       {
         plugin = catppuccin;
@@ -15,7 +15,8 @@
 
           set -g status-right "#{E:@catppuccin_status_application}"
         '';
-      } {
+      }
+      {
         plugin = cpu;
         extraConfig = ''
           set -agF status-right "#{E:@catppuccin_status_cpu}"
@@ -23,5 +24,4 @@
       }
     ];
   };
-
-} 
+}
