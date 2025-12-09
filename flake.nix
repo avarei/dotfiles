@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    stylix = {
+      url = "github:nix-community/stylix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nvf = {
       url = "github:NotAShelf/nvf?ref=v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,6 +38,7 @@
     nix-darwin,
     home-manager,
     nixpkgs,
+    stylix,
     nvf,
     niri,
     ...
@@ -62,6 +68,7 @@
         pkgs = pkgsFor.aarch64-darwin;
         modules = [
           ./macbook.nix
+          stylix.darwinModules.stylix
           home-manager.darwinModules.home-manager
           {
             home-manager = {
@@ -79,7 +86,7 @@
       server = nixpkgs.lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
         modules = [
-          ./server.nix
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -89,15 +96,13 @@
               users.tim = ./server-tim.nix;
             };
           }
+          ./server.nix
         ];
       };
       desktop = nixpkgs.lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
         modules = [
-          {
-            nixpkgs.overlays = [niri.overlays.niri];
-          }
-          ./desktop.nix
+          stylix.nixosModules.stylix
           home-manager.nixosModules.home-manager
           {
             home-manager = {
@@ -107,6 +112,10 @@
               users.tim = ./desktop-tim.nix;
             };
           }
+          {
+            nixpkgs.overlays = [niri.overlays.niri];
+          }
+          ./desktop.nix
         ];
       };
     };
@@ -115,6 +124,7 @@
       "tim@work" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [
+          stylix.homeModules.stylix
           ./home/global.nix
           ./home/editor/neovim.nix
           ./home/git.nix

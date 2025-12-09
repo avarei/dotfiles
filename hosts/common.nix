@@ -1,6 +1,7 @@
 {
   lib,
   pkgs,
+  stylix,
   ...
 }: {
   environment.systemPackages = with pkgs; [
@@ -39,5 +40,9 @@
     description = "Tim";
     shell = pkgs.nushell;
     openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../home/ssh.pub);
+  };
+
+  stylix = {
+    enable = true;
   };
 }
