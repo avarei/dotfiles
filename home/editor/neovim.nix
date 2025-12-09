@@ -96,20 +96,22 @@
         };
         notes.todo-comments.enable = true;
         utility.surround.enable = true;
-        utility.snacks-nvim.enable = true;
         binds.whichKey.enable = true;
         git = {
           enable = true;
           git-conflict.enable = true;
         };
 
-        telescope.enable = true;
+        telescope = {
+          enable = true;
+          mappings = {
+            findFiles = "<leader><space>";
+            liveGrep = "<leader>/";
+            buffers = "<leader>,";
+          };
+        };
 
         autocomplete.nvim-cmp.enable = true;
-        dashboard.startify = {
-          enable = true;
-          changeToVCRoot = true;
-        };
         diagnostics = {
           enable = true;
           config = {
