@@ -1,9 +1,11 @@
 {
   lib,
   pkgs,
-  stylix,
   ...
 }: {
+  imports = [
+    ../modules/stylix.nix
+  ];
   environment.systemPackages = with pkgs; [
     direnv
   ];
@@ -40,9 +42,5 @@
     description = "Tim";
     shell = pkgs.nushell;
     openssh.authorizedKeys.keys = lib.splitString "\n" (builtins.readFile ../home/ssh.pub);
-  };
-
-  stylix = {
-    enable = true;
   };
 }

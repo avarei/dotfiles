@@ -15,7 +15,7 @@
     };
 
     stylix = {
-      url = "github:nix-community/stylix";
+      url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -126,6 +126,7 @@
         modules = [
           stylix.homeModules.stylix
           ./home/global.nix
+          ./modules/stylix.nix
           ./home/editor/neovim.nix
           ./home/git.nix
           ./home/gpg.nix
