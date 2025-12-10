@@ -1,39 +1,37 @@
-{ config, pkgs, lib, ... }:
-{
+{lib, ...}: {
   programs.starship = {
     enable = true;
     enableNushellIntegration = true;
     settings = {
       format = lib.concatStrings [
         "[](red)"
-        "$os"
-        "$hostname"
-        "[](bg:peach fg:red)"
-        "$username"
-        "[](bg:yellow fg:peach)"
-        "$directory"
+        "[$os](bg:red fg:base01)"
+        "[$hostname](bg:red fg:base01)"
+        "[](bg:orange fg:red)"
+        "[$username](bg:orange fg:base01)"
+        "[](bg:yellow fg:orange)"
+        "[$directory](bg:yellow fg:base01)"
         "[](fg:yellow bg:green)"
-        "$git_branch"
-        "$git_status"
-        "[](fg:green bg:sapphire)"
-        "$c"
-        "$rust"
-        "$golang"
-        "$nodejs"
-        "$php"
-        "$java"
-        "$kotlin"
-        "$haskell"
-        "$python"
-        "[](fg:sapphire bg:lavender)"
-        "$conda"
+        "[$git_branch](bg:green fg:base01)"
+        "[$git_status](bg:green fg:base01)"
+        "[](fg:green bg:cyan)"
+        "[$c](bg:cyan fg:base01)"
+        "[$rust](bg:cyan fg:base01)"
+        "[$golang](bg:cyan fg:base01)"
+        "[$nodejs](bg:cyan fg:base01)"
+        "[$php](bg:cyan fg:base01)"
+        "[$java](bg:cyan fg:base01)"
+        "[$kotlin](bg:cyan fg:base01)"
+        "[$haskell](bg:cyan fg:base01)"
+        "[$python](bg:cyan fg:base01)"
+        "[](fg:cyan bg:magenta)"
+        "[$conda](bg:magenta fg:base01)"
         # "$time"
-        "[ ](fg:lavender)"
+        "[ ](fg:magenta)"
         "$cmd_duration"
         "$line_break"
         "$character"
       ];
-      palette = "catppuccin_mocha";
 
       os = {
         disabled = false;
@@ -319,4 +317,3 @@
     };
   };
 }
-

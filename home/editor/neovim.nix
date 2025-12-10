@@ -83,17 +83,8 @@
             ui.enable = true;
           };
         };
-        theme = {
-          enable = true;
-          name = "catppuccin";
-          # transparent = true;
-          style = "mocha";
-        };
         visuals.nvim-web-devicons.enable = true;
-        statusline.lualine = {
-          enable = true;
-          theme = "catppuccin";
-        };
+        statusline.lualine.enable = true;
         notes.todo-comments.enable = true;
         utility.surround.enable = true;
         binds.whichKey.enable = true;
