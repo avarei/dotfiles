@@ -1,10 +1,13 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   nix = {
     package = lib.mkDefault pkgs.nix;
     settings = {
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = ["nix-command" "flakes"];
       warn-dirty = false;
     };
   };
@@ -18,14 +21,13 @@
     username = lib.mkDefault "tim";
     homeDirectory = lib.mkDefault "/home/${config.home.username}";
 
-    keyboard.layout ="us(intl)";
+    keyboard.layout = "us(intl)";
 
     packages = with pkgs; [
       jq
       yq
-      nerd-fonts.ubuntu-mono
-      nerd-fonts.ubuntu
       tree
+      htop
     ];
   };
 

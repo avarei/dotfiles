@@ -1,6 +1,4 @@
-{ config, inputs, lib, pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./common.nix
     ../modules/nixos/gpg
@@ -32,10 +30,11 @@
 
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" "docker" ];
+    extraGroups = ["networkmanager" "wheel" "docker"];
   };
 
-  security.pam.services = { # allow FIDO2 login
+  security.pam.services = {
+    # allow FIDO2 login
     login.u2fAuth = true;
     sudo.u2fAuth = true;
   };
@@ -43,5 +42,4 @@
     pinverification = 1;
     userpresence = 1;
   };
-
 }

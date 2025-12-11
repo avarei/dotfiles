@@ -1,8 +1,6 @@
-{ config, inputs, lib, pkgs, ... }:
+{pkgs, ...}: {
+  imports = [];
 
-{
-  imports = [  ];
-  
   programs.niri = {
     enable = true;
     package = pkgs.niri-unstable;
@@ -20,15 +18,13 @@
 
   environment.systemPackages = [
   ];
-  
+
   environment.sessionVariables = {
     NIXOS_OZONE_WL = "1";
   };
 
-  services.xserver = {
-    enable = true;
-    displayManager.gdm.enable = true;
-  };
+  services.xserver.enable = true;
+  services.displayManager.gdm.enable = true;
 
   security.polkit.enable = true;
 }

@@ -1,5 +1,8 @@
-{ config, pkgs, lib, ... }:
-let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   lockscreenPhrases = [
     "What's up?"
     "Who's there?"
@@ -9,7 +12,6 @@ let
     "Reading the ToS is considered a breach of Contract"
   ];
 in {
-
   home.packages = with pkgs; [
     pavucontrol # audio in/out
     libnotify
@@ -42,28 +44,10 @@ in {
     };
   };
 
+  stylix.targets.hyprlock.enable = false;
   programs.hyprlock = {
     enable = true;
     settings = {
-      "$mauve" = "rgb(cba6f7)";
-      "$mauveAlpha" = "cba6f7";
-
-      "$red" = "rgb(f38ba8)";
-      "$redAlpha" = "f38ba8";
-
-      "$yellow" = "rgb(f9e2af)";
-      "$yellowAlpha" = "f9e2af";
-
-      "$text" = "rgb(cdd6f4)";
-      "$textAlpha" = "cdd6f4";
-
-      "$surface0" = "rgb(313244)";
-      "$surface0Alpha" = "313244";
-
-      "$accent" = "$mauve";
-      "$accentAlpha" = "$mauveAlpha";
-      "$font" = "Ubuntu Nerd Font";
-
       general = {
         hide_cursor = true;
       };
@@ -156,40 +140,50 @@ in {
     };
   };
 
-  services.swayidle =
-    let
-      # lock = "${pkgs.hyprlock}/bin/hyprlock";
-      lock = "${pkgs.hyprlock}/bin/hyprlock";
-      display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
-    in
-    {
-      enable = true;
-      timeouts = [
-        # {
-        #   timeout = (4 * 60); # in seconds
-        #   command = "${pkgs.libnotify}/bin/notify-send 'Going to Sleep in 1 minute' -t 60000";
-        # }
-        {
-          timeout = (5 * 60);
-          command = display "off";
-          resumeCommand = display "on";
-        }
-        # {
-        #   timeout = (5 * 60) + 5;
-        #   command = lock;
-        # }
-        # {
-        #   timeout = 30;
-        #   command = "${pkgs.systemd}/bin/systemctl suspend";
-        # }
-      ];
-      events = [
-        { event = "before-sleep"; command = (display "off") + "; " + lock; }
-        { event = "after-resume"; command = display "on"; }
-        { event = "lock"; command = (display "off") + "; " + lock; }
-        { event = "unlock"; command = display "on"; }
-      ];
-    };
+  services.swayidle = let
+    # lock = "${pkgs.hyprlock}/bin/hyprlock";
+    lock = "${pkgs.hyprlock}/bin/hyprlock";
+    display = status: "${pkgs.niri}/bin/niri msg action power-${status}-monitors";
+  in {
+    enable = true;
+    timeouts = [
+      # {
+      #   timeout = (4 * 60); # in seconds
+      #   command = "${pkgs.libnotify}/bin/notify-send 'Going to Sleep in 1 minute' -t 60000";
+      # }
+      {
+        timeout = 5 * 60;
+        command = display "off";
+        resumeCommand = display "on";
+      }
+      # {
+      #   timeout = (5 * 60) + 5;
+      #   command = lock;
+      # }
+      # {
+      #   timeout = 30;
+      #   command = "${pkgs.systemd}/bin/systemctl suspend";
+      # }
+    ];
+    events = [
+      {
+        event = "before-sleep";
+        command = (display "off") + "; " + lock;
+      }
+      {
+        event = "after-resume";
+        command = display "on";
+      }
+      {
+        event = "lock";
+        command = (display "off") + "; " + lock;
+      }
+      {
+        event = "unlock";
+        command = display "on";
+      }
+    ];
+  };
 
   services.swaync = {
     enable = true;

@@ -1,5 +1,4 @@
-{ config, pkgs, lib, inputs, ... }: {
-
+{pkgs, ...}: {
   home.packages = with pkgs; [
     pavucontrol
     playerctl
@@ -31,7 +30,7 @@
           "custom/power"
           "custom/notification"
         ];
-        
+
         "wlr/taskbar" = {
           tooltip-format = "{title} {app_id}";
           icon-size = 20;
@@ -98,21 +97,21 @@
         };
 
         pulseaudio = {
-	        format = "{icon}";
-	        format-bluetooth = "{icon}";
-	        format-muted = "";
-	        format-icons = {
-        		"headphones" = "";
-        		"headset" = "󰋎";
+          format = "{icon}";
+          format-bluetooth = "{icon}";
+          format-muted = "";
+          format-icons = {
+            "headphones" = "";
+            "headset" = "󰋎";
             "headset-muted" = "󰋐";
-        		"phone" = "";
-        		"phone-muted" = "";
-        		"portable" = "";
-        		"car" = "";
-        		"default" = ["" "" " "];
+            "phone" = "";
+            "phone-muted" = "";
+            "portable" = "";
+            "car" = "";
+            "default" = ["" "" " "];
           };
-      	  scroll-step = 1;
-        	on-click = "pavucontrol";
+          scroll-step = 1;
+          on-click = "pavucontrol";
         };
 
         "hyprland/workspaces" = {
@@ -148,7 +147,6 @@
             shutdown = "shutdown -h now";
             reboot = "reboot";
           };
-
         };
 
         "custom/notification" = {
@@ -173,7 +171,6 @@
         };
       };
     };
-    style = ./waybar-style.css;
+    # style = ./waybar-style.css;
   };
-
 }

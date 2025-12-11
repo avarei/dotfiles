@@ -1,4 +1,8 @@
-{...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   imports = [
     ./home/global.nix
     ./home/editor/neovim.nix
@@ -10,4 +14,8 @@
     ./home/selfhosted/jellyfin.nix
     ./home/selfhosted/copyparty.nix
   ];
+  programs.nushell.envFile.text = lib.mkForce ''
+    $env.EDITOR = 'nvim'
+    $env.GTK_IM_MODULE = "simple";
+  '';
 }
