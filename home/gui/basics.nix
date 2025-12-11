@@ -12,6 +12,10 @@
     "Reading the ToS is considered a breach of Contract"
   ];
 in {
+  imports = [
+    ../../modules/stylix.nix
+  ];
+
   home.packages = with pkgs; [
     pavucontrol # audio in/out
     libnotify
