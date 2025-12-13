@@ -1,32 +1,47 @@
 # Nix Flakes and Dotfiles
 
-## Server
+## Testing
+
+```sh
+nix flake check
+```
+
+## Profiles
+
+Each system has it's own profile. at the moment I maintain
+
+- Desktop
+- Server
+- MacBook
+- Work
+
+### Server
 
 ```sh
 sudo nixos-rebuild switch --flake .#server
 ```
 
-## Desktop
+### Desktop
 
 ```sh
 sudo nixos-rebuild switch --flake .#desktop
 ```
 
-## MacOS
+### MacOS
 
 ```sh
 darwin-rebuild switch --flake .#macbook
 ```
 
-## Work
+### Work
 
 ```sh
-home-manager switch --flake .#tim@macbook
+home-manager switch --flake .#tim@work
 ```
 
 ## GPG
 
-for the first time after installation
+when the keys change run:
 
 ```sh
 gpg --card-status
@@ -40,15 +55,19 @@ Change Pin and AdminPin
 gpg --change-pin
 ```
 
-generate key:
+#### Generate key
 
 ```sh
+# either 
 gpg --expert --full-gen-key
-# ECC (sign only)
-# Curve 25519
+# or
+gpg --card-edit
+admin
+key-attr
+generate
 ```
 
-generate subkeys
+#### Generate subkeys
 
 ```sh
 gpg --list-secret-keys
@@ -56,11 +75,15 @@ gpg --expert --edit-key 1234ABC
 addkey
 ```
 
-needs to be run before it can be used.
-
-## Testing
+### Generate new identity
 
 ```sh
-nix flake check
+gpg --list-secret-keys
+gpg --expert --edit-key 1234ABC
+adduid
 ```
 
+### Create Public Key with specific identity
+
+A fido2 key can be seperately configured on the system to allow sudo and logins
+to be done with a security key.
