@@ -1,8 +1,17 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   home.packages = with pkgs; [
     pavucontrol
     playerctl
   ];
+
+  stylix.targets.waybar = {
+    addCss = false;
+    font = "sansSerif";
+  };
 
   programs.waybar = {
     enable = true;
@@ -57,20 +66,20 @@
 
         load = {
           interval = 10;
-          format = " {load1}";
+          format = "  {load1}";
           max-length = 10;
         };
         memory = {
           interval = 10;
-          format = " {}%";
+          format = "  {}%";
         };
 
         network = {
           interface = "wlo1";
           format = "{ifname}";
           format-wifi = "󰤨";
-          format-ethernet = " {ifname}";
-          format-disconnected = "";
+          format-ethernet = "  {ifname}";
+          format-disconnected = " ";
           tooltip-format = "{ifname}";
           tooltip-format-wifi = "{essid} ({signalStrength}%)";
           tooltip-format-ethernet = "{ifname}";
@@ -78,11 +87,11 @@
           max-length = 50;
         };
         bluetooth = {
-          format-on = "󰂯";
-          format-connected = "󰂱";
+          format-on = "󰂯 ";
+          format-connected = "󰂱 ";
           format-connected-battery = "󰂱 {device_battery_percentage}%";
-          format-disabled = "󰂲";
-          format-off = "󰂲";
+          format-disabled = "󰂲 ";
+          format-off = "󰂲 ";
           format-no-controller = "";
 
           tooltip = true;
@@ -99,16 +108,16 @@
         pulseaudio = {
           format = "{icon}";
           format-bluetooth = "{icon}";
-          format-muted = "";
+          format-muted = " ";
           format-icons = {
-            "headphones" = "";
-            "headset" = "󰋎";
-            "headset-muted" = "󰋐";
-            "phone" = "";
-            "phone-muted" = "";
-            "portable" = "";
-            "car" = "";
-            "default" = ["" "" " "];
+            "headphones" = " ";
+            "headset" = "󰋎 ";
+            "headset-muted" = "󰋐 ";
+            "phone" = " ";
+            "phone-muted" = " ";
+            "portable" = " ";
+            "car" = " ";
+            "default" = [" " " " "  "];
           };
           scroll-step = 1;
           on-click = "pavucontrol";
@@ -121,8 +130,8 @@
           format = "{name}: {icon}";
           format-icons = {
             urgent = "!";
-            active = "";
-            default = "";
+            active = " ";
+            default = " ";
           };
         };
         clock = {
@@ -153,14 +162,14 @@
           tooltip = false;
           format = "{icon}";
           format-icons = {
-            notification = "<span foreground='red'><sup></sup></span>";
-            none = "";
-            dnd-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-none = "";
-            inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            inhibited-none = "";
-            dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-            dnd-inhibited-none = "";
+            notification = " <span foreground='red'><sup></sup></span>";
+            none = " ";
+            dnd-notification = " <span foreground='red'><sup></sup></span>";
+            dnd-none = " ";
+            inhibited-notification = " <span foreground='red'><sup></sup></span>";
+            inhibited-none = " ";
+            dnd-inhibited-notification = " <span foreground='red'><sup></sup></span>";
+            dnd-inhibited-none = " ";
           };
           return-type = "json";
           exec-if = "which swaync-client";
@@ -171,6 +180,151 @@
         };
       };
     };
-    # style = ./waybar-style.css;
+    style = lib.mkAfter ''
+      * {
+        font-size: 17px;
+        min-height: 0;
+      }
+
+
+      #waybar {
+        background-color: transparent;
+        color: @base05;
+        margin: 5px;
+      }
+
+      /* section */
+      #custom-music,
+      #tray,
+      #clock,
+      #battery,
+      #pulseaudio,
+      #network,
+      #bluetooth,
+      #privacy,
+      #workspaces,
+      #taskbar,
+      #custom-notification,
+      #custom-lock,
+      #custom-power,
+      #load,
+      #memory {
+        background-color: @base02;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        margin: 5px 0;
+      }
+
+      /* section start */
+      #network,
+      #load {
+        border-radius: 1rem 0px 0px 1rem;
+        margin-left: 0.5rem;
+      }
+
+      /* section end */
+      #custom-power,
+      #memory {
+        border-radius: 0px 1rem 1rem 0px;
+        margin-right: 0.5rem;
+      }
+
+      #workspaces {
+        border-radius: 1rem;
+        margin-left: 0.5rem;
+      }
+
+      #taskbar button,
+      #workspaces button {
+        color: @base07;
+        border-radius: 1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      #taskbar button:active,
+      #workspaces button.active {
+        color: @base0D;
+        background-image: linear-gradient(135deg, @base0F, @base0D);
+      }
+
+      #taskbar button:hover,
+      #workspaces button:hover {
+        color: @base0C;
+        background-image: linear-gradient(135deg, @base0F, @base0D);
+      }
+
+      #taskbar button.active {
+        background-image: linear-gradient(@base0F, @base0D);
+      }
+      #taskbar button.fullscreen {
+        background-image: linear-gradient(@base08, @base0F);
+      }
+
+      #network {
+        color: @base0E;
+      }
+
+      #bluetooth {
+        color: @base07;
+      }
+
+      #clock,
+      #load,
+      #memory{
+        color: @base0D;
+      }
+
+      #custom-power {
+        color: @base0A;
+      }
+
+      #pulseaudio {
+        color: @base08;
+      }
+
+      #custom-notification,
+      #taskbar {
+        color: @base07;
+        border-radius: 1rem 1rem 1rem 1rem;
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+
+      #custom-music {
+        color: @base0E;
+        border-radius: 1rem;
+      }
+
+      #custom-lock {
+        color: @base07;
+      }
+
+      #tray {
+        margin-right: 0.5rem;
+        border-radius: 1rem;
+      }
+
+      #privacy {
+        border-radius: 1rem;
+      }
+
+      tooltip {
+        border-radius: 1rem;
+        background-color: @base04;
+      }
+
+      menu {
+        background-color: @base03;
+        color: @base05;
+        border-radius: 1rem;
+        border-width: 8px;
+      }
+
+      menuitem:hover {
+        border-radius: 1rem 1rem 1rem 1rem;
+        background-color: @base04;
+      }
+    '';
   };
 }
