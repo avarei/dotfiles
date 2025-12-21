@@ -1,19 +1,19 @@
-{
-  config,
-  lib,
-  ...
-}: {
-  imports = [
-    ./home/global.nix
-    ./home/editor/neovim.nix
-    ./home/git.nix
-    ./home/shell/nushell.nix
-    ./home/shell/zsh.nix
-    ./home/shell/tmux.nix
-    ./home/gpg.nix
-    ./home/selfhosted/jellyfin.nix
-    ./home/selfhosted/copyparty.nix
-  ];
+{lib, ...}: {
+  imports = [./home];
+
+  dotfiles = {
+    editor.neovim.enable = true;
+    git.enable = true;
+    shell.nushell.enable = true;
+    shell.zsh.enable = true;
+    shell.tmux.enable = true;
+    gpg.enable = true;
+    selfhosted = {
+      jellyfin.enable = true;
+      copyparty.enable = true;
+    };
+  };
+
   programs.nushell.envFile.text = lib.mkForce ''
     $env.EDITOR = 'nvim'
     $env.GTK_IM_MODULE = "simple";

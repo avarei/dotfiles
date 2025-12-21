@@ -5,18 +5,22 @@
   ...
 }: {
   imports = [
-    ./home/global.nix
-    ./home/editor/neovim.nix
-    ./home/git.nix
-    ./home/shell/nushell.nix
-    ./home/shell/zsh.nix
-    ./home/shell/tmux.nix
-    ./home/gpg.nix
-    ./home/gui/firefox.nix
-    ./home/gui/niri.nix
-    ./home/gui/ghostty.nix
-    ./home/gaming/minecraft-client.nix
+    ./home
   ];
+  dotfiles = {
+    editor.neovim.enable = true;
+    git.enable = true;
+    shell.nushell.enable = true;
+    shell.zsh.enable = true;
+    shell.tmux.enable = true;
+    gpg.enable = true;
+    gui = {
+      enable = true;
+      niri.enable = true;
+      ghostty.enable = true;
+      firefox.enable = true;
+    };
+  };
 
   home = {
     packages = with pkgs; [
