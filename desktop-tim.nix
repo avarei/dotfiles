@@ -21,10 +21,11 @@
   home = {
     packages = with pkgs; [
       discord
-      pureref
+      prismlauncher # minecraft client
     ];
     sessionVariables = {
       SSH_AUTH_SOCK = "$(${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket)";
+      EDITOR = "nvim";
     };
   };
   programs.nushell.envFile.text = lib.mkForce ''
