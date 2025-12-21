@@ -83,14 +83,10 @@ in {
           };
           theme = {
             enable = true;
-            name = "catppuccin";
-            # transparent = true;
-            style = "mocha";
           };
           visuals.nvim-web-devicons.enable = true;
           statusline.lualine = {
             enable = true;
-            theme = "catppuccin";
           };
           notes.todo-comments.enable = true;
           utility.surround.enable = true;
