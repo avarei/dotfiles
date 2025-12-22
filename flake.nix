@@ -106,10 +106,17 @@
         pkgs = pkgsFor.x86_64-linux;
         modules = [
           stylix.homeModules.stylix
-          ./home/global.nix
-          ./home/editor/neovim.nix
-          ./home/git.nix
-          ./home/gpg.nix
+          ./home
+          {
+            dotfiles = {
+              editor.neovim.enable = true;
+              git.enable = true;
+              shell.nushell.enable = true;
+              shell.zsh.enable = true;
+              shell.tmux.enable = true;
+              gpg.enable = true;
+            };
+          }
         ];
         extraSpecialArgs = {inherit nvf;};
       };
