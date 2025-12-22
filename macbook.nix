@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./hosts/common.nix
+    ./hosts
   ];
 
   system.stateVersion = 5;

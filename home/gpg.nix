@@ -99,6 +99,9 @@ in {
     services.gpg-agent = {
       enableSshSupport = true;
       enableExtraSocket = true;
+      enableNushellIntegration = true;
+      enableBashIntegration = true;
+      enableZshIntegration = true;
     };
   };
 }

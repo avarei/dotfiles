@@ -6,7 +6,7 @@
   ...
 }: {
   imports = [
-    ./hosts/common-linux.nix
+    ./hosts
     ./hosts/gui/niri.nix
     ./hosts/gaming/steam.nix
 

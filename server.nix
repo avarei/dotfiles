@@ -1,10 +1,15 @@
-{ config, inputs, lib, pkgs, modulesPath, ... }:
-
 {
+  config,
+  inputs,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
-    ./hosts/common-linux.nix
+    ./hosts
 
-    (modulesPath + "/installer/scan/not-detected.nix") 
+    (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
   networking.nat.enable = true;
@@ -32,7 +37,7 @@
     networkmanager.enable = false;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 3923 8096 22 ];
+      allowedTCPPorts = [3923 8096 22];
     };
   };
 
@@ -48,13 +53,11 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Don't change this
 
-
   #hardware-configuration
-  boot.initrd.availableKernelModules =
-    [ "nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-amd" ];
-  boot.extraModulePackages = [ ];
+  boot.initrd.availableKernelModules = ["nvme" "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod"];
+  boot.initrd.kernelModules = [];
+  boot.kernelModules = ["kvm-amd"];
+  boot.extraModulePackages = [];
 
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/9d4ff498-7f51-4ee5-9881-c5398b3af6e0";
@@ -64,10 +67,10 @@
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/8CBB-1FE7";
     fsType = "vfat";
-    options = [ "fmask=0077" "dmask=0077" ];
+    options = ["fmask=0077" "dmask=0077"];
   };
 
-  swapDevices = [ ];
+  swapDevices = [];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
