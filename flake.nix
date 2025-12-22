@@ -116,7 +116,7 @@
       };
     };
 
-    homeManagerModules.default = import ./home {inherit nvf;};
+    homeModules.default = import ./home {inherit nvf;};
     nixosModules.default = import ./hosts;
   };
 }
