@@ -7,11 +7,13 @@
 }: {
   imports = [
     ./hosts
-    ./hosts/gui/niri.nix
-    ./hosts/gaming/steam.nix
-
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
+
+  dotfiles = {
+    gui.niri.enable = true;
+    gaming.steam.enable = true;
+  };
 
   # Bootloader.
   boot = {

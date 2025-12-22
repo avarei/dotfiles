@@ -6,6 +6,8 @@
 }: {
   imports = [
     ../modules/stylix.nix
+    ./gui/niri.nix
+    ./gaming/steam.nix
   ];
 
   options.dotfiles = {
