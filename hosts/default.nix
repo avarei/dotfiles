@@ -16,7 +16,7 @@
       default = "tim";
     };
     ssh.publicKey = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.listOf lib.types.singleLineStr;
       default = lib.splitString "\n" (builtins.readFile ../home/ssh.pub);
     };
   };
