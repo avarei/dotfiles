@@ -44,18 +44,6 @@
         config.allowUnfree = true;
       });
   in {
-    # devShells = forAllSystems devShell;
-    devShells.x86_64-linux."provider-vault" = let
-      pkgs = nixpkgs.legacyPackages.x86_64-linux;
-    in
-      pkgs.mkShell {
-        nativeBuildInputs = with pkgs; [
-          gnumake
-          go
-          kubernetes-helm
-        ];
-      };
-
     darwinConfigurations = {
       macbook = nix-darwin.lib.darwinSystem {
         pkgs = pkgsFor.aarch64-darwin;
@@ -127,5 +115,8 @@
         extraSpecialArgs = {inherit nvf;};
       };
     };
+
+    homeManagerModules.default = import ./home {inherit nvf;};
+    nixosModules.default = import ./hosts;
   };
 }

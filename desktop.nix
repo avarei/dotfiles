@@ -1,6 +1,10 @@
-{ config, inputs, lib, pkgs, modulesPath, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  modulesPath,
+  ...
+}: {
   imports = [
     ./hosts/common-linux.nix
     ./hosts/gui/niri.nix
@@ -12,11 +16,11 @@
   # Bootloader.
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod" ];
-      kernelModules = [ ];
+      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
+      kernelModules = [];
     };
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelModules = ["kvm-intel"];
+    extraModulePackages = [];
     loader = {
       systemd-boot = {
         enable = true;
@@ -29,7 +33,7 @@
   };
 
   powerManagement.enable = true;
-  
+
   networking = {
     hostName = "desktop";
     # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -40,26 +44,27 @@
     os-prober
   ];
 
-  fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXROOT";
-      fsType = "ext4";
-    };
+  fileSystems."/" = {
+    device = "/dev/disk/by-label/NIXROOT";
+    fsType = "ext4";
+  };
 
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-label/NIXBOOT";
-      fsType = "vfat";
-      options = [ "fmask=0077" "dmask=0077" ];
-    };
-  fileSystems."/mnt/games" =
-    { device = "/dev/disk/by-label/NIXGAMES";
-      fsType = "ext4";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/NIXBOOT";
+    fsType = "vfat";
+    options = ["fmask=0077" "dmask=0077"];
+  };
+  fileSystems."/mnt/games" = {
+    device = "/dev/disk/by-label/NIXGAMES";
+    fsType = "ext4";
+  };
 
-  swapDevices = [ {
-    device = "/var/lib/swapfile";
-    size = 32*1024;
-  } ];
-
+  swapDevices = [
+    {
+      device = "/var/lib/swapfile";
+      size = 32 * 1024;
+    }
+  ];
 
   hardware.graphics.enable = true;
 
@@ -91,4 +96,3 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 }
-

@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{config, ...}: {
   imports = [
-    ./common.nix
+    ./default.nix
     ../modules/nixos/gpg
   ];
   console.keyMap = "us";
@@ -28,7 +28,7 @@
     options = "shift:breaks_caps";
   };
 
-  users.users.tim = {
+  users.users.${config.dotfiles.user} = {
     isNormalUser = true;
     extraGroups = ["networkmanager" "wheel" "docker"];
   };
