@@ -107,7 +107,6 @@
         modules = [
           stylix.homeModules.stylix
           ./home/global.nix
-          ./modules/stylix.nix
           ./home/editor/neovim.nix
           ./home/git.nix
           ./home/gpg.nix

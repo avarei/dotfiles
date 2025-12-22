@@ -10,7 +10,7 @@ in {
     enable = lib.mkEnableOption "Enable Firefox Configuration";
   };
   config = lib.mkIf cfg.enable {
-    stylix.targets.firefox = {
+    stylix.targets.firefox = lib.mkIf config.dotfiles.stylix.enable {
       profileNames = ["tim"];
       colorTheme.enable = true;
     };
