@@ -21,7 +21,7 @@ in {
           layer = "top";
           position = "top";
           height = 30;
-          modules-left = ["hyprland/workspaces" "wlr/taskbar"];
+          modules-left = ["wlr/taskbar"];
           modules-center = ["custom/music"];
           modules-right = [
             "tray"
@@ -117,17 +117,6 @@ in {
             on-click = "pavucontrol";
           };
 
-          "hyprland/workspaces" = {
-            disable-scroll = true;
-            all-outputs = true;
-            warp-on-scroll = true;
-            format = "{name}: {icon}";
-            format-icons = {
-              urgent = "!";
-              active = " ";
-              default = " ";
-            };
-          };
           clock = {
             format = "  {:%H:%M}";
             tooltip-format = "󰃭  {:%d.%m.%Y}";
@@ -196,7 +185,6 @@ in {
         #network,
         #bluetooth,
         #privacy,
-        #workspaces,
         #taskbar,
         #custom-notification,
         #custom-lock,
@@ -223,27 +211,19 @@ in {
           margin-right: 0.5rem;
         }
 
-        #workspaces {
-          border-radius: 1rem;
-          margin-left: 0.5rem;
-        }
-
-        #taskbar button,
-        #workspaces button {
+        #taskbar button {
           color: @base07;
           border-radius: 1rem;
           padding-left: 1rem;
           padding-right: 1rem;
         }
 
-        #taskbar button:active,
-        #workspaces button.active {
+        #taskbar button:active {
           color: @base0D;
           background-image: linear-gradient(135deg, @base0F, @base0D);
         }
 
-        #taskbar button:hover,
-        #workspaces button:hover {
+        #taskbar button:hover {
           color: @base0C;
           background-image: linear-gradient(135deg, @base0F, @base0D);
         }

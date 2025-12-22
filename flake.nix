@@ -1,5 +1,5 @@
 {
-  description = "General Purpose Configuration for macOS and NixOS";
+  description = "My Config and Dotfiles for macOS and NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
     # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -24,13 +24,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland";
-
-    hyprland-plugins = {
-      # TODO check if this is obsolete
-      url = "github:hyprwm/hyprland-plugins";
-      inputs.hyprland.follows = "hyprland";
-    };
     niri.url = "github:sodiboo/niri-flake"; # using unstable niri package due to graphical issues with v25.05.1
     # catppuccin.url = "github:catppuccin/nix/release-25.05";
   };

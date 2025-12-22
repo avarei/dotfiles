@@ -59,25 +59,6 @@ in {
     programs.hyprlock = {
       enable = true;
       settings = {
-        "$mauve" = "rgb(cba6f7)";
-        "$mauveAlpha" = "cba6f7";
-
-        "$red" = "rgb(f38ba8)";
-        "$redAlpha" = "f38ba8";
-
-        "$yellow" = "rgb(f9e2af)";
-        "$yellowAlpha" = "f9e2af";
-
-        "$text" = "rgb(cdd6f4)";
-        "$textAlpha" = "cdd6f4";
-
-        "$surface0" = "rgb(313244)";
-        "$surface0Alpha" = "313244";
-
-        "$accent" = "$mauve";
-        "$accentAlpha" = "$mauveAlpha";
-        "$font" = "Ubuntu Nerd Font";
-
         general = {
           hide_cursor = true;
         };
@@ -86,13 +67,14 @@ in {
           "pam:module" = "login";
         };
 
-        background = [
-          {
-            path = "screenshot";
-            blur_passes = 3;
-            blur_size = 8;
-          }
-        ];
+        # TODO: integrate with stylix
+        # background = [
+        #   {
+        #     path = "screenshot";
+        #     blur_passes = 3;
+        #     blur_size = 8;
+        #   }
+        # ];
 
         label = [
           {
@@ -144,29 +126,30 @@ in {
         # ];
 
         # INPUT FIELD
-        input-field = [
-          {
-            monitor = "";
-            size = "300, 60";
-            outline_thickness = 4;
-            dots_size = 0.2;
-            dots_spacing = 0.2;
-            dots_center = true;
-            outer_color = "$accent";
-            inner_color = "$surface0";
-            font_color = "$text";
-            fade_on_empty = false;
-            placeholder_text = "<span foreground=\"##$textAlpha\">󰌾 Logged in as <span foreground=\"##$accentAlpha\">$USER</span></span>";
-            hide_input = false;
-            check_color = "$accent";
-            fail_color = "$red";
-            fail_text = "$FAIL <b>($ATTEMPTS)</b>";
-            capslock_color = "$yellow";
-            position = "0, -47";
-            halign = "center";
-            valign = "center";
-          }
-        ];
+        # TODO: configure stylix
+        # input-field = [
+        #   {
+        #     monitor = "";
+        #     size = "300, 60";
+        #     outline_thickness = 4;
+        #     dots_size = 0.2;
+        #     dots_spacing = 0.2;
+        #     dots_center = true;
+        #     outer_color = "$accent";
+        #     inner_color = "$surface0";
+        #     font_color = "$text";
+        #     fade_on_empty = false;
+        #     placeholder_text = "<span foreground=\"##$textAlpha\">󰌾 Logged in as <span foreground=\"##$accentAlpha\">$USER</span></span>";
+        #     hide_input = false;
+        #     check_color = "$accent";
+        #     fail_color = "$red";
+        #     fail_text = "$FAIL <b>($ATTEMPTS)</b>";
+        #     capslock_color = "$yellow";
+        #     position = "0, -47";
+        #     halign = "center";
+        #     valign = "center";
+        #   }
+        # ];
       };
     };
 
