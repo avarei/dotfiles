@@ -122,8 +122,27 @@
       };
     };
 
-    homeModules.default = import ./home {inherit nvf;};
-    nixosModules.default = import ./nixos;
-    darwinModules.default = import ./darwin;
+    homeModules.default = {
+      pkgs,
+      nvf,
+      ...
+    }: {
+      imports = [
+        stylix.homeModules.stylix
+        ./modules/home
+      ];
+    };
+    nixosModules.default = {pkgs, ...}: {
+      imports = [
+        stylix.nixosModules.stylix
+        ./modules/nixos
+      ];
+    };
+    darwinModules.default = {pkgs, ...}: {
+      imports = [
+        stylix.darwinModules.stylix
+        ./modules/darwin
+      ];
+    };
   };
 }
