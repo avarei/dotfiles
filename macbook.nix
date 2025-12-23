@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./darwin
+    ./modules/darwin
   ];
 
   system.stateVersion = 5;

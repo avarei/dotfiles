@@ -1,13 +1,12 @@
 {
   config,
-  inputs,
   lib,
   pkgs,
   modulesPath,
   ...
 }: {
   imports = [
-    ./nixos
+    ./modules/nixos
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 

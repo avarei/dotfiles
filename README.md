@@ -8,7 +8,7 @@ nix flake check
 
 ## Profiles
 
-Each system has it's own profile. at the moment I maintain
+Each system has it's own profile. At the moment I maintain
 
 - Desktop
 - Server
@@ -87,3 +87,7 @@ adduid
 
 A fido2 key can be seperately configured on the system to allow sudo and logins
 to be done with a security key.
+
+## Initialization
+
+Run `:DirtytalkUpdate` on first vim use to download the language.

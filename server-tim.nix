@@ -1,5 +1,5 @@
 {lib, ...}: {
-  imports = [./home];
+  imports = [./modules/home];
 
   dotfiles = {
     editor.neovim.enable = true;

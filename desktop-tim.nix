@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ./home
+    ./modules/home
   ];
   dotfiles = {
     editor.neovim.enable = true;

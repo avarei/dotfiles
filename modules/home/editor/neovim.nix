@@ -49,6 +49,11 @@ in {
             formatOnSave = true;
             inlayHints.enable = true;
           };
+          spellcheck = {
+            enable = true;
+            languages = ["en" "de"];
+            programmingWordlist.enable = true; # NOTE: run :DirtytalkUpdate on first use
+          };
           languages = {
             nix = {
               enable = true;
