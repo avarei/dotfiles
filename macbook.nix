@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./hosts
+    ./darwin
   ];
 
   system.stateVersion = 5;

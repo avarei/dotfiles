@@ -123,6 +123,7 @@
     };
 
     homeModules.default = import ./home {inherit nvf;};
-    nixosModules.default = import ./hosts;
+    nixosModules.default = import ./nixos;
+    darwinModules.default = import ./darwin;
   };
 }
