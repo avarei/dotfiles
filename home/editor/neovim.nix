@@ -9,7 +9,7 @@
 in {
   imports = [nvf.homeManagerModules.default];
   options.dotfiles.editor.neovim = {
-    enable = lib.mkEnableOption "Enable Neovim Configuration using nvf";
+    enable = lib.mkEnableOption "neovim";
   };
   config = lib.mkIf cfg.enable {
     home = {packages = with pkgs; [go];};

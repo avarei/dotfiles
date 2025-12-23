@@ -6,7 +6,7 @@
   cfg = config.dotfiles.selfhosted.copyparty;
 in {
   options.dotfiles.selfhosted.copyparty = {
-    enable = lib.mkEnableOption "Enable Copyparty Configuration";
+    enable = lib.mkEnableOption "copyparty";
   };
   config = lib.mkIf cfg.enable {
     services.podman = {

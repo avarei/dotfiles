@@ -7,7 +7,7 @@
   cfg = config.dotfiles.gui.firefox;
 in {
   options.dotfiles.gui.firefox = {
-    enable = lib.mkEnableOption "Enable Firefox Configuration";
+    enable = lib.mkEnableOption "firefox";
   };
   config = lib.mkIf cfg.enable {
     stylix.targets.firefox = lib.mkIf config.dotfiles.stylix.enable {

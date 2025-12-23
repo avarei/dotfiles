@@ -7,7 +7,7 @@
   cfg = config.dotfiles.gui.niri;
 in {
   options.dotfiles.gui.niri = {
-    enable = lib.mkEnableOption "Enable Niri Window Manager Configuration";
+    enable = lib.mkEnableOption "niri";
   };
   config = lib.mkIf (cfg.enable && pkgs.stdenv.isLinux) {
     home.packages = with pkgs; [xwayland-satellite hyprshot];

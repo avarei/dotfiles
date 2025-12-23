@@ -6,7 +6,7 @@
   cfg = config.dotfiles.gpg;
 in {
   options.dotfiles.gpg = {
-    enable = lib.mkEnableOption "Enable GPG Configuration";
+    enable = lib.mkEnableOption "gpg";
   };
   config = lib.mkIf cfg.enable {
     programs.gpg = {

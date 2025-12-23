@@ -7,7 +7,7 @@
   cfg = config.dotfiles.shell.tmux;
 in {
   options.dotfiles.shell.tmux = {
-    enable = lib.mkEnableOption "Enable Tmux Configuration";
+    enable = lib.mkEnableOption "tmux";
   };
   config = lib.mkIf cfg.enable {
     programs.tmux = {

@@ -6,7 +6,7 @@
   cfg = config.dotfiles.gui.ghostty;
 in {
   options.dotfiles.gui.ghostty = {
-    enable = lib.mkEnableOption "Enable GhosTTY Configuration";
+    enable = lib.mkEnableOption "ghostty";
   };
   config = lib.mkIf cfg.enable {
     programs.ghostty = {

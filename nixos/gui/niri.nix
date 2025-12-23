@@ -7,7 +7,7 @@
   cfg = config.dotfiles.gui.niri;
 in {
   options.dotfiles.gui.niri = {
-    enable = lib.mkEnableOption "Enable Niri Window Manager";
+    enable = lib.mkEnableOption "niri";
   };
   config = lib.mkIf cfg.enable {
     programs.niri = {

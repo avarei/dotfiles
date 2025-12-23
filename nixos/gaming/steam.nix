@@ -6,7 +6,7 @@
   cfg = config.dotfiles.gaming.steam;
 in {
   options.dotfiles.gaming.steam = {
-    enable = lib.mkEnableOption "Enable Steam Configuration";
+    enable = lib.mkEnableOption "steam";
   };
   config = lib.mkIf cfg.enable {
     programs.steam = {

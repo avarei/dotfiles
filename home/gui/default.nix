@@ -21,7 +21,7 @@ in {
     ./firefox.nix
   ];
   options.dotfiles.gui = {
-    enable = lib.mkEnableOption "Enable Gui and Tools for the WindowManager";
+    enable = lib.mkEnableOption "gui";
   };
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

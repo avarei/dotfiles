@@ -17,7 +17,7 @@ in {
     ./starship.nix
   ];
   options.dotfiles.shell.zsh = {
-    enable = lib.mkEnableOption "Enable Zsh Configuration";
+    enable = lib.mkEnableOption "zsh";
   };
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

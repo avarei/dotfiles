@@ -16,7 +16,7 @@ in {
     ./starship.nix
   ];
   options.dotfiles.shell.nushell = {
-    enable = lib.mkEnableOption "Enable Nushell Configuration";
+    enable = lib.mkEnableOption "nushell";
   };
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [

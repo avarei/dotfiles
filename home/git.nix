@@ -7,7 +7,7 @@
   cfg = config.dotfiles.git;
 in {
   options.dotfiles.git = {
-    enable = lib.mkEnableOption "Enable Git Configuration";
+    enable = lib.mkEnableOption "git";
   };
   config = lib.mkIf cfg.enable {
     home = {
