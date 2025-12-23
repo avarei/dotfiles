@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../stylix.nix
+    ../shared/stylix.nix
     ./gui/niri.nix
     ./gaming/steam.nix
   ];

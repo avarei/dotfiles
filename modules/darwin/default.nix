@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    ../stylix.nix
+    ../shared/stylix.nix
   ];
 
   options.dotfiles = {

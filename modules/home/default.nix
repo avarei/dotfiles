@@ -3,7 +3,7 @@
     ./editor/neovim.nix
     ./git.nix
     ./global.nix
-    ../stylix.nix
+    ../shared/stylix.nix
     ./shell/nushell.nix
     ./shell/zsh.nix
     ./shell/tmux.nix
