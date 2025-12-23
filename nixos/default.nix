@@ -55,6 +55,8 @@
       shell = pkgs.nushell;
       openssh.authorizedKeys.keys = config.dotfiles.ssh.publicKey;
       packages = [pkgs.home-manager];
+      isNormalUser = true;
+      extraGroups = ["networkmanager" "wheel" "docker"];
     };
 
     console.keyMap = "us";
@@ -80,11 +82,6 @@
       layout = "us";
       variant = "intl";
       options = "shift:breaks_caps";
-    };
-
-    users.users.${config.dotfiles.user} = {
-      isNormalUser = true;
-      extraGroups = ["networkmanager" "wheel" "docker"];
     };
 
     security.pam.services = {
