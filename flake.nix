@@ -55,7 +55,6 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nvf;};
               users.tim = ./macbook-tim.nix;
             };
           }
@@ -73,7 +72,6 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nvf;};
               users.tim = ./server-tim.nix;
             };
           }
@@ -89,7 +87,6 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              extraSpecialArgs = {inherit nvf;};
               users.tim = ./desktop-tim.nix;
             };
           }
@@ -106,6 +103,7 @@
         pkgs = pkgsFor.x86_64-linux;
         modules = [
           stylix.homeModules.stylix
+          nvf.homeManagerModules.default
           ./home
           {
             dotfiles = {
@@ -118,27 +116,23 @@
             };
           }
         ];
-        extraSpecialArgs = {inherit nvf;};
       };
     };
 
     homeModules.default = {
-      pkgs,
-      nvf,
-      ...
-    }: {
       imports = [
         stylix.homeModules.stylix
+        nvf.homeManagerModules.default
         ./modules/home
       ];
     };
-    nixosModules.default = {pkgs, ...}: {
+    nixosModules.default = {
       imports = [
         stylix.nixosModules.stylix
         ./modules/nixos
       ];
     };
-    darwinModules.default = {pkgs, ...}: {
+    darwinModules.default = {
       imports = [
         stylix.darwinModules.stylix
         ./modules/darwin

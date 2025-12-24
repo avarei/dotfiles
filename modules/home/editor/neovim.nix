@@ -1,13 +1,11 @@
 {
   pkgs,
   lib,
-  nvf,
   config,
   ...
 }: let
   cfg = config.dotfiles.editor.neovim;
 in {
-  imports = [nvf.homeManagerModules.default];
   options.dotfiles.editor.neovim = {
     enable = lib.mkEnableOption "neovim";
   };
