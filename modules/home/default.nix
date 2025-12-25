@@ -23,10 +23,11 @@
       EDITOR = lib.mkIf config.dotfiles.editor.neovim.enable "nvim";
     };
   };
-  programs.nushell.envFile.text =
-    lib.mkIf config.dotfiles.shell.nushell.enable [
+  programs.nushell.envFile.text = lib.concatStringsSep "\n" (
+    [
       "$env.GTK_IM_MODULE = \"simple\";"
     ]
     ++ lib.optional config.dotfiles.gpg.enable "$env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket"
-    ++ lib.optional config.dotfiles.editor.neovim.enable "$env.EDITOR = 'nvim'";
+    ++ lib.optional config.dotfiles.editor.neovim.enable "$env.EDITOR = 'nvim'"
+  );
 }
