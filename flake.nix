@@ -28,6 +28,7 @@
     # catppuccin.url = "github:catppuccin/nix/release-25.05";
   };
   outputs = {
+    self,
     nix-darwin,
     home-manager,
     nixpkgs,
@@ -48,16 +49,13 @@
       macbook = nix-darwin.lib.darwinSystem {
         pkgs = pkgsFor.aarch64-darwin;
         modules = [
+          self.darwinModules.default
           ./macbook.nix
-          stylix.darwinModules.stylix
           home-manager.darwinModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              sharedModules = [
-                nvf.homeManagerModules.default
-              ];
               users.tim = ./macbook-tim.nix;
             };
           }
@@ -69,15 +67,12 @@
       server = nixpkgs.lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
         modules = [
-          stylix.nixosModules.stylix
+          self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              sharedModules = [
-                nvf.homeManagerModules.default
-              ];
               users.tim = ./server-tim.nix;
             };
           }
@@ -87,15 +82,12 @@
       desktop = nixpkgs.lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
         modules = [
-          stylix.nixosModules.stylix
+          self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              sharedModules = [
-                nvf.homeManagerModules.default
-              ];
               users.tim = ./desktop-tim.nix;
             };
           }
@@ -111,8 +103,7 @@
       "tim@work" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
         modules = [
-          stylix.homeModules.stylix
-          nvf.homeManagerModules.default
+          self.homeModules.default
           ./home
           {
             dotfiles = {
