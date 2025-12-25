@@ -55,6 +55,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              sharedModules = [
+                nvf.homeManagerModules.default
+              ];
               users.tim = ./macbook-tim.nix;
             };
           }
@@ -72,6 +75,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              sharedModules = [
+                nvf.homeManagerModules.default
+              ];
               users.tim = ./server-tim.nix;
             };
           }
@@ -87,6 +93,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              sharedModules = [
+                nvf.homeManagerModules.default
+              ];
               users.tim = ./desktop-tim.nix;
             };
           }
@@ -131,11 +140,17 @@
         stylix.nixosModules.stylix
         ./modules/nixos
       ];
+      home-manager.sharedModules = [
+        nvf.homeManagerModules.default
+      ];
     };
     darwinModules.default = {
       imports = [
         stylix.darwinModules.stylix
         ./modules/darwin
+      ];
+      home-manager.sharedModules = [
+        nvf.homeManagerModules.default
       ];
     };
   };

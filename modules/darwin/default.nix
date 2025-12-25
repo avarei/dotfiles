@@ -6,7 +6,6 @@
 }: {
   imports = [
     ../shared/stylix.nix
-    ../shared/home-manager-integration.nix
   ];
 
   options.dotfiles = {
