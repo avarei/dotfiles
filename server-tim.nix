@@ -1,4 +1,4 @@
-{lib, ...}: {
+{...}: {
   imports = [./modules/home];
 
   dotfiles = {
@@ -13,9 +13,4 @@
       copyparty.enable = true;
     };
   };
-
-  programs.nushell.envFile.text = lib.mkForce ''
-    $env.EDITOR = 'nvim'
-    $env.GTK_IM_MODULE = "simple";
-  '';
 }

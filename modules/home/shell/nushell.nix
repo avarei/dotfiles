@@ -45,9 +45,6 @@ in {
         vi = "nvim";
         vim = "nvim";
       };
-      envFile.text = ''
-        $env.EDITOR = 'nvim'
-      '';
 
       # workaround for non nixos systems to set the correct envrionemnt variables
       # https://github.com/nix-darwin/nix-darwin/issues/1028
