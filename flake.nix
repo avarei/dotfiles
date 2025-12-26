@@ -56,7 +56,21 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.tim = ./macbook-tim.nix;
+              users.tim = {config, ...}: {
+                dotfiles = {
+                  editor.neovim.enable = true;
+                  git.enable = true;
+                  shell.nushell.enable = true;
+                  shell.zsh.enable = true;
+                  shell.tmux.enable = true;
+                  gpg.enable = true;
+                  gpg-agent.enable = true;
+                  gui.ghostty.enable = false;
+                };
+                home = {
+                  homeDirectory = "/Users/${config.home.username}";
+                };
+              };
             };
           }
         ];
@@ -73,7 +87,20 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.tim = ./server-tim.nix;
+              users.tim = {...}: {
+                dotfiles = {
+                  editor.neovim.enable = true;
+                  git.enable = true;
+                  shell.nushell.enable = true;
+                  shell.zsh.enable = true;
+                  shell.tmux.enable = true;
+                  gpg.enable = true;
+                  selfhosted = {
+                    jellyfin.enable = true;
+                    copyparty.enable = true;
+                  };
+                };
+              };
             };
           }
           ./server.nix
@@ -88,7 +115,30 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.tim = ./desktop-tim.nix;
+              users.tim = {pkgs, ...}: {
+                dotfiles = {
+                  editor.neovim.enable = true;
+                  git.enable = true;
+                  shell.nushell.enable = true;
+                  shell.zsh.enable = true;
+                  shell.tmux.enable = true;
+                  gpg.enable = true;
+                  gpg-agent.enable = true;
+                  gui = {
+                    enable = true;
+                    niri.enable = true;
+                    ghostty.enable = true;
+                    firefox.enable = true;
+                  };
+                };
+
+                home = {
+                  packages = with pkgs; [
+                    discord
+                    prismlauncher # Minecraft client
+                  ];
+                };
+              };
             };
           }
           {
@@ -133,6 +183,7 @@
       ];
       home-manager.sharedModules = [
         nvf.homeManagerModules.default
+        ./modules/home
       ];
     };
     darwinModules.default = {
@@ -142,6 +193,7 @@
       ];
       home-manager.sharedModules = [
         nvf.homeManagerModules.default
+        ./modules/home
       ];
     };
   };
