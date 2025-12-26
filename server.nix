@@ -6,7 +6,6 @@
   ...
 }: {
   imports = [
-    ./modules/nixos
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 

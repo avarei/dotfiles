@@ -50,9 +50,9 @@
         pkgs = pkgsFor.aarch64-darwin;
         modules = [
           self.darwinModules.default
-          ./macbook.nix
           home-manager.darwinModules.home-manager
           {
+            system.stateVersion = 5;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
