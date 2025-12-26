@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./modules/home
   ];
@@ -13,6 +9,7 @@
     shell.zsh.enable = true;
     shell.tmux.enable = true;
     gpg.enable = true;
+    gpg-agent.enable = true;
     gui.ghostty.enable = false;
   };
   home = {

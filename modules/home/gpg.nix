@@ -3,13 +3,16 @@
   lib,
   ...
 }: let
-  cfg = config.dotfiles.gpg;
+  cfg = config.dotfiles;
 in {
   options.dotfiles.gpg = {
     enable = lib.mkEnableOption "gpg";
   };
-  config = lib.mkIf cfg.enable {
-    programs.gpg = {
+  options.dotfiles.gpg-agent = {
+    enable = lib.mkEnableOption "gpg-agent";
+  };
+  config = {
+    programs.gpg = lib.mkIf cfg.gpg.enable {
       enable = true;
       publicKeys = [
         {
@@ -96,12 +99,15 @@ in {
         }
       ];
     };
-    services.gpg-agent = {
+    services.gpg-agent = lib.mkIf cfg.gpg-agent.enable {
       enableSshSupport = true;
       enableExtraSocket = true;
       enableNushellIntegration = true;
       enableBashIntegration = true;
       enableZshIntegration = true;
+    };
+    home.sessionVariables = lib.mkIf cfg.gpg-agent.enable {
+      SSH_AUTH_SOCK = lib.mkIf config.dotfiles.gpg.enable "$(${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket)";
     };
   };
 }

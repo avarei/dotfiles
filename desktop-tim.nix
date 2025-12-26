@@ -1,9 +1,4 @@
-{
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
     ./modules/home
   ];
@@ -14,6 +9,7 @@
     shell.zsh.enable = true;
     shell.tmux.enable = true;
     gpg.enable = true;
+    gpg-agent.enable = true;
     gui = {
       enable = true;
       niri.enable = true;

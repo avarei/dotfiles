@@ -19,7 +19,7 @@
 
   home = {
     sessionVariables = {
-      SSH_AUTH_SOCK = lib.mkIf config.dotfiles.gpg.enable "$(${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket)";
+      GTK_IM_MODULE = "simple";
       EDITOR = lib.mkIf config.dotfiles.editor.neovim.enable "nvim";
     };
   };
@@ -27,7 +27,7 @@
     [
       "$env.GTK_IM_MODULE = \"simple\";"
     ]
-    ++ lib.optional config.dotfiles.gpg.enable "$env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket"
+    ++ lib.optional config.dotfiles.gpg-agent.enable "$env.SSH_AUTH_SOCK = ^${config.programs.gpg.package}/bin/gpgconf --list-dirs agent-ssh-socket"
     ++ lib.optional config.dotfiles.editor.neovim.enable "$env.EDITOR = 'nvim'"
   );
 }
