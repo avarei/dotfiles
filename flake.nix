@@ -68,7 +68,7 @@
                   gui.ghostty.enable = false;
                 };
                 home = {
-                  homeDirectory = "/Users/${config.home.username}";
+                  homeDirectory = lib.mkForce "/Users/${config.home.username}";
                 };
               };
             };
