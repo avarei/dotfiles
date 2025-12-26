@@ -103,7 +103,7 @@
               };
             };
           }
-          ./server.nix
+          ./hosts/server.nix
         ];
       };
       desktop = nixpkgs.lib.nixosSystem {
@@ -144,7 +144,7 @@
           {
             nixpkgs.overlays = [niri.overlays.niri];
           }
-          ./desktop.nix
+          ./hosts/desktop.nix
         ];
       };
     };
