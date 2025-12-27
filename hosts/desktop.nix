@@ -24,7 +24,12 @@
       };
       efi.canTouchEfiVariables = true;
     };
-    kernelParams = ["resume_offset=41463808"];
+    kernelParams = [
+      "resume_offset=41463808"
+      "nvidia_drm.modeset=1"
+      "nvidia-drm.modeset=1"
+      "nvidia-drm.fbdev=1"
+    ];
     resumeDevice = "/dev/disk/by-label/NIXROOT";
   };
 
