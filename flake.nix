@@ -202,7 +202,7 @@
     };
     templates = {
       home-manager = {
-        path = ./templates/home-manager.nix;
+        path = ./templates/home-manager;
         description = "For Systems whihc are using home-manager but not nixos or darwin";
         welcomeText = ''
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
@@ -211,7 +211,7 @@
         '';
       };
       nixos = {
-        path = ./templates/nixos.nix;
+        path = ./templates/nixos;
         description = "For NixOS based Systems";
         welcomeText = ''
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
@@ -221,7 +221,7 @@
         '';
       };
       darwin = {
-        path = ./templates/darwin.nix;
+        path = ./templates/darwin;
         description = "For Darwin based Systems (MacOS)";
         welcomeText = ''
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
