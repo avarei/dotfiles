@@ -1,5 +1,19 @@
 # Nix Flakes and Dotfiles
 
+Welcome to my Dotfiles nix flakes.
+
+Please consider all options unstable. They may change without notice. I have
+restructured this Repository multiple times already.
+
+## Use this Repository
+
+This flake can be used as a dependency. It exposes options which can then be
+set.
+
+- home-manager: `nix flake init --template github:avarei/dotfiles#home-manager`
+- nixos: `nix flake init --template github:avarei/dotfiles#nixos`
+- darwin: `nix flake init --template github:avarei/dotfiles#darwin`
+
 ## Testing
 
 ```sh
@@ -13,7 +27,6 @@ Each system has it's own profile. At the moment I maintain
 - Desktop
 - Server
 - MacBook
-- Work
 
 ### Server
 
