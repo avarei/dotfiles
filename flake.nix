@@ -207,6 +207,7 @@
         welcomeText = ''
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
           to get started replace the username and host in the flake with yours.
+
           run `home-manager switch --flake .#username@hostname` to switch to your new configuration.
         '';
       };
@@ -216,8 +217,9 @@
         welcomeText = ''
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
           to get started replace the username and host in the flake with yours.
-          run `sudo nixos-rebuild test --flake .#yourhostname` to test your condifuration.
-          run `sudo nixos-rebuild switch --flake .#yourhostname` to switch to it.
+
+          - run `sudo nixos-rebuild test --flake .#yourhostname` to test your condifuration.
+          - run `sudo nixos-rebuild switch --flake .#yourhostname` to switch to it.
         '';
       };
       darwin = {
@@ -226,6 +228,7 @@
         welcomeText = ''
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
           to get started replace the username and host in the flake with yours.
+
           run `sudo darwin-rebuild switch --flake .#yourhostname` to switch to your configuration.
         '';
       };
