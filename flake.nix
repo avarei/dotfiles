@@ -229,6 +229,8 @@
           This is a template using my personal dotfiles. Please consider all options very unstable. They may change without notice.
           to get started replace the username and host in the flake with yours.
 
+          add your `hardware-configuration.nix` and reference it in the flake. by default ./hosts/$\{username\}.nix is referenced.
+
           run `sudo darwin-rebuild switch --flake .#yourhostname` to switch to your configuration.
         '';
       };
