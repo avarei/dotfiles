@@ -84,6 +84,10 @@
           self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
+            dotfiles = {
+              gui.niri.enable = true;
+              gaming.steam.enable = true;
+            };
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -195,6 +199,20 @@
         nvf.homeManagerModules.default
         ./modules/home
       ];
+    };
+    templates = {
+      home-manager = {
+        path = ./templates/home-manager.nix;
+        description = "For Systems whihc are using home-manager but not nixos or darwin";
+      };
+      nixos = {
+        path = ./templates/nixos.nix;
+        description = "For NixOS based Systems";
+      };
+      darwin = {
+        path = ./templates/darwin.nix;
+        description = "For Darwin based Systems (MacOS)";
+      };
     };
   };
 }

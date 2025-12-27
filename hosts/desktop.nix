@@ -9,11 +9,6 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  dotfiles = {
-    gui.niri.enable = true;
-    gaming.steam.enable = true;
-  };
-
   # Bootloader.
   boot = {
     initrd = {
