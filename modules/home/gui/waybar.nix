@@ -22,22 +22,70 @@ in {
           position = "top";
           height = 30;
           modules-left = [
-            "custom/apps"
-            "wlr/taskbar"
+            "group/left"
           ];
-          modules-center = ["custom/music"];
+          modules-center = ["group/music"];
           modules-right = [
-            "tray"
-            "privacy"
-            "load" # cpu load
-            "memory"
-            "network"
-            "bluetooth"
-            "pulseaudio"
-            "clock"
-            "custom/power"
-            "custom/notification"
+            "group/privacy"
+            "group/tray"
+            "group/system"
+            "group/misc"
+            "group/notification"
           ];
+
+          "group/left" = {
+            orientation = "horizontal";
+            modules = [
+              "custom/apps"
+              "wlr/taskbar"
+            ];
+          };
+          "group/music" = {
+            orientation = "horizontal";
+            modules = [
+              "custom/music"
+            ];
+          };
+
+          "group/privacy" = {
+            orientation = "horizontal";
+            modules = [
+              "privacy"
+            ];
+          };
+
+          "group/tray" = {
+            orientation = "horizontal";
+            modules = [
+              "tray"
+            ];
+          };
+
+          "group/system" = {
+            orientation = "horizontal";
+            modules = [
+              "load" # cpu load
+              "memory"
+            ];
+          };
+
+          "group/misc" = {
+            orientation = "horizontal";
+            modules = [
+              "network"
+              "bluetooth"
+              "pulseaudio"
+              "clock"
+              "custom/power"
+            ];
+          };
+
+          "group/notification" = {
+            orientation = "horizontal";
+            modules = [
+              "custom/notification"
+            ];
+          };
 
           "wlr/taskbar" = {
             tooltip-format = "{title} {app_id}";
@@ -146,7 +194,7 @@ in {
 
           "custom/apps" = {
             tooltip = false;
-            format = "󰵆 ";
+            format = " 󰵆 ";
             on-click = "fuzzel";
           };
 
@@ -154,14 +202,14 @@ in {
             tooltip = false;
             format = "{icon}";
             format-icons = {
-              notification = " <span foreground='red'><sup></sup></span>";
-              none = " ";
-              dnd-notification = " <span foreground='red'><sup></sup></span>";
-              dnd-none = " ";
-              inhibited-notification = " <span foreground='red'><sup></sup></span>";
-              inhibited-none = " ";
-              dnd-inhibited-notification = " <span foreground='red'><sup></sup></span>";
-              dnd-inhibited-none = " ";
+              notification = "  <span foreground='red'><sup></sup></span>";
+              none = "  ";
+              dnd-notification = "  <span foreground='red'><sup></sup></span>";
+              dnd-none = "  ";
+              inhibited-notification = "  <span foreground='red'><sup></sup></span>";
+              inhibited-none = "  ";
+              dnd-inhibited-notification = "  <span foreground='red'><sup></sup></span>";
+              dnd-inhibited-none = "  ";
             };
             return-type = "json";
             exec-if = "which swaync-client";
@@ -176,6 +224,7 @@ in {
         * {
           font-size: 17px;
           min-height: 0;
+          margin: 0px;
         }
 
 
@@ -185,55 +234,34 @@ in {
           margin: 5px;
         }
 
-        /* section */
-        #custom-music,
-        #tray,
-        #clock,
-        #battery,
-        #pulseaudio,
-        #network,
-        #bluetooth,
-        #privacy,
-        #taskbar,
-        #custom-notification,
-        #custom-lock,
-        #custom-power,
-        #custom-apps,
-        #load,
-        #memory {
+        window#waybar > box {
+          margin-top: 5px;
+          margin-bottom: 5px;
+        }
+
+        window box box widget box {
           background-color: @base02;
-          padding-left: 1rem;
-          padding-right: 1rem;
-          margin: 5px 0;
-        }
-
-        /* section start */
-        #network,
-        #custom-apps,
-        #load {
-          border-radius: 1rem 0px 0px 1rem;
+          border-radius: 1rem;
           margin-left: 0.5rem;
-        }
-
-        /* section end */
-        #custom-power,
-        #memory {
-          border-radius: 0px 1rem 1rem 0px;
           margin-right: 0.5rem;
+          padding: 0px;
+        }
+        window box box widget box widget label {
+          padding-left: 0.25rem;
+          padding-right: 0.25rem;
+          margin-left: 0.25rem;
+          margin-right: 0.25rem;
         }
 
         #taskbar {
           color: @base07;
-          border-radius: 0px 1rem 1rem 0px;
-          padding-left: 0.5rem;
-          margin-right: 0.5rem;
         }
 
         #taskbar button {
           color: @base07;
           border-radius: 1rem;
-          padding-left: 1rem;
-          padding-right: 1rem;
+          padding-left: 0.5rem;
+          padding-right: 0.5rem;
         }
 
         #taskbar button:active {
@@ -260,6 +288,11 @@ in {
         #custom-apps {
           color: @base0E;
           padding-right: 0.5rem;
+          border-radius: 1rem;
+        }
+        #custom-apps:hover {
+          color: @base05;
+          background-image: linear-gradient(135deg, @base0F, @base08);
         }
 
         #bluetooth {
