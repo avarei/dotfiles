@@ -21,7 +21,10 @@ in {
           layer = "top";
           position = "top";
           height = 30;
-          modules-left = ["wlr/taskbar"];
+          modules-left = [
+            "custom/apps"
+            "wlr/taskbar"
+          ];
           modules-center = ["custom/music"];
           modules-right = [
             "tray"
@@ -141,6 +144,12 @@ in {
             };
           };
 
+          "custom/apps" = {
+            tooltip = false;
+            format = "󰵆 ";
+            on-click = "fuzzel";
+          };
+
           "custom/notification" = {
             tooltip = false;
             format = "{icon}";
@@ -189,6 +198,7 @@ in {
         #custom-notification,
         #custom-lock,
         #custom-power,
+        #custom-apps,
         #load,
         #memory {
           background-color: @base02;
@@ -199,6 +209,7 @@ in {
 
         /* section start */
         #network,
+        #custom-apps,
         #load {
           border-radius: 1rem 0px 0px 1rem;
           margin-left: 0.5rem;
@@ -208,6 +219,13 @@ in {
         #custom-power,
         #memory {
           border-radius: 0px 1rem 1rem 0px;
+          margin-right: 0.5rem;
+        }
+
+        #taskbar {
+          color: @base07;
+          border-radius: 0px 1rem 1rem 0px;
+          padding-left: 0.5rem;
           margin-right: 0.5rem;
         }
 
@@ -239,6 +257,11 @@ in {
           color: @base0E;
         }
 
+        #custom-apps {
+          color: @base0E;
+          padding-right: 0.5rem;
+        }
+
         #bluetooth {
           color: @base07;
         }
@@ -257,8 +280,7 @@ in {
           color: @base08;
         }
 
-        #custom-notification,
-        #taskbar {
+        #custom-notification {
           color: @base07;
           border-radius: 1rem 1rem 1rem 1rem;
           margin-left: 0.5rem;
