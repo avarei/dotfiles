@@ -25,9 +25,6 @@ in {
       pulse.enable = true;
     };
 
-    environment.systemPackages = [
-    ];
-
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
     };

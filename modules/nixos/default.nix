@@ -23,7 +23,7 @@
   config = {
     environment = {
       # for zsh completion of system packages
-      pathsToLink = ["/share/zsh"];
+      pathsToLink = ["/share/zsh" "/share/applications" "/share/xdg-desktop-portal"];
 
       shells = [
         pkgs.bashInteractive

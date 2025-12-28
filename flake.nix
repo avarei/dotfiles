@@ -84,10 +84,6 @@
           self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
-            dotfiles = {
-              gui.niri.enable = true;
-              gaming.steam.enable = true;
-            };
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -116,6 +112,10 @@
           self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
+            dotfiles = {
+              gui.niri.enable = true;
+              gaming.steam.enable = true;
+            };
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -140,6 +140,8 @@
                   packages = with pkgs; [
                     discord
                     prismlauncher # Minecraft client
+                    archipelago
+                    poptracker
                   ];
                 };
               };

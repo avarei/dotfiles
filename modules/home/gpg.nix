@@ -1,5 +1,6 @@
 {
   config,
+  pkgs,
   lib,
   ...
 }: let
@@ -100,6 +101,13 @@ in {
       ];
     };
     services.gpg-agent = lib.mkIf cfg.gpg-agent.enable {
+      enable = true;
+      pinentry.package =
+        if pkgs.stdenv.isDarwin
+        then pkgs.pinentry_mac
+        else if config.dotfiles.gui.enable
+        then pkgs.pinentry-gnome3
+        else pkgs.pinentry-curses;
       enableSshSupport = true;
       enableExtraSocket = true;
       enableNushellIntegration = true;
