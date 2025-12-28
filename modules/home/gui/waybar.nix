@@ -194,7 +194,7 @@ in {
 
           "custom/apps" = {
             tooltip = false;
-            format = " 󰵆 ";
+            format = "  ";
             on-click = "fuzzel";
           };
 
@@ -286,12 +286,13 @@ in {
         }
 
         #custom-apps {
+          font-size: 24px;
           color: @base0E;
           padding-right: 0.5rem;
           border-radius: 1rem;
         }
         #custom-apps:hover {
-          color: @base05;
+          color: @base02;
           background-image: linear-gradient(135deg, @base0F, @base08);
         }
 

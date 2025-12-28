@@ -13,7 +13,11 @@ in {
     home.packages = with pkgs; [xwayland-satellite hyprshot];
     programs.fuzzel = {
       enable = true; # app launcher
-      settings = {border.width = 0;};
+      settings = {
+        border.width = 0;
+        main.keyboard-focus = "on-demand";
+        main.exit-on-keyboard-focus-loss = true;
+      };
     };
 
     xdg = {
