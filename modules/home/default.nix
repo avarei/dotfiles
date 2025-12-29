@@ -13,6 +13,7 @@
     ./shell/tmux.nix
     ./gpg.nix
     ./gui
+    ./kubernetes/client.nix
     ./selfhosted/jellyfin.nix
     ./selfhosted/copyparty.nix
   ];
