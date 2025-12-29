@@ -2,14 +2,11 @@
   description = "My Config and Dotfiles for macOS and NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    # nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-darwin = {
-      # used for macOS configuration
       url = "github:LnL7/nix-darwin/nix-darwin-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -18,15 +15,13 @@
       url = "github:nix-community/stylix/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     nvf = {
       url = "github:NotAShelf/nvf?ref=v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    niri.url = "github:sodiboo/niri-flake"; # using unstable niri package due to graphical issues with v25.05.1
-    # catppuccin.url = "github:catppuccin/nix/release-25.05";
+    niri.url = "github:sodiboo/niri-flake";
   };
+
   outputs = {
     self,
     nix-darwin,
