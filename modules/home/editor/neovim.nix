@@ -8,6 +8,10 @@
 in {
   options.dotfiles.editor.neovim = {
     enable = lib.mkEnableOption "neovim";
+    spellcheck.enable = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+    };
   };
   config = lib.mkIf cfg.enable {
     home = {packages = with pkgs; [go];};
@@ -47,7 +51,7 @@ in {
             formatOnSave = true;
             inlayHints.enable = true;
           };
-          spellcheck = {
+          spellcheck = lib.mkIf cfg.spellcheck.enable {
             enable = true;
             languages = ["en" "de"];
             programmingWordlist.enable = true; # NOTE: run :DirtytalkUpdate on first use
