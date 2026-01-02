@@ -181,7 +181,7 @@ in {
 
           "custom/power" = {
             tooltip = false;
-            format = "󰐥 ";
+            format = " 󰐥 ";
             menu = "on-click";
             menu-file = ./waybar-power-menu.xml;
             menu-actions = {
@@ -190,12 +190,19 @@ in {
               shutdown = "shutdown -h now";
               reboot = "reboot";
             };
+            # TODO: should be fixed in versions of waybar after 0.14.0 # https://github.com/Alexays/Waybar/issues/4510
+            # currently waybar crashes without this on scroll
+
+            on-scroll-down = "true";
+            on-scroll-up = "true";
           };
 
           "custom/apps" = {
             tooltip = false;
             format = "  ";
             on-click = "fuzzel";
+            on-scroll-down = "true";
+            on-scroll-up = "true";
           };
 
           "custom/notification" = {
@@ -217,6 +224,8 @@ in {
             on-click = "swaync-client -t -sw";
             on-click-right = "swaync-client -d -sw";
             escape = true;
+            on-scroll-down = "true";
+            on-scroll-up = "true";
           };
         };
       };
@@ -262,6 +271,7 @@ in {
           border-radius: 1rem;
           padding-left: 0.5rem;
           padding-right: 0.5rem;
+          transition: all 0.2s ease-in-out;
         }
 
         #taskbar button:active {
@@ -290,6 +300,7 @@ in {
           color: @base0E;
           padding-right: 0.5rem;
           border-radius: 1rem;
+          transition: all 0.2s ease-in-out;
         }
         #custom-apps:hover {
           color: @base02;
@@ -308,6 +319,12 @@ in {
 
         #custom-power {
           color: @base0A;
+          border-radius: 1rem;
+          transition: all 0.2s ease-in-out;
+        }
+        #custom-power:hover {
+          color: @base02;
+          background-image: linear-gradient(135deg, @base0A, @base09);
         }
 
         #pulseaudio {
@@ -319,6 +336,11 @@ in {
           border-radius: 1rem 1rem 1rem 1rem;
           margin-left: 0.5rem;
           margin-right: 0.5rem;
+          transition: all 0.2s ease-in-out;
+        }
+        #custom-notification:hover {
+          color: @base02;
+          background-image: linear-gradient(135deg, @base07, @base06);
         }
 
         #custom-music {
