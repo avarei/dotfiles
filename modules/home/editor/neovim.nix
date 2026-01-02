@@ -124,6 +124,20 @@ in {
           autopairs.nvim-autopairs.enable = true;
           tabline = {nvimBufferline.enable = true;};
           notify.nvim-notify.enable = true;
+          keymaps = [
+            {
+              key = "<Find>";
+              mode = ["n" "v" "o" "i"];
+              silent = true;
+              action = "<Home>";
+            }
+            {
+              key = "<Select>";
+              mode = ["n" "v" "o" "i"];
+              silent = true;
+              action = "<End>";
+            }
+          ];
         };
       };
     };
