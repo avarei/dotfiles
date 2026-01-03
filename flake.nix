@@ -61,6 +61,7 @@
                   gpg.enable = true;
                   gpg-agent.enable = true;
                   gui.ghostty.enable = false;
+                  kubernetes.cli.enable = true;
                 };
                 home = {
                   homeDirectory = lib.mkForce "/Users/${config.home.username}";
