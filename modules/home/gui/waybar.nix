@@ -200,7 +200,7 @@ in {
           "custom/apps" = {
             tooltip = false;
             format = "  ";
-            on-click = "fuzzel";
+            on-click = "fuzzel --anchor top-left --x-margin=10";
             on-scroll-down = "true";
             on-scroll-up = "true";
           };
