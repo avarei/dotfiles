@@ -70,6 +70,18 @@ in {
               lsp.enable = true;
               treesitter.enable = true;
             };
+            python = {
+              enable = true;
+              dap.enable = true;
+              format.enable = true;
+              lsp.enable = true;
+              treesitter.enable = true;
+            };
+            nu = {
+              enable = true;
+              lsp.enable = true;
+              treesitter.enable = true;
+            };
             yaml = {
               enable = true;
               lsp.enable = true;
