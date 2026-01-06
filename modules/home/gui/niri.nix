@@ -14,9 +14,17 @@ in {
     programs.fuzzel = {
       enable = true; # app launcher
       settings = {
-        border.width = 0;
-        main.keyboard-focus = "on-demand";
-        main.exit-on-keyboard-focus-loss = true;
+        border = {
+          width = 5;
+          selection-radius = 10;
+        };
+
+        main = {
+          inner-pad = 5;
+          line-height = 20;
+          keyboard-focus = "on-demand";
+          exit-on-keyboard-focus-loss = true;
+        };
       };
     };
 
