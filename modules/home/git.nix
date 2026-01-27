@@ -10,17 +10,13 @@ in {
     enable = lib.mkEnableOption "git";
   };
   config = lib.mkIf cfg.enable {
-    home = {
-      packages = with pkgs; [
-        git
-      ];
-    };
     programs.delta = {
       enable = true;
       enableGitIntegration = true;
     };
     programs.git = {
       enable = true;
+      package = pkgs.git.override {osxkeychainSupport = false;};
 
       settings = {
         user.name = "Tim Geimer";

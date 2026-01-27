@@ -84,12 +84,17 @@ in {
             };
             yaml = {
               enable = true;
-              lsp.enable = true;
+              lsp.enable = false;
               treesitter.enable = true;
             };
             markdown = {
               enable = true;
               format.enable = true;
+              lsp.enable = true;
+              treesitter.enable = true;
+            };
+            helm = {
+              enable = true;
               lsp.enable = true;
               treesitter.enable = true;
             };
@@ -109,6 +114,7 @@ in {
           };
           notes.todo-comments.enable = true;
           utility.surround.enable = true;
+          utility.direnv.enable = true;
           binds.whichKey.enable = true;
           git = {
             enable = true;
@@ -121,6 +127,16 @@ in {
               findFiles = "<leader><space>";
               liveGrep = "<leader>/";
               buffers = "<leader>,";
+            };
+          };
+          filetree = {
+            neo-tree = {
+              enable = true;
+              setupOpts = {
+                filesystem = {
+                  hijack_netrw_behavior = "open_default";
+                };
+              };
             };
           };
 
@@ -152,6 +168,12 @@ in {
               mode = ["n" "v" "o" "i"];
               silent = true;
               action = "<End>";
+            }
+            {
+              key = "<leader>e";
+              mode = ["n"];
+              silent = true;
+              action = "<Cmd>Neotree<CR>";
             }
           ];
         };
