@@ -48,6 +48,14 @@ in {
           # clipboard.providers = {  }
           lsp = {
             enable = true;
+            lspSignature = {
+              enable = true;
+              setupOpts = {
+                hint_prefix = " ";
+                hint_inline = lib.generators.mkLuaInline "function() return true end";
+              };
+            };
+
             formatOnSave = true;
             inlayHints.enable = true;
           };
@@ -150,7 +158,7 @@ in {
                   [vim.diagnostic.severity.WARN] = "󰀪 ",
                 }
               '';
-              virtual_lines = true;
+              # virtual_lines = true; # clashes with lspSignature visually
             };
           };
           autopairs.nvim-autopairs.enable = true;
