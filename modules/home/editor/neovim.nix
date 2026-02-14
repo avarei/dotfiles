@@ -10,7 +10,7 @@ in {
     enable = lib.mkEnableOption "neovim";
     spellcheck.enable = lib.mkOption {
       type = lib.types.bool;
-      default = true;
+      default = false;
     };
   };
   config = lib.mkIf cfg.enable {
@@ -48,6 +48,14 @@ in {
           # clipboard.providers = {  }
           lsp = {
             enable = true;
+            lspSignature = {
+              enable = true;
+              setupOpts = {
+                hint_prefix = " ";
+                hint_inline = lib.generators.mkLuaInline "function() return true end";
+              };
+            };
+
             formatOnSave = true;
             inlayHints.enable = true;
           };
@@ -70,14 +78,31 @@ in {
               lsp.enable = true;
               treesitter.enable = true;
             };
-            yaml = {
+            python = {
+              enable = true;
+              dap.enable = true;
+              format.enable = true;
+              lsp.enable = true;
+              treesitter.enable = true;
+            };
+            nu = {
               enable = true;
               lsp.enable = true;
+              treesitter.enable = true;
+            };
+            yaml = {
+              enable = true;
+              lsp.enable = false;
               treesitter.enable = true;
             };
             markdown = {
               enable = true;
               format.enable = true;
+              lsp.enable = true;
+              treesitter.enable = true;
+            };
+            helm = {
+              enable = true;
               lsp.enable = true;
               treesitter.enable = true;
             };
@@ -97,6 +122,7 @@ in {
           };
           notes.todo-comments.enable = true;
           utility.surround.enable = true;
+          utility.direnv.enable = true;
           binds.whichKey.enable = true;
           git = {
             enable = true;
@@ -111,6 +137,16 @@ in {
               buffers = "<leader>,";
             };
           };
+          filetree = {
+            neo-tree = {
+              enable = true;
+              setupOpts = {
+                filesystem = {
+                  hijack_netrw_behavior = "open_default";
+                };
+              };
+            };
+          };
 
           autocomplete.nvim-cmp.enable = true;
           diagnostics = {
@@ -122,7 +158,7 @@ in {
                   [vim.diagnostic.severity.WARN] = "󰀪 ",
                 }
               '';
-              virtual_lines = true;
+              # virtual_lines = true; # clashes with lspSignature visually
             };
           };
           autopairs.nvim-autopairs.enable = true;
@@ -140,6 +176,12 @@ in {
               mode = ["n" "v" "o" "i"];
               silent = true;
               action = "<End>";
+            }
+            {
+              key = "<leader>e";
+              mode = ["n"];
+              silent = true;
+              action = "<Cmd>Neotree<CR>";
             }
           ];
         };
