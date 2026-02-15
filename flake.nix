@@ -80,6 +80,7 @@
           self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
+            dotfiles.selfhosted.homeassistant.enable = true;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -94,7 +95,6 @@
                   selfhosted = {
                     jellyfin.enable = true;
                     copyparty.enable = true;
-                    homeassistant.enable = true;
                   };
                 };
               };

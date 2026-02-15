@@ -8,6 +8,7 @@
     ../shared/stylix.nix
     ./gui/niri.nix
     ./gaming/steam.nix
+    ./selfhosted/home-assistant.nix
   ];
 
   options.dotfiles = {
