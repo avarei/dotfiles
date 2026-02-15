@@ -38,8 +38,9 @@ in {
 
             incsearch = true; # search as characters are entered
             ignorecase = true; # ignore case in searches by default
-            smartcase =
-              true; # make case sensitive if uppercase letter is entered
+            smartcase = true; # make case sensitive if uppercase letter is entered
+
+            winborder = "rounded"; # add rounded border around flaoting windows
           };
           clipboard = {
             enable = true;

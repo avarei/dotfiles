@@ -94,6 +94,7 @@
                   selfhosted = {
                     jellyfin.enable = true;
                     copyparty.enable = true;
+                    homeassistant.enable = true;
                   };
                 };
               };
