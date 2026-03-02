@@ -14,7 +14,11 @@ in {
     };
   };
   config = lib.mkIf cfg.enable {
-    home = {packages = with pkgs; [go];};
+    home = {
+      packages = [
+        pkgs.unstable.go
+      ];
+    };
 
     programs.nvf = {
       enable = true;
