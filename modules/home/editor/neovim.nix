@@ -16,7 +16,7 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = [
-        pkgs.unstable.go
+        pkgs.go_1_26
       ];
     };
 
