@@ -163,7 +163,12 @@ in {
             };
           };
           autopairs.nvim-autopairs.enable = true;
-          tabline = {nvimBufferline.enable = true;};
+          tabline.nvimBufferline = {
+            enable = true;
+            setupOpts.options = {
+              sort_by = "id";
+            };
+          };
           notify.nvim-notify.enable = true;
           keymaps = [
             {
