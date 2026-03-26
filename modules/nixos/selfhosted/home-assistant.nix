@@ -20,6 +20,7 @@ in {
           "--network=host"
           "--device=/dev/ttyUSB0:/dev/ttyUSB0"
         ];
+        privileged = true;
       };
     };
     networking.firewall.allowedTCPPorts = [8123];
