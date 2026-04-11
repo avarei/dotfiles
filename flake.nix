@@ -23,6 +23,14 @@
       url = "github:sodiboo/niri-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -33,6 +41,8 @@
     stylix,
     nvf,
     niri,
+    dms,
+    dgop,
     ...
   }: let
     lib = nixpkgs.lib // home-manager.lib;
@@ -186,10 +196,14 @@
       imports = [
         stylix.nixosModules.stylix
         niri.nixosModules.niri
+        dms.nixosModules.dank-material-shell
         ./modules/nixos
       ];
       home-manager.sharedModules = [
+        { _module.args.dgop = dgop; }
         nvf.homeManagerModules.default
+        dms.homeModules.dank-material-shell
+        dms.homeModules.niri
         ./modules/home
       ];
     };
