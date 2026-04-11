@@ -15,6 +15,7 @@ in {
         volumes = ["/root/data/home-assistant/config:/config"];
         environment.TZ = "Europe/Berlin";
         image = "ghcr.io/home-assistant/home-assistant:stable";
+        pull = "always";
         extraOptions = [
           # Use the host network namespace for all sockets
           "--network=host"
@@ -23,6 +24,9 @@ in {
         privileged = true;
       };
     };
-    networking.firewall.allowedTCPPorts = [8123];
+    networking.firewall = {
+      allowedTCPPorts = [8123 21064];
+      allowedUDPPorts = [5353];
+    };
   };
 }
