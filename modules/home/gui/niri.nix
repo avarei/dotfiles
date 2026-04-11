@@ -11,22 +11,6 @@ in {
   };
   config = lib.mkIf (cfg.enable && pkgs.stdenv.isLinux) {
     home.packages = with pkgs; [xwayland-satellite hyprshot];
-    programs.fuzzel = {
-      enable = true; # app launcher
-      settings = {
-        border = {
-          width = 5;
-          selection-radius = 10;
-        };
-
-        main = {
-          inner-pad = 5;
-          line-height = 20;
-          keyboard-focus = "on-demand";
-          exit-on-keyboard-focus-loss = true;
-        };
-      };
-    };
 
     programs.niri.settings = {
       input = {
@@ -93,9 +77,7 @@ in {
       };
 
       spawn-at-startup = [
-        {command = ["waybar"];}
         {command = ["xwayland-satellite" ":50"];}
-        {command = ["systemctl" "--user" "start" "polkit-gnome.service"];}
       ];
 
       environment = {
@@ -178,10 +160,6 @@ in {
       binds = {
         "Mod+Shift+Slash".action.show-hotkey-overlay = [];
 
-        "Mod+Space" = {
-          action.spawn = ["fuzzel"];
-          hotkey-overlay.title = "App Launcher";
-        };
         "Mod+T" = {
           action.spawn = ["ghostty"];
           hotkey-overlay.title = "Open Terminal: ghostty";
@@ -197,10 +175,6 @@ in {
         "Mod+Z" = {
           action.spawn = ["hyprshot" "--freeze" "-m" "region" "--clipboard-only"];
           hotkey-overlay.title = "Make Screenshot Rectangle";
-        };
-        "Super+L" = {
-          action.spawn = ["hyprlock" "--immediate"];
-          hotkey-overlay.title = "Lock the Screen: hyprlock";
         };
 
         "Super+Alt+S" = {
