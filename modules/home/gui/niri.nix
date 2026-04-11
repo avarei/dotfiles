@@ -53,35 +53,6 @@ in {
             {proportion = 0.66667;}
           ];
           default-column-width = {proportion = 0.5;};
-          focus-ring = {
-            width = 4;
-            inactive.color = "#505050";
-            active.gradient = {
-              from = "#cba6f7";
-              to = "#94e2d5";
-              angle = 45;
-            };
-          };
-          border = {
-            enable = false;
-            width = 4;
-            active.color = "#ffc87f";
-            inactive.color = "#505050";
-            urgent.color = "#9b0000";
-          };
-          shadow = {
-            enable = true;
-            softness = 7;
-            spread = 5;
-            offset = {
-              x = 0;
-              y = 5;
-            };
-            color = "#181825a0";
-          };
-          struts = {
-            top = -10;
-          };
         };
 
         cursor = {
@@ -97,7 +68,6 @@ in {
           DISPLAY = ":50";
         };
 
-        prefer-no-csd = true;
         screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
 
         hotkey-overlay = {};
@@ -105,20 +75,38 @@ in {
 
         binds = {
           # --- App launching ---
-          "Mod+T" = {action.spawn = ["ghostty"]; hotkey-overlay.title = "Open Terminal";};
-          "Mod+F" = {action.spawn = ["firefox"]; hotkey-overlay.title = "Open Browser";};
+          "Mod+T" = {
+            action.spawn = ["ghostty"];
+            hotkey-overlay.title = "Open Terminal";
+          };
+          "Mod+F" = {
+            action.spawn = ["firefox"];
+            hotkey-overlay.title = "Open Browser";
+          };
 
           # --- Session ---
-          "Super+L" = {action.spawn = ["dms" "ipc" "lock" "lock"]; hotkey-overlay.title = "Lock Screen";};
+          "Super+L" = {
+            action.spawn = ["dms" "ipc" "lock" "lock"];
+            hotkey-overlay.title = "Lock Screen";
+          };
 
           # --- System actions ---
           "Mod+Shift+Slash".action.show-hotkey-overlay = [];
-          "Mod+Q" = {action.close-window = []; repeat = false;};
-          "Mod+O" = {action.toggle-overview = []; repeat = false;};
+          "Mod+Q" = {
+            action.close-window = [];
+            repeat = false;
+          };
+          "Mod+O" = {
+            action.toggle-overview = [];
+            repeat = false;
+          };
           "Mod+Shift+E".action.quit = [];
           "Ctrl+Alt+Delete".action.quit = [];
           "Mod+Shift+P".action.power-off-monitors = [];
-          "Mod+Escape" = {action.toggle-keyboard-shortcuts-inhibit = []; allow-inhibiting = false;};
+          "Mod+Escape" = {
+            action.toggle-keyboard-shortcuts-inhibit = [];
+            allow-inhibiting = false;
+          };
 
           # --- Screenshots ---
           "Print".action.screenshot = [];
@@ -188,10 +176,22 @@ in {
           "Mod+Ctrl+WheelScrollLeft".action.move-column-left = [];
           "Mod+Ctrl+WheelScrollDown".action.move-column-right = [];
           "Mod+Ctrl+WheelScrollUp".action.move-column-left = [];
-          "Mod+Shift+WheelScrollDown" = {action.focus-workspace-down = []; cooldown-ms = 150;};
-          "Mod+Shift+WheelScrollUp" = {action.focus-workspace-up = []; cooldown-ms = 150;};
-          "Mod+Ctrl+Shift+WheelScrollDown" = {action.move-column-to-workspace-down = []; cooldown-ms = 150;};
-          "Mod+Ctrl+Shift+WheelScrollUp" = {action.move-column-to-workspace-up = []; cooldown-ms = 150;};
+          "Mod+Shift+WheelScrollDown" = {
+            action.focus-workspace-down = [];
+            cooldown-ms = 150;
+          };
+          "Mod+Shift+WheelScrollUp" = {
+            action.focus-workspace-up = [];
+            cooldown-ms = 150;
+          };
+          "Mod+Ctrl+Shift+WheelScrollDown" = {
+            action.move-column-to-workspace-down = [];
+            cooldown-ms = 150;
+          };
+          "Mod+Ctrl+Shift+WheelScrollUp" = {
+            action.move-column-to-workspace-up = [];
+            cooldown-ms = 150;
+          };
 
           # --- Sizing and layout ---
           "Mod+R".action.switch-preset-column-width = [];
@@ -281,15 +281,7 @@ in {
             clip-to-geometry = true;
           }
         ];
-
       };
-    };
-
-    xdg = {
-      enable = true;
-      portal.enable = true;
-      portal.config = {common = {default = ["gnome"];};};
-      portal.extraPortals = with pkgs; [xdg-desktop-portal-gnome];
     };
   };
 }
