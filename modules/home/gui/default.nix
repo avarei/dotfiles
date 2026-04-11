@@ -19,6 +19,7 @@ in {
     ./niri.nix
     ./ghostty.nix
     ./firefox.nix
+    ./dank-material-shell.nix
   ];
   options.dotfiles.gui = {
     enable = lib.mkEnableOption "gui";

@@ -20,6 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell/stable";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -30,6 +34,7 @@
     stylix,
     nvf,
     niri,
+    dms,
     ...
   }: let
     lib = nixpkgs.lib // home-manager.lib;
@@ -132,6 +137,7 @@
                     niri.enable = true;
                     ghostty.enable = true;
                     firefox.enable = true;
+                    dank-material-shell.enable = true;
                   };
                 };
 
@@ -189,6 +195,8 @@
       home-manager.sharedModules = [
         nvf.homeManagerModules.default
         niri.homeModules.niri
+        dms.homeModules.dank-material-shell
+        dms.homeModules.niri
         ./modules/home
       ];
     };
