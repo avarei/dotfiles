@@ -108,6 +108,9 @@ in {
           "Mod+T" = {action.spawn = ["ghostty"]; hotkey-overlay.title = "Open Terminal";};
           "Mod+F" = {action.spawn = ["firefox"]; hotkey-overlay.title = "Open Browser";};
 
+          # --- Session ---
+          "Super+L" = {action.spawn = ["dms" "ipc" "lock" "lock"]; hotkey-overlay.title = "Lock Screen";};
+
           # --- System actions ---
           "Mod+Shift+Slash".action.show-hotkey-overlay = [];
           "Mod+Q" = {action.close-window = []; repeat = false;};
