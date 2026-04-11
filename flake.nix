@@ -19,7 +19,10 @@
       url = "github:NotAShelf/nvf?ref=v0.8";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -147,9 +150,6 @@
               };
             };
           }
-          {
-            nixpkgs.overlays = [niri.overlays.niri];
-          }
           ./hosts/desktop.nix
         ];
       };
@@ -185,11 +185,11 @@
     nixosModules.default = {
       imports = [
         stylix.nixosModules.stylix
+        niri.nixosModules.niri
         ./modules/nixos
       ];
       home-manager.sharedModules = [
         nvf.homeManagerModules.default
-        niri.homeModules.niri
         ./modules/home
       ];
     };
