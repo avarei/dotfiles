@@ -189,6 +189,7 @@
       ];
       home-manager.sharedModules = [
         nvf.homeManagerModules.default
+        niri.homeModules.niri
         ./modules/home
       ];
     };
