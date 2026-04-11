@@ -83,6 +83,7 @@
           home-manager.nixosModules.home-manager
           {
             dotfiles.selfhosted.homeassistant.enable = true;
+            dotfiles.gaming.factorio-server.enable = true;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
