@@ -29,9 +29,17 @@ in {
       NIXOS_OZONE_WL = "1";
     };
 
+    environment.systemPackages = [pkgs.catppuccin-cursors.mochaDark];
+
     programs.dank-material-shell.greeter = {
       enable = true;
       compositor.name = "niri";
+      compositor.customConfig = ''
+        cursor {
+          theme "catppuccin-mocha-dark-cursors"
+          size 20
+        }
+      '';
       configHome = "/home/tim";
     };
   };
