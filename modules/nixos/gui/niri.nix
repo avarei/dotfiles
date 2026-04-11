@@ -29,7 +29,10 @@ in {
       NIXOS_OZONE_WL = "1";
     };
 
-    services.xserver.enable = true;
-    services.displayManager.gdm.enable = true;
+    programs.dank-material-shell.greeter = {
+      enable = true;
+      compositor.name = "niri";
+      configHome = "/home/tim";
+    };
   };
 }

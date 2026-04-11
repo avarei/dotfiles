@@ -197,6 +197,7 @@
         stylix.nixosModules.stylix
         niri.nixosModules.niri
         dms.nixosModules.dank-material-shell
+        dms.nixosModules.greeter
         ./modules/nixos
       ];
       home-manager.sharedModules = [

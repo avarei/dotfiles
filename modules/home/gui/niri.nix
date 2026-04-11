@@ -131,10 +131,6 @@ in {
           "Mod+Right".action.focus-column-right = [];
           "Mod+Up".action.focus-window-up = [];
           "Mod+Down".action.focus-window-down = [];
-          "Mod+H".action.focus-column-left = [];
-          "Mod+J".action.focus-window-down = [];
-          "Mod+K".action.focus-window-up = [];
-          "Mod+L".action.focus-column-right = [];
           "Mod+A".action.focus-column-left = [];
           "Mod+S".action.focus-window-down = [];
           "Mod+W".action.focus-window-up = [];
@@ -145,10 +141,6 @@ in {
           "Mod+Ctrl+Right".action.move-column-right = [];
           "Mod+Ctrl+Up".action.move-window-up = [];
           "Mod+Ctrl+Down".action.move-window-down = [];
-          "Mod+Ctrl+H".action.move-column-left = [];
-          "Mod+Ctrl+J".action.move-window-down = [];
-          "Mod+Ctrl+K".action.move-window-up = [];
-          "Mod+Ctrl+L".action.move-column-right = [];
           "Mod+Ctrl+A".action.move-column-left = [];
           "Mod+Ctrl+S".action.move-window-down = [];
           "Mod+Ctrl+W".action.move-window-up = [];
