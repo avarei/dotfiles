@@ -8,6 +8,7 @@
     ../shared/stylix.nix
     ./gui/niri.nix
     ./gaming/steam.nix
+    ./gaming/factorio-server.nix
     ./selfhosted/home-assistant.nix
   ];
 
