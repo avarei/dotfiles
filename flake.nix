@@ -2,6 +2,7 @@
   description = "My Config and Dotfiles for macOS and NixOS";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +39,7 @@
     nix-darwin,
     home-manager,
     nixpkgs,
+    nixpkgs-unstable,
     stylix,
     nvf,
     niri,
@@ -50,6 +52,13 @@
     pkgsFor = lib.genAttrs systems (
       system:
         import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        }
+    );
+    pkgsUnstableFor = lib.genAttrs systems (
+      system:
+        import nixpkgs-unstable {
           inherit system;
           config.allowUnfree = true;
         }
@@ -91,6 +100,9 @@
     nixosConfigurations = {
       server = nixpkgs.lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
+        specialArgs = {
+          pkgs-unstable = pkgsUnstableFor.x86_64-linux;
+        };
         modules = [
           self.nixosModules.default
           home-manager.nixosModules.home-manager
@@ -194,6 +206,8 @@
     };
     nixosModules.default = {
       imports = [
+        # Import OTBR module from unstable (not available in 25.11)
+        "${nixpkgs-unstable}/nixos/modules/services/home-automation/openthread-border-router.nix"
         stylix.nixosModules.stylix
         niri.nixosModules.niri
         dms.nixosModules.dank-material-shell
