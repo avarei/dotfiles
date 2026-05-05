@@ -29,6 +29,9 @@ in {
     services.home-assistant = {
       enable = true;
       configDir = "/var/lib/hass";
+      extraPackages = ps: [
+        ps.pyatv # Required for Apple TV integration and device triggers
+      ];
       extraComponents = [
         "matter"
         "otbr"
