@@ -29,12 +29,17 @@ in {
     services.home-assistant = {
       enable = true;
       configDir = "/var/lib/hass";
+      extraPackages = ps: [
+        ps.pyatv # Required for Apple TV integration and device triggers
+        ps.aiohomekit # Required for HomeKit controller integration
+      ];
       extraComponents = [
         "matter"
         "otbr"
         "thread"
         "zha" # Zigbee Home Automation for the USB coordinator
-        "homekit" # HomeKit integration
+        "homekit" # HomeKit integration (expose HA to HomeKit)
+        "homekit_controller" # Control HomeKit devices from HA
       ];
       config = {
         homeassistant = {
