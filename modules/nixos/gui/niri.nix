@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  pkgs-unstable,
   ...
 }: let
   cfg = config.dotfiles.gui.niri;
@@ -12,7 +12,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.niri = {
       enable = true;
-      package = pkgs.niri;
+      package = pkgs-unstable.niri;
     };
 
     # Enable sound with pipewire.

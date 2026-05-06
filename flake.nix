@@ -25,7 +25,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dms = {
-      url = "github:AvengeMedia/DankMaterialShell/stable";
+      url = "github:AvengeMedia/DankMaterialShell/1abb22102456197fd89e1d5b7f4c527dfeb22a0f";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     dgop = {
@@ -133,6 +133,9 @@
       };
       desktop = nixpkgs.lib.nixosSystem {
         pkgs = pkgsFor.x86_64-linux;
+        specialArgs = {
+          pkgs-unstable = pkgsUnstableFor.x86_64-linux;
+        };
         modules = [
           self.nixosModules.default
           home-manager.nixosModules.home-manager
