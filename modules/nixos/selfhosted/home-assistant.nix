@@ -28,6 +28,7 @@ in {
     # Home Assistant native service
     services.home-assistant = {
       enable = true;
+      package = pkgs-unstable.home-assistant;
       configDir = "/var/lib/hass";
       extraPackages = ps: [
         ps.pyatv # Required for Apple TV integration and device triggers
@@ -40,6 +41,7 @@ in {
         "zha" # Zigbee Home Automation for the USB coordinator
         "homekit" # HomeKit integration (expose HA to HomeKit)
         "homekit_controller" # Control HomeKit devices from HA
+        "cast" # Chromecast / Google Cast support
       ];
       config = {
         homeassistant = {
@@ -49,9 +51,13 @@ in {
         http = {
           server_port = 8123;
         };
-        zha = {
-          usb_path = "/dev/ttyUSB0";
+        zha = {};
+        lovelace = {
+          mode = "storage";
         };
+        "automation ui" = "!include automations.yaml";
+        "scene ui" = "!include scenes.yaml";
+        "script ui" = "!include scripts.yaml";
         # Enable default integrations
         default_config = {};
       };
@@ -84,6 +90,17 @@ in {
       logLevel = "info";
     };
 
+    # Avahi mDNS - OTBR advertising proxy registers Thread/Matter SRP records
+    # through Avahi; raise the per-client object limit so it doesn't hit
+    # "Too many objects" when pairing or when many devices are present
+    services.avahi = {
+      enable = true;
+      extraConfig = ''
+        [server]
+        objects-per-client-max=2000
+      '';
+    };
+
     networking.firewall = {
       allowedTCPPorts = [
         8123 # Home Assistant
@@ -91,7 +108,10 @@ in {
         8081 # OTBR REST API
         5580 # Matter Server
       ];
-      allowedUDPPorts = [5353]; # mDNS
+      allowedUDPPorts = [
+        5353 # mDNS
+        5540 # Matter protocol (commissioning + operational)
+      ];
     };
   };
 }
