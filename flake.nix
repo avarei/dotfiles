@@ -108,6 +108,7 @@
           home-manager.nixosModules.home-manager
           {
             dotfiles.selfhosted.homeassistant.enable = true;
+            dotfiles.selfhosted.immich.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
             home-manager = {
               useGlobalPkgs = true;
@@ -215,7 +216,7 @@
         ./modules/nixos
       ];
       home-manager.sharedModules = [
-        { _module.args.dgop = dgop; }
+        {_module.args.dgop = dgop;}
         nvf.homeManagerModules.default
         dms.homeModules.dank-material-shell
         dms.homeModules.niri

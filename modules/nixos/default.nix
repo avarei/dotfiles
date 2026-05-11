@@ -10,6 +10,7 @@
     ./gaming/steam.nix
     ./gaming/factorio-server.nix
     ./selfhosted/home-assistant.nix
+    ./selfhosted/immich.nix
   ];
 
   options.dotfiles = {
