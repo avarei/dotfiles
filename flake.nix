@@ -107,7 +107,6 @@
           self.nixosModules.default
           home-manager.nixosModules.home-manager
           {
-            dotfiles.selfhosted.homeassistant.enable = true;
             dotfiles.selfhosted.immich.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
             home-manager = {
@@ -210,8 +209,6 @@
     };
     nixosModules.default = {
       imports = [
-        # Import OTBR module from unstable (not available in 25.11)
-        "${nixpkgs-unstable}/nixos/modules/services/home-automation/openthread-border-router.nix"
         stylix.nixosModules.stylix
         niri.nixosModules.niri
         dms.nixosModules.dank-material-shell
