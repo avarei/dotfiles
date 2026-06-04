@@ -7,6 +7,7 @@
   imports = [
     ../shared/stylix.nix
     ./gui/niri.nix
+    ./gui/sway.nix
     ./gaming/steam.nix
     ./gaming/factorio-server.nix
     ./selfhosted/home-assistant.nix

@@ -2,12 +2,14 @@
   config,
   pkgs,
   lib,
+  dgop,
   ...
 }: let
   cfg = config.dotfiles.gui;
 in {
   imports = [
     ./niri.nix
+    ./sway.nix
     ./ghostty.nix
     ./firefox.nix
   ];
@@ -22,6 +24,12 @@ in {
       wl-clipboard-rs
       gparted # partition management
     ];
+
+    programs.dank-material-shell = {
+      enable = true;
+      enableSystemMonitoring = true;
+      dgop.package = dgop.packages.${pkgs.system}.default;
+    };
 
     home.pointerCursor = {
       enable = true;

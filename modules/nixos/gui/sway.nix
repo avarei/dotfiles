@@ -1,21 +1,20 @@
 {
   config,
   lib,
-  pkgs-unstable,
   ...
 }: let
-  cfg = config.dotfiles.gui.niri;
+  cfg = config.dotfiles.gui.sway;
 in {
-  options.dotfiles.gui.niri = {
-    enable = lib.mkEnableOption "niri";
+  options.dotfiles.gui.sway = {
+    enable = lib.mkEnableOption "sway";
   };
   config = lib.mkIf cfg.enable {
-    programs.niri = {
+    programs.sway = {
       enable = true;
-      package = pkgs-unstable.niri;
+      # NVIDIA proprietary/open kernel modules — sway refuses to start without this.
+      extraOptions = ["--unsupported-gpu"];
     };
 
-    # Enable sound with pipewire.
     services.pulseaudio.enable = false;
     security.rtkit.enable = true;
     services.pipewire = {
@@ -27,11 +26,13 @@ in {
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
+      __GL_GSYNC_ALLOWED = "1";
+      __GL_VRR_ALLOWED = "1";
     };
 
     programs.dank-material-shell.greeter = {
       enable = true;
-      compositor.name = lib.mkDefault "niri";
+      compositor.name = "sway";
       configHome = "/home/tim";
     };
   };
