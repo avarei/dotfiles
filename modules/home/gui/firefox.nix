@@ -17,6 +17,7 @@ in {
 
     programs.firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles.tim = {
         isDefault = true;
         id = 0;
