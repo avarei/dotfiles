@@ -28,7 +28,7 @@ in {
     programs.dank-material-shell = {
       enable = true;
       enableSystemMonitoring = true;
-      dgop.package = dgop.packages.${pkgs.system}.default;
+      dgop.package = dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
 
     home.pointerCursor = {
