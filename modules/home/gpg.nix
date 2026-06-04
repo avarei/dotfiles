@@ -15,6 +15,10 @@ in {
   config = {
     programs.gpg = lib.mkIf cfg.gpg.enable {
       enable = true;
+      # Without this, gpg invocations outside a user session (e.g. hm-activate's
+      # `gpg --import` at boot) fork their own agent/scdaemon, which then races
+      # the socket-activated supervised agent for the YubiKey at login.
+      settings.no-autostart = true;
       publicKeys = [
         {
           text = ''
