@@ -168,7 +168,7 @@
 
                 home = {
                   packages = with pkgs; [
-                    discord
+                    vesktop
                     prismlauncher # Minecraft client
                     archipelago
                     poptracker
