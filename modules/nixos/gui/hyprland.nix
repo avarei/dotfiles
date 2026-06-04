@@ -36,6 +36,7 @@ in {
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1";
+      GTK_IM_MODULE = "simple";
     };
 
     programs.dank-material-shell.greeter = {
