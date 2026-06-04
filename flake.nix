@@ -143,6 +143,7 @@
             dotfiles = {
               gui.niri.enable = true;
               gui.sway.enable = true;
+              gui.hyprland.enable = true;
               gaming.steam.enable = true;
             };
             home-manager = {
@@ -161,6 +162,7 @@
                     enable = true;
                     niri.enable = true;
                     sway.enable = true;
+                    hyprland.enable = true;
                     ghostty.enable = true;
                     firefox.enable = true;
                   };

@@ -10,6 +10,7 @@ in {
   imports = [
     ./niri.nix
     ./sway.nix
+    ./hyprland.nix
     ./ghostty.nix
     ./firefox.nix
   ];
