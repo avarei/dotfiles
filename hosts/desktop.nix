@@ -13,7 +13,7 @@
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
     };
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
@@ -24,6 +24,7 @@
       };
       efi.canTouchEfiVariables = true;
     };
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "resume_offset=41463808"
       "nvidia_drm.modeset=1"
@@ -76,6 +77,7 @@
     modesetting.enable = true;
     powerManagement.enable = true;
     open = true;
+    branch = "bleeding_edge";
   };
 
   # use usb wlan stick
