@@ -4,8 +4,9 @@
   lib,
   ...
 }@args:
-# If dgop is not provided as a module argument, this module can't configure
-# dank-material-shell. Return a minimal module that only defines the option.
+# dgop is only passed (via extraSpecialArgs in nixosModules.default) on Linux.
+# On Darwin we lack the niri-flake and dank-material-shell home modules, so
+# return a minimal stub that only declares the enable option.
 if !(args ? dgop)
 then {
   options.dotfiles.gui.niri = {
@@ -14,12 +15,11 @@ then {
 }
 else let
   cfg = config.dotfiles.gui.niri;
-  dgop = args.dgop;
 in {
   options.dotfiles.gui.niri = {
     enable = lib.mkEnableOption "niri";
   };
-  config = lib.mkIf (cfg.enable && pkgs.stdenv.isLinux) {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [xwayland-satellite hyprshot];
 
     programs.dank-material-shell.niri = {

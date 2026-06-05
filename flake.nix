@@ -219,8 +219,8 @@
         dms.nixosModules.greeter
         ./modules/nixos
       ];
+      home-manager.extraSpecialArgs = {inherit dgop;};
       home-manager.sharedModules = [
-        {_module.args.dgop = dgop;}
         nvf.homeManagerModules.default
         dms.homeModules.dank-material-shell
         dms.homeModules.niri
