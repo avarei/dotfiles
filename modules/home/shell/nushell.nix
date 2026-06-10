@@ -1,5 +1,6 @@
 {
   pkgs,
+  pkgs-unstable,
   config,
   lib,
   ...
@@ -29,6 +30,7 @@ in {
 
     programs.nushell = {
       enable = true;
+      package = pkgs-unstable.nushell;
       settings = {
         history = {
           file_format = "sqlite";

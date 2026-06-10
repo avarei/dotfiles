@@ -75,6 +75,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = {
+                pkgs-unstable = pkgsUnstableFor.aarch64-darwin;
+              };
               users.tim = {config, ...}: {
                 dotfiles = {
                   editor.neovim.enable = true;
@@ -112,6 +115,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = {
+                pkgs-unstable = pkgsUnstableFor.x86_64-linux;
+              };
               users.tim = {...}: {
                 dotfiles = {
                   editor.neovim.enable = true;
@@ -149,6 +155,9 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+              extraSpecialArgs = {
+                pkgs-unstable = pkgsUnstableFor.x86_64-linux;
+              };
               users.tim = {pkgs, ...}: {
                 dotfiles = {
                   editor.neovim.enable = true;
@@ -187,6 +196,9 @@
     homeConfigurations = {
       "tim@work" = home-manager.lib.homeManagerConfiguration {
         pkgs = pkgsFor.x86_64-linux;
+        extraSpecialArgs = {
+          pkgs-unstable = pkgsUnstableFor.x86_64-linux;
+        };
         modules = [
           self.homeModules.default
           ./home
