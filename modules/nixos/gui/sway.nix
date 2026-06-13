@@ -11,8 +11,6 @@ in {
   config = lib.mkIf cfg.enable {
     programs.sway = {
       enable = true;
-      # NVIDIA proprietary/open kernel modules — sway refuses to start without this.
-      extraOptions = ["--unsupported-gpu"];
     };
 
     services.pulseaudio.enable = false;

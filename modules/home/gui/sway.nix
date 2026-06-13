@@ -16,10 +16,6 @@ in {
     wayland.windowManager.sway = {
       enable = true;
       xwayland = true;
-      # NVIDIA proprietary/open kernel modules — sway refuses to start without this.
-      # The home-manager wrapper at ~/.nix-profile/bin/sway shadows the NixOS one in PATH,
-      # so the flag has to be set here too (not only in the NixOS programs.sway module).
-      extraOptions = ["--unsupported-gpu"];
       config = {
         modifier = mod;
         terminal = "ghostty";

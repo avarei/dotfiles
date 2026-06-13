@@ -13,7 +13,6 @@
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
-      kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
     };
     kernelModules = ["kvm-intel"];
     extraModulePackages = [];
@@ -27,14 +26,14 @@
     kernelPackages = pkgs.linuxPackages_latest;
     kernelParams = [
       "resume_offset=41463808"
-      "nvidia_drm.modeset=1"
-      "nvidia-drm.modeset=1"
-      "nvidia-drm.fbdev=1"
     ];
     resumeDevice = "/dev/disk/by-label/NIXROOT";
   };
 
-  powerManagement.enable = true;
+  powerManagement = {
+    enable = true;
+    cpuFreqGovernor = "performance";
+  };
 
   networking = {
     hostName = "desktop";
@@ -68,16 +67,9 @@
     }
   ];
 
-  hardware.graphics.enable = true;
-
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
-
-  hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = true;
-    open = true;
-    branch = "bleeding_edge";
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
   };
 
   # use usb wlan stick
