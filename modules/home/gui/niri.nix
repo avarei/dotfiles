@@ -25,7 +25,13 @@ in {
     programs.dank-material-shell.niri = {
       enableSpawn = true;
       enableKeybinds = true;
-      includes.enable = false; # dms/*.kdl files are runtime-generated, not present on first boot
+      includes = {
+        enable = true;
+        # Only include outputs so display changes made via dms persist.
+        # Other dms/*.kdl files are runtime-generated and would conflict with
+        # the settings defined here (binds in particular — see enableKeybinds).
+        filesToInclude = ["outputs"];
+      };
     };
 
     programs.niri = {
