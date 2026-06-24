@@ -20,7 +20,7 @@ in {
     enable = lib.mkEnableOption "niri";
   };
   config = lib.mkIf cfg.enable {
-    home.packages = with pkgs; [xwayland-satellite hyprshot];
+    home.packages = with pkgs; [hyprshot];
 
     programs.dank-material-shell.niri = {
       enableSpawn = true;
@@ -71,12 +71,14 @@ in {
         };
 
         spawn-at-startup = [
-          {command = ["xwayland-satellite" ":50"];}
-          {command = ["vesktop"];}
+          # Wait for dms's StatusNotifier host before launching vesktop;
+          # otherwise the tray icon registers too early and dms misses it.
+          {command = ["sh" "-c" "until dms ipc tray list >/dev/null 2>&1; do sleep 0.2; done; exec vesktop"];}
         ];
 
-        environment = {
-          DISPLAY = ":50";
+        xwayland-satellite = {
+          enable = true;
+          path = lib.getExe pkgs.xwayland-satellite;
         };
 
         screenshot-path = "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
