@@ -137,6 +137,16 @@ in {
           "Mod+W".action.focus-window-up = [];
           "Mod+D".action.focus-column-right = [];
 
+          # --- Monitor navigation ---
+          "Mod+Shift+Left".action.focus-monitor-left = [];
+          "Mod+Shift+Right".action.focus-monitor-right = [];
+          "Mod+Shift+Up".action.focus-monitor-up = [];
+          "Mod+Shift+Down".action.focus-monitor-down = [];
+          "Mod+Ctrl+Shift+Left".action.move-column-to-monitor-left = [];
+          "Mod+Ctrl+Shift+Right".action.move-column-to-monitor-right = [];
+          "Mod+Ctrl+Shift+Up".action.move-column-to-monitor-up = [];
+          "Mod+Ctrl+Shift+Down".action.move-column-to-monitor-down = [];
+
           # --- Move navigation ---
           "Mod+Ctrl+Left".action.move-column-left = [];
           "Mod+Ctrl+Right".action.move-column-right = [];
