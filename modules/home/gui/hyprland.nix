@@ -33,9 +33,17 @@ in {
         ];
 
         monitor = [
-          "DP-3,3440x1440@99.982,auto,1,vrr,1"
           ",preferred,auto,1"
         ];
+
+        cursor = {
+          no_hardware_cursors = true;
+        };
+
+        # dms writes display changes to ~/.config/hypr/dms/outputs.conf so they
+        # persist across reboots. The `monitor =` lines above are the fallback
+        # used until dms first writes the file.
+        source = ["./dms/outputs.conf"];
 
         input = {
           kb_layout = "us";
