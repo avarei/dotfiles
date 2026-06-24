@@ -72,6 +72,7 @@ in {
 
         spawn-at-startup = [
           {command = ["xwayland-satellite" ":50"];}
+          {command = ["vesktop"];}
         ];
 
         environment = {
@@ -256,6 +257,10 @@ in {
               }
             ];
             open-floating = true;
+          }
+          {
+            matches = [{app-id = "vesktop";}];
+            open-on-output = "DP-1";
           }
           {
             matches = [{app-id = "steam";}];
