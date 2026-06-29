@@ -56,3 +56,4 @@ Modules are enabled hierarchically (e.g., `dotfiles.gui.enable` must be true for
 - `nixosConfigurations.{desktop,server}` - NixOS systems
 - `homeConfigurations."tim@work"` - Standalone home-manager
 - `{home,nixos,darwin}Modules.default` - Reusable modules for downstream users
+```

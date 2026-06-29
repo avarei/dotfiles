@@ -150,7 +150,9 @@
               gui.niri.enable = true;
               gui.sway.enable = true;
               gui.hyprland.enable = true;
+              gui.plasma.enable = true;
               gaming.steam.enable = true;
+              selfhosted.ollama.enable = true;
             };
             home-manager = {
               useGlobalPkgs = true;
@@ -160,7 +162,18 @@
               };
               users.tim = {pkgs, ...}: {
                 dotfiles = {
-                  editor.neovim.enable = true;
+                  editor.neovim = {
+                    enable = true;
+                    minuet-ai.enable = true;
+                  };
+                  editor.opencode = {
+                    enable = true;
+                    ollama.enable = true;
+                  };
+                  editor.aider = {
+                    enable = true;
+                    ollama.enable = true;
+                  };
                   git.enable = true;
                   shell.nushell.enable = true;
                   shell.zsh.enable = true;
@@ -180,6 +193,7 @@
                 home = {
                   packages = with pkgs; [
                     vesktop
+                    vscodium
                     prismlauncher # Minecraft client
                     archipelago
                     poptracker

@@ -6,6 +6,8 @@
 }: {
   imports = [
     ./editor/neovim.nix
+    ./editor/opencode.nix
+    ./editor/aider.nix
     ./git.nix
     ../shared/stylix.nix
     ./shell/nushell.nix
@@ -45,6 +47,11 @@
       GTK_IM_MODULE = "simple";
       EDITOR = lib.mkIf config.dotfiles.editor.neovim.enable "nvim";
     };
+
+    # Plasma rewrites ~/.gtkrc-2.0 on session start, so home-manager finds
+    # an unmanaged file on rebuild. Force overwrite instead of erroring.
+    # Key must match home-manager's gtk2 module (uses full homeDirectory path).
+    file."${config.home.homeDirectory}/.gtkrc-2.0".force = lib.mkForce true;
   };
   programs.nushell.envFile.text = lib.concatStringsSep "\n" (
     [

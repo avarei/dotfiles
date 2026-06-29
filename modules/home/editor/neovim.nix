@@ -12,6 +12,17 @@ in {
       type = lib.types.bool;
       default = false;
     };
+    minuet-ai = {
+      enable = lib.mkEnableOption "minuet-ai completion via local ollama";
+      endPoint = lib.mkOption {
+        type = lib.types.str;
+        default = "http://localhost:11434/v1/completions";
+      };
+      model = lib.mkOption {
+        type = lib.types.str;
+        default = "qwen2.5-coder:7b";
+      };
+    };
   };
   config = lib.mkIf cfg.enable {
     home = {
@@ -153,7 +164,41 @@ in {
             };
           };
 
-          autocomplete.nvim-cmp.enable = true;
+          autocomplete.nvim-cmp = {
+            enable = true;
+            sources = lib.mkIf cfg.minuet-ai.enable {
+              minuet = "[Minuet]";
+            };
+            setupOpts = lib.mkIf cfg.minuet-ai.enable {
+              performance.fetching_timeout = 2000;
+            };
+          };
+          extraPlugins = lib.mkIf cfg.minuet-ai.enable {
+            minuet-ai = {
+              package = pkgs.vimPlugins.minuet-ai-nvim;
+              setup = ''
+                require('minuet').setup({
+                  provider = 'openai_fim_compatible',
+                  add_single_line_entry = true,
+                  provider_options = {
+                    openai_fim_compatible = {
+                      api_key = 'TERM',
+                      end_point = '${cfg.minuet-ai.endPoint}',
+                      model = '${cfg.minuet-ai.model}',
+                      name = 'Ollama',
+                      stream = true,
+                      optional = {
+                        max_tokens = 64,
+                        temperature = 0.2,
+                        top_p = 0.9,
+                      },
+                    },
+                  },
+                  cmp = { enable_auto_complete = true },
+                })
+              '';
+            };
+          };
           diagnostics = {
             enable = true;
             config = {
