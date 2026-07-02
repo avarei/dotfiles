@@ -153,6 +153,7 @@
               gui.plasma.enable = true;
               gaming.steam.enable = true;
               selfhosted.ollama.enable = true;
+              virtualisation.podman.enable = true;
             };
             home-manager = {
               useGlobalPkgs = true;

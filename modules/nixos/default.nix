@@ -15,6 +15,7 @@
     ./selfhosted/home-assistant.nix
     ./selfhosted/immich.nix
     ./selfhosted/ollama.nix
+    ./virtualisation/podman.nix
   ];
 
   options.dotfiles = {
