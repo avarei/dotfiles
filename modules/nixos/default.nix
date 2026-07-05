@@ -12,7 +12,6 @@
     ./gui/plasma.nix
     ./gaming/steam.nix
     ./gaming/factorio-server.nix
-    ./selfhosted/home-assistant.nix
     ./selfhosted/immich.nix
     ./selfhosted/ollama.nix
     ./virtualisation/podman.nix
