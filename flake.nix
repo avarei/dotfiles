@@ -112,6 +112,7 @@
           {
             dotfiles.selfhosted.immich.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
+            dotfiles.gaming.moonlight.enable = true;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -152,6 +153,7 @@
               gui.hyprland.enable = true;
               gui.plasma.enable = true;
               gaming.steam.enable = true;
+              gaming.sunshine.enable = true;
               selfhosted.ollama.enable = true;
               virtualisation.podman.enable = true;
             };

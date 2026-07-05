@@ -12,6 +12,8 @@
     ./gui/plasma.nix
     ./gaming/steam.nix
     ./gaming/factorio-server.nix
+    ./gaming/sunshine.nix
+    ./gaming/moonlight.nix
     ./selfhosted/immich.nix
     ./selfhosted/ollama.nix
     ./virtualisation/podman.nix
