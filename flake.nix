@@ -113,6 +113,7 @@
             dotfiles.selfhosted.immich.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
             dotfiles.gaming.moonlight.enable = true;
+            dotfiles.gui.plasma.enable = true;
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
@@ -130,6 +131,11 @@
                   selfhosted = {
                     jellyfin.enable = true;
                     copyparty.enable = true;
+                  };
+                  gui = {
+                    enable = true;
+                    ghostty.enable = true;
+                    firefox.enable = true;
                   };
                 };
               };
