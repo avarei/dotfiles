@@ -31,7 +31,7 @@
 
   networking = {
     hostName = "server";
-    networkmanager.enable = false;
+    networkmanager.enable = true;
     firewall = {
       enable = true;
       allowedTCPPorts = [3923 8096 22];
