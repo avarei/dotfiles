@@ -175,10 +175,7 @@
                     enable = true;
                     minuet-ai.enable = true;
                   };
-                  editor.opencode = {
-                    enable = true;
-                    ollama.enable = true;
-                  };
+                  editor.opencode.enable = true;
                   editor.aider = {
                     enable = true;
                     ollama.enable = true;
