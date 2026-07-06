@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  osConfig,
   pkgs,
   pkgs-unstable,
   ...
@@ -12,7 +13,7 @@ in {
   config = lib.mkIf cfg.enable {
     assertions = [
       {
-        assertion = config.dotfiles.selfhosted.ollama.enable;
+        assertion = osConfig.dotfiles.selfhosted.ollama.enable or false;
         message = "dotfiles.editor.opencode requires dotfiles.selfhosted.ollama.enable = true";
       }
     ];
