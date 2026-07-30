@@ -78,6 +78,9 @@
     enable32Bit = true;
   };
 
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # use usb wlan stick
   hardware.usb-modeswitch.enable = true;
 

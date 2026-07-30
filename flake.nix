@@ -32,6 +32,10 @@
       url = "github:AvengeMedia/dgop";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hermes-agent = {
+      url = "github:NousResearch/hermes-agent";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
   outputs = {
@@ -45,6 +49,7 @@
     niri,
     dms,
     dgop,
+    hermes-agent,
     ...
   }: let
     lib = nixpkgs.lib // home-manager.lib;
@@ -161,6 +166,8 @@
               gaming.steam.enable = true;
               gaming.sunshine.enable = true;
               selfhosted.ollama.enable = true;
+              selfhosted.hermes-agent.enable = true;
+              selfhosted.ai-stack.enable = true;
               virtualisation.podman.enable = true;
             };
             home-manager = {
@@ -249,6 +256,7 @@
         niri.nixosModules.niri
         dms.nixosModules.dank-material-shell
         dms.nixosModules.greeter
+        hermes-agent.nixosModules.default
         ./modules/nixos
       ];
       home-manager.extraSpecialArgs = {inherit dgop;};

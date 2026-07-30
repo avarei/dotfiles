@@ -15,6 +15,8 @@
     ./gaming/sunshine.nix
     ./gaming/moonlight.nix
     ./selfhosted/immich.nix
+    ./selfhosted/hermes-agent.nix
+    ./selfhosted/ai-stack.nix
     ./selfhosted/ollama.nix
     ./virtualisation/podman.nix
   ];
