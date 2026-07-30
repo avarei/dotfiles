@@ -25,6 +25,15 @@ in {
           MEMORY = "4G";
           MOTD = "baby on board";
           MAX_PLAYERS = "5";
+          DIFFICULTY = "hard";
+          PVP = "TRUE";
+          OPS = "Avarei";
+          ALLOW_FLIGHT = "TRUE";
+          SPAWN_PROTECTION = "0";
+          MEMORY = "6G";
+          VIEW_DISTANCE = "16";
+          SIMULATION_DISTANCE = "8";
+          JVM_XX_OPTS = "-XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200";
         };
       };
     };
