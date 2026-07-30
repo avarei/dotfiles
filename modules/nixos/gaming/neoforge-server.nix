@@ -22,7 +22,6 @@ in {
           EULA = "TRUE";
           TYPE = "NEOFORGE";
           VERSION = "1.21.1";
-          MEMORY = "4G";
           MOTD = "baby on board";
           MAX_PLAYERS = "5";
           DIFFICULTY = "hard";
