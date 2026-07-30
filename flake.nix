@@ -117,6 +117,8 @@
           {
             dotfiles.selfhosted.immich.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
+            dotfiles.gaming.neoforge-server.enable = true;
+            dotfiles.gaming.steam.enable = true;
             dotfiles.gaming.moonlight.enable = true;
             dotfiles.gui.plasma.enable = true;
             home-manager = {
