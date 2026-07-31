@@ -25,7 +25,10 @@ in {
           MOTD = "baby on board";
           MAX_PLAYERS = "5";
           DIFFICULTY = "hard";
-          PVP = "TRUE";
+          PVP = "FALSE";
+          ENABLE_AUTOPAUSE = "TRUE";
+          AUTOPAUSE_TIMEOUT_EST = "600";
+          MAX_TICK_TIME = "-1";
           OPS = "Avarei";
           ALLOW_FLIGHT = "TRUE";
           SPAWN_PROTECTION = "0";
