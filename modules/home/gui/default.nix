@@ -2,22 +2,18 @@
   config,
   pkgs,
   lib,
-  dgop,
   ...
 }: let
   cfg = config.dotfiles.gui;
 in {
   imports = [
-    ./niri.nix
-    ./sway.nix
-    ./hyprland.nix
     ./ghostty.nix
     ./firefox.nix
   ];
   options.dotfiles.gui = {
     enable = lib.mkEnableOption "gui";
   };
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && pkgs.stdenv.hostPlatform.isLinux) {
     home.packages = with pkgs; [
       pavucontrol # audio in/out
       libnotify
@@ -25,12 +21,6 @@ in {
       wl-clipboard-rs
       gparted # partition management
     ];
-
-    programs.dank-material-shell = {
-      enable = true;
-      enableSystemMonitoring = true;
-      dgop.package = dgop.packages.${pkgs.stdenv.hostPlatform.system}.default;
-    };
 
     home.pointerCursor = {
       enable = true;

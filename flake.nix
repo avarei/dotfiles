@@ -267,6 +267,7 @@
         dms.homeModules.dank-material-shell
         dms.homeModules.niri
         ./modules/home
+        ./modules/home/gui/linux.nix
       ];
     };
     darwinModules.default = {

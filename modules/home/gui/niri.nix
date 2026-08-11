@@ -3,17 +3,7 @@
   pkgs,
   lib,
   ...
-}@args:
-# dgop is only passed (via extraSpecialArgs in nixosModules.default) on Linux.
-# On Darwin we lack the niri-flake and dank-material-shell home modules, so
-# return a minimal stub that only declares the enable option.
-if !(args ? dgop)
-then {
-  options.dotfiles.gui.niri = {
-    enable = lib.mkEnableOption "niri";
-  };
-}
-else let
+}: let
   cfg = config.dotfiles.gui.niri;
 in {
   options.dotfiles.gui.niri = {
