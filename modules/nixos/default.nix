@@ -20,6 +20,7 @@
     ./selfhosted/ai-stack.nix
     ./selfhosted/ollama.nix
     ./selfhosted/copyparty.nix
+    ./selfhosted/jellyfin.nix
     ./virtualisation/podman.nix
   ];
 

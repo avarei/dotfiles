@@ -16,7 +16,6 @@
     ./gpg.nix
     ./gui
     ./kubernetes/client.nix
-    ./selfhosted/jellyfin.nix
   ];
 
   nix = {

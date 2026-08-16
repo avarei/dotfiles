@@ -117,6 +117,7 @@
           {
             dotfiles.selfhosted.immich.enable = true;
             dotfiles.selfhosted.copyparty.enable = true;
+            dotfiles.selfhosted.jellyfin.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
             dotfiles.gaming.neoforge-server.enable = true;
             dotfiles.gaming.steam.enable = true;
@@ -136,9 +137,6 @@
                   shell.zsh.enable = true;
                   shell.tmux.enable = true;
                   gpg.enable = true;
-                  selfhosted = {
-                    jellyfin.enable = true;
-                  };
                   gui = {
                     enable = true;
                     ghostty.enable = true;
