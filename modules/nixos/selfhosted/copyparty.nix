@@ -4,7 +4,8 @@
   ...
 }: let
   cfg = config.dotfiles.selfhosted.copyparty;
-  dataDir = "/var/lib/copyparty";
+  configDir = "/var/lib/copyparty";
+  dataDir = "/srv/copyparty";
 in {
   options.dotfiles.selfhosted.copyparty = {
     enable = lib.mkEnableOption "copyparty";
@@ -18,8 +19,8 @@ in {
         pull = "newer";
         autoStart = true;
         volumes = [
-          "${dataDir}/config:/cfg"
-          "${dataDir}/data:/w"
+          "${configDir}:/cfg"
+          "${dataDir}:/w"
         ];
         ports = ["3923:3923"];
         extraOptions = ["--user=60000:60000"];
@@ -27,9 +28,8 @@ in {
     };
 
     systemd.tmpfiles.rules = [
+      "d ${configDir} 0750 60000 60000 -"
       "d ${dataDir} 0750 60000 60000 -"
-      "d ${dataDir}/config 0750 60000 60000 -"
-      "d ${dataDir}/data 0750 60000 60000 -"
     ];
   };
 }
