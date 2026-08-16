@@ -19,6 +19,7 @@
     ./selfhosted/hermes-agent.nix
     ./selfhosted/ai-stack.nix
     ./selfhosted/ollama.nix
+    ./selfhosted/copyparty.nix
     ./virtualisation/podman.nix
   ];
 

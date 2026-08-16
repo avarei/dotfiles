@@ -17,7 +17,6 @@
     ./gui
     ./kubernetes/client.nix
     ./selfhosted/jellyfin.nix
-    ./selfhosted/copyparty.nix
   ];
 
   nix = {

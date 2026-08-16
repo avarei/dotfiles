@@ -116,6 +116,7 @@
           home-manager.nixosModules.home-manager
           {
             dotfiles.selfhosted.immich.enable = true;
+            dotfiles.selfhosted.copyparty.enable = true;
             dotfiles.gaming.factorio-server.enable = true;
             dotfiles.gaming.neoforge-server.enable = true;
             dotfiles.gaming.steam.enable = true;
@@ -137,7 +138,6 @@
                   gpg.enable = true;
                   selfhosted = {
                     jellyfin.enable = true;
-                    copyparty.enable = true;
                   };
                   gui = {
                     enable = true;
