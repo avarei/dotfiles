@@ -51,6 +51,11 @@
 
     time.timeZone = "Europe/Berlin";
 
+    nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
+
+    networking.networkmanager.enable = true;
+    hardware.usb-modeswitch.enable = true;
+
     programs.zsh.enable = true;
 
     nix = {

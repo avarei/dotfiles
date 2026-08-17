@@ -11,6 +11,9 @@ in {
     enable = lib.mkEnableOption "copyparty";
   };
   config = lib.mkIf cfg.enable {
+    networking.firewall.allowedTCPPorts = [3923];
+    networking.nat.enable = true;
+
     virtualisation.podman.enable = true;
     virtualisation.oci-containers = {
       backend = "podman";

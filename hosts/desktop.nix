@@ -9,13 +9,11 @@
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
 
-  # Bootloader.
   boot = {
     initrd = {
       availableKernelModules = ["xhci_pci" "ahci" "nvme" "usbhid" "usb_storage" "sd_mod"];
     };
     kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
     loader = {
       systemd-boot = {
         enable = true;
@@ -36,16 +34,20 @@
     resumeDevice = "/dev/disk/by-label/NIXROOT";
   };
 
-  powerManagement = {
-    enable = true;
-    cpuFreqGovernor = "performance";
+  hardware = {
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    graphics = {
+      enable = true;
+      enable32Bit = true;
+    };
+    bluetooth.enable = true;
   };
 
-  networking = {
-    hostName = "desktop";
-    # wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-    networkmanager.enable = true;
-  };
+  powerManagement.cpuFreqGovernor = "performance";
+
+  networking.hostName = "desktop";
+
+  services.blueman.enable = true;
 
   environment.systemPackages = with pkgs; [
     os-prober
@@ -72,28 +74,6 @@
       size = 32 * 1024;
     }
   ];
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-  };
-
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
-  # use usb wlan stick
-  hardware.usb-modeswitch.enable = true;
-
-  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-  # (the default) this is the recommended approach. When using systemd-networkd it's
-  # still possible to use this option, but it's recommended to use it in conjunction
-  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
-  networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.eno2.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
-
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
